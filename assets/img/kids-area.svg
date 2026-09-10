@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="FITNESS DEPOT KIDS">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141922"/>
+      <stop offset="0.55" stop-color="#0C0E12"/>
+      <stop offset="1" stop-color="#1B222C"/>
+    </linearGradient>
+    <pattern id="stripes" width="34" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+      <rect width="34" height="34" fill="none"/>
+      <rect width="9" height="34" fill="#FFFFFF" opacity="0.022"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <rect width="1200" height="900" fill="url(#stripes)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#E01B22"/>
+  <g transform="translate(600 450)" text-anchor="middle" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif">
+    <g transform="translate(0 -74)">
+      <rect x="-46" y="-46" width="92" height="92" rx="10" fill="none" stroke="#E01B22" stroke-width="4"/>
+      <text y="18" font-size="52" font-weight="700" fill="#FFFFFF" letter-spacing="2">FD</text>
+    </g>
+    <text y="10" font-size="34" font-weight="700" fill="#FFFFFF" letter-spacing="3">FITNESS DEPOT KIDS</text>
+    <text y="52" font-size="21" font-weight="500" fill="#8A93A0" letter-spacing="1.5">Kid Care room at Columbia</text>
+    <text y="96" font-size="17" font-weight="500" fill="#5C6674" letter-spacing="2">PHOTO PLACEHOLDER &#183; 1200&#215;900</text>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "name": "Fitness Depot Columbia",
+  "short_name": "Fitness Depot",
+  "description": "A locally owned 24/7 gym in Columbia, Mississippi.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0e12",
+  "theme_color": "#0c0e12",
+  "icons": [
+    { "src": "/assets/favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/assets/favicon/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
