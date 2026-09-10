@@ -183,6 +183,18 @@ h1 em { font-style: normal; color: var(--gold-bright); }
 }
 .logo-plate img { display: block; height: 58px; width: auto; }
 
+.docmeta dd a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--gold-bright); }
+.docmeta dd a:hover { color: var(--gold-bright); }
+.docmeta--light dd a { border-bottom-color: var(--gold); }
+
+.closing-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; max-width: none; }
+.btn--line {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.btn--line:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
 /* ---------- sections ---------- */
 section { margin-top: clamp(2.75rem, 6vw, 4.25rem); }
 
@@ -403,7 +415,8 @@ footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.86rem; }
 
     <dl class="docmeta">
       <div><dt>Prepared for</dt><dd>Fitness Depot Columbia</dd></div>
-      <div><dt>Location</dt><dd>805 Hwy 98 Bypass</dd></div>
+      <div><dt>Prepared by</dt><dd>Ryan Bullock</dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+17693136636">(769) 313-6636</a></dd></div>
       <div><dt>Status</dt><dd>Built &amp; ready to launch</dd></div>
     </dl>
   </div>
@@ -594,9 +607,15 @@ footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.86rem; }
     like the gym you want people to walk into, send me a message and we'll set a launch date. If you'd
     rather I handle the photography too, say so and I'll bring the camera.
   </p>
-  <p>
+  <p class="closing-cta">
     <a class="btn" href="https://claude.ai/code/artifact/1e208f79-9e33-4960-87d7-1612a8df8d93" target="_blank" rel="noopener">Open the live preview</a>
+    <a class="btn btn--line" href="tel:+17693136636">Call (769) 313-6636</a>
   </p>
+
+  <dl class="docmeta docmeta--light">
+    <div><dt>Prepared by</dt><dd>Ryan Bullock</dd></div>
+    <div><dt>Phone</dt><dd><a href="tel:+17693136636">(769) 313-6636</a></dd></div>
+  </dl>
 
 
   <footer>
