@@ -1,0 +1,3068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ==========================================================================
+     BEFORE LAUNCH: replace every occurrence of https://www.fitnessdepotcolumbia.com
+     with the live domain (canonical, Open Graph, sitemap.xml, robots.txt, schema).
+     See docs/LAUNCH-CHECKLIST.md
+     ========================================================================== -->
+
+<title>Fitness Depot Columbia — website preview</title>
+<meta name="description" content="Locally owned 24/7 gym in Columbia, MS. Free weights, cardio, turf training, personal training, HydroMassage, tanning and Kid Care. No contract.">
+<link rel="canonical" href="https://www.fitnessdepotcolumbia.com/">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="geo.region" content="US-MS">
+<meta name="geo.placename" content="Columbia, Mississippi">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="business.business">
+<meta property="og:site_name" content="Fitness Depot Columbia">
+<meta property="og:title" content="Fitness Depot Columbia MS | 24/7 Gym in Columbia, Mississippi">
+<meta property="og:description" content="A locally owned 24/7 gym in Columbia, MS. Free weights, cardio, turf functional training, personal training, HydroMassage, tanning and Kid Care. No contract. No annual fee.">
+<meta property="og:url" content="https://www.fitnessdepotcolumbia.com/">
+<meta property="og:image" content="https://www.fitnessdepotcolumbia.com/assets/img/og-image.svg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fitness Depot Columbia MS | 24/7 Gym in Columbia, Mississippi">
+<meta name="twitter:description" content="A locally owned 24/7 gym in Columbia, MS. Strength, cardio, functional training, recovery and Kid Care.">
+<meta name="twitter:image" content="https://www.fitnessdepotcolumbia.com/assets/img/og-image.svg">
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* ==========================================================================
+   Fitness Depot Columbia — stylesheet
+   --------------------------------------------------------------------------
+   Brand tokens live in :root. The palette below is a placeholder calibrated
+   to Fitness Depot's industrial look — swap the six --fd-* values for the
+   official brand-kit values and the whole site follows. Nothing else needs
+   to change.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand: Fitness Depot gold + black, taken from the official logo ----
+     Gold is legible on black (8:1) but NOT as text on white (2.4:1), so:
+       --fd-gold       fills, borders, icons, and accents on dark surfaces
+       --fd-gold-deep  hover fills, and LARGE gold text on light surfaces
+       --fd-gold-text  small gold text on light surfaces (4.9:1)
+     Gold buttons always take BLACK text, never white. ---------------------- */
+  --fd-gold: #c9a227;
+  --fd-gold-deep: #a8851c;
+  --fd-gold-text: #8a6d12;
+  --fd-gold-light: #e0bc4a;
+  --fd-gold-glow: rgba(201, 162, 39, 0.32);
+
+  --fd-ink: #0d0d0d;
+  --fd-ink-2: #161616;
+  --fd-ink-3: #232323;
+
+  /* ---- Neutrals (warmed slightly to sit with the gold) ---- */
+  --steel: #6d6a63;
+  --steel-light: #a8a49a;
+  --line: #e4e1d9;
+  --line-dark: rgba(255, 255, 255, 0.12);
+  --paper: #f5f3ee;
+  --paper-2: #edeae2;
+  --white: #fff;
+
+  /* ---- Type ---- */
+  --display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* ---- Layout ---- */
+  --shell: 1220px;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --section-y: clamp(4rem, 9vw, 7.5rem);
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  /* ---- Elevation ---- */
+  --shadow-sm: 0 2px 8px rgba(13, 13, 13, 0.06);
+  --shadow: 0 14px 34px rgba(13, 13, 13, 0.1);
+  --shadow-lg: 0 26px 60px rgba(13, 13, 13, 0.17);
+
+  --header-h: 72px;
+  --ease: cubic-bezier(0.22, 0.68, 0.28, 1);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* keep anchored sections clear of the sticky header */
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--fd-ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+button { font: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2.85rem, 7.4vw, 5.4rem); }
+h2 { font-size: clamp(2.1rem, 5vw, 3.5rem); }
+h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
+h4 { font-size: 1.15rem; }
+p { margin: 0 0 1.1rem; }
+p:last-child { margin-bottom: 0; }
+
+::selection { background: var(--fd-gold); color: var(--fd-ink); }
+
+:focus-visible {
+  outline: 3px solid var(--fd-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  background: var(--fd-gold);
+  color: var(--fd-ink);
+  padding: 0.85rem 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 10px 10px;
+  transition: transform 0.2s var(--ease);
+}
+.skip-link:focus { transform: translate(-50%, 0); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+
+.shell {
+  width: min(var(--shell), 100% - (var(--gutter) * 2));
+  margin-inline: auto;
+}
+/* the header carries more than body copy, so it gets a wider track */
+.shell--wide { width: min(1320px, 100% - (var(--gutter) * 2)); }
+
+.section { padding-block: var(--section-y); position: relative; }
+.section--paper { background: var(--paper); }
+.section--dark { background: var(--fd-ink); color: var(--white); }
+.section--dark h2, .section--dark h3 { color: var(--white); }
+
+.section-head { max-width: 46rem; margin-bottom: clamp(2.25rem, 4.5vw, 3.5rem); }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head p { color: var(--steel); font-size: 1.09rem; }
+.section--dark .section-head p { color: var(--steel-light); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fd-gold-text);
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 3px;
+  background: var(--fd-gold-deep);
+}
+/* on dark surfaces the full-strength gold is both legible and on-brand */
+.section--dark .eyebrow,
+.band .eyebrow,
+.cta-final .eyebrow,
+.hero .eyebrow,
+.pt-banner .eyebrow { color: var(--fd-gold); }
+.section--dark .eyebrow::before,
+.band .eyebrow::before,
+.cta-final .eyebrow::before,
+.hero .eyebrow::before,
+.pt-banner .eyebrow::before { background: var(--fd-gold); }
+.eyebrow--center { justify-content: center; }
+
+.lead { font-size: clamp(1.1rem, 1.9vw, 1.3rem); color: var(--steel); }
+.section--dark .lead { color: var(--steel-light); }
+
+.accent { color: var(--fd-gold); }
+.section:not(.section--dark) .accent { color: var(--fd-gold-deep); }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  --btn-bg: var(--fd-gold);
+  --btn-fg: var(--fd-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 1.05rem 2rem;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--btn-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease),
+              background-color 0.18s var(--ease), border-color 0.18s var(--ease),
+              color 0.18s var(--ease);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px var(--fd-gold-glow);
+  background: var(--fd-gold-light);
+  border-color: var(--fd-gold-light);
+  color: var(--fd-ink);
+}
+.btn:active { transform: translateY(0); }
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.btn--ghost:hover {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--fd-ink);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+
+.btn--outline {
+  --btn-bg: transparent;
+  --btn-fg: var(--fd-ink);
+  border-color: rgba(13, 13, 13, 0.22);
+}
+.btn--outline:hover {
+  background: var(--fd-ink);
+  border-color: var(--fd-ink);
+  color: var(--white);
+  box-shadow: 0 12px 26px rgba(13, 13, 13, 0.22);
+}
+/* the header sits on black, so its secondary button inverts */
+.header .btn--outline {
+  --btn-fg: var(--white);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.header .btn--outline:hover {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--fd-ink);
+}
+
+.btn--sm { padding: 0.72rem 1.35rem; font-size: 1rem; }
+.btn--lg { padding: 1.2rem 2.5rem; font-size: 1.25rem; }
+.btn--block { width: 100%; }
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+.btn-row--center { justify-content: center; }
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.topbar {
+  background: var(--fd-ink);
+  color: var(--steel-light);
+  font-size: 0.86rem;
+  border-bottom: 1px solid var(--line-dark);
+}
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 42px;
+  padding-block: 0.35rem;
+}
+.topbar__group { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.topbar__item { display: inline-flex; align-items: center; gap: 0.45rem; text-decoration: none; }
+.topbar a.topbar__item:hover { color: var(--white); }
+.topbar__item svg { width: 15px; height: 15px; flex: none; color: var(--fd-gold); }
+.topbar strong { color: var(--white); font-weight: 600; }
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: rgba(13, 13, 13, 0.94);
+  backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--line-dark);
+  transition: box-shadow 0.25s var(--ease);
+}
+.header.is-stuck { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4); }
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-h);
+  flex-wrap: nowrap;
+}
+
+/* Logo lockup — replace with the official Fitness Depot logo file.
+   See docs/BRAND-AND-ASSETS.md */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--white);
+  flex: none;
+}
+/* Interim wordmark — replaced by the official artwork.
+   See docs/BRAND-AND-ASSETS.md */
+.logo__name .is-depot { color: var(--fd-gold); }
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--fd-gold);
+  border-radius: 8px;
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--fd-gold);
+  flex: none;
+}
+.logo__text { display: flex; flex-direction: column; line-height: 1; }
+.logo__name {
+  font-family: var(--display);
+  font-size: 1.42rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+.logo__loc {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  margin-top: 3px;
+}
+
+.nav { display: flex; align-items: center; gap: 0.1rem; flex-shrink: 0; }
+.nav a {
+  padding: 0.55rem clamp(0.34rem, 0.9vw, 0.72rem);
+  font-family: var(--display);
+  font-size: clamp(0.94rem, 1.05vw, 1.03rem);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.18s var(--ease);
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: clamp(0.34rem, 0.9vw, 0.72rem);
+  right: clamp(0.34rem, 0.9vw, 0.72rem);
+  bottom: 0.3rem;
+  height: 2px;
+  background: var(--fd-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s var(--ease);
+}
+.nav a:hover::after,
+.nav a[aria-current="true"]::after { transform: scaleX(1); }
+.nav a[aria-current="true"] { color: var(--fd-gold); }
+.nav a:hover { color: var(--fd-gold); }
+
+.header__cta { display: flex; align-items: center; gap: 0.6rem; flex: none; }
+
+@media (max-width: 1320px) {
+  /* the phone number stays in the top bar and the mobile CTA bar */
+  .header__cta .btn--outline { display: none; }
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: var(--fd-gold);
+  color: var(--fd-ink);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.nav-toggle svg { width: 24px; height: 24px; }
+.nav-toggle .icon-close { display: none; }
+.nav-toggle[aria-expanded="true"] .icon-open { display: none; }
+.nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  background: var(--fd-ink);
+  color: var(--white);
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero__media { position: absolute; inset: 0; z-index: -2; }
+.hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(13, 13, 13, 0.96) 0%, rgba(13, 13, 13, 0.88) 42%, rgba(13, 13, 13, 0.55) 100%),
+    linear-gradient(to top, rgba(13, 13, 13, 0.95), transparent 55%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -22%;
+  right: -14%;
+  width: 46vw;
+  height: 46vw;
+  max-width: 640px;
+  max-height: 640px;
+  background: radial-gradient(circle, var(--fd-gold-glow), transparent 68%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero__inner {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(3rem, 6vw, 4.5rem);
+  max-width: 54rem;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem 0.5rem 0.72rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--line-dark);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fd-gold);
+  box-shadow: 0 0 0 0 var(--fd-gold-glow);
+  animation: pulse 2.4s infinite;
+  flex: none;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(201, 162, 39, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+}
+
+.hero h1 { margin-bottom: 1.1rem; text-wrap: balance; }
+.hero h1 .line { display: block; }
+
+.hero__sub {
+  font-size: clamp(1.08rem, 2vw, 1.32rem);
+  color: #d3d8df;
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+
+.hero .btn-row { margin-bottom: 2.25rem; }
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.9rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line-dark);
+  list-style: none;
+  margin: 0;
+  padding-inline: 0;
+}
+.hero__facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.hero__facts svg { width: 19px; height: 19px; color: var(--fd-gold); flex: none; }
+
+/* Scrolling amenity strip */
+.marquee {
+  background: var(--fd-gold);
+  color: var(--fd-ink);
+  overflow: hidden;
+  border-block: 1px solid rgba(0, 0, 0, 0.12);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+}
+.marquee ul {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.85rem 1.3rem;
+  font-family: var(--display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquee li { display: flex; align-items: center; gap: 2.6rem; }
+.marquee li::after { content: "\2022"; opacity: 0.5; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+/* ==========================================================================
+   Split media/text blocks
+   ========================================================================== */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.25rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.split--reverse .split__media { order: 2; }
+.split--even { align-items: stretch; grid-template-columns: 1.05fr 1.15fr; }
+.split--even .split__media--fill { display: flex; }
+.split--even .split__media--fill { display: flex; }
+.split--even .split__media--fill::before { display: none; }
+.split--even .split__media--fill img {
+  height: 100%;
+  min-height: 440px;
+  object-fit: cover;
+}
+
+/* full-width stat band under the split */
+.stats--wide { margin-top: clamp(2rem, 4vw, 3rem); }
+.stats--wide div { padding-block: 1.75rem; }
+
+.split__media { position: relative; }
+.split__media img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.split__media::before {
+  content: "";
+  position: absolute;
+  inset: auto -14px -14px auto;
+  width: 62%;
+  height: 62%;
+  border: 3px solid var(--fd-gold);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+
+.quote-card {
+  margin-top: 1.75rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--fd-ink);
+  color: var(--white);
+  border-left: 5px solid var(--fd-gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.quote-card p {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.18;
+  text-transform: uppercase;
+  margin: 0;
+}
+.quote-card cite {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+}
+
+/* Stat row */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.stats div { background: var(--white); padding: 1.35rem 1.25rem; text-align: center; }
+.stats dt {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3.4vw, 2.35rem);
+  font-weight: 700;
+  color: var(--fd-gold-deep);
+  line-height: 1;
+}
+.stats dd {
+  margin: 0.4rem 0 0;
+  font-size: 0.79rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.grid { display: grid; gap: 1.35rem; }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  position: relative;
+  padding: 1.9rem 1.75rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease),
+              border-color 0.28s var(--ease);
+  overflow: hidden;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--fd-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.32s var(--ease);
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: transparent;
+}
+.card:hover::before { transform: scaleX(1); }
+.card h3 { margin-bottom: 0.5rem; }
+.card p { color: var(--steel); font-size: 0.98rem; margin: 0; }
+
+.card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.1rem;
+  background: rgba(201, 162, 39, 0.14);
+  color: var(--fd-gold-deep);
+  border-radius: 12px;
+}
+.card__icon svg { width: 26px; height: 26px; }
+
+.section--dark .card__icon { color: var(--fd-gold); background: rgba(201, 162, 39, 0.18); }
+.section--dark .card {
+  background: var(--fd-ink-2);
+  border-color: var(--line-dark);
+}
+.section--dark .card p { color: var(--steel-light); }
+.section--dark .card:hover { border-color: transparent; box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5); }
+
+/* ==========================================================================
+   Memberships
+   ========================================================================== */
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 2rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.plan:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+.plan--featured {
+  background: var(--fd-ink);
+  color: var(--white);
+  border-color: var(--fd-ink);
+  box-shadow: var(--shadow-lg);
+}
+.plan--featured h3 { color: var(--white); }
+
+.plan__flag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.45rem 1.1rem;
+  background: var(--fd-gold);
+  color: var(--fd-ink);
+  font-family: var(--display);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 0 var(--radius-lg) 0 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.plan__name { font-size: clamp(1.85rem, 3.4vw, 2.4rem); margin-bottom: 0.15rem; }
+.plan__tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 1.4rem;
+}
+.plan--featured .plan__tag { color: var(--fd-gold); }
+
+.plan__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.1rem;
+}
+.plan--featured .plan__price { border-color: var(--line-dark); }
+.plan__amount {
+  font-family: var(--display);
+  font-size: clamp(3rem, 6.5vw, 4rem);
+  font-weight: 700;
+  line-height: 0.9;
+}
+.plan__period {
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+.plan__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+.plan__meta li {
+  padding: 0.4rem 0.8rem;
+  background: var(--paper);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--fd-ink);
+}
+.plan--featured .plan__meta li {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+.plan__meta .is-highlight { background: var(--fd-gold); color: var(--fd-ink); }
+
+.plan__label {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 0.8rem;
+}
+.plan--featured .plan__label { color: var(--steel-light); }
+
+.checklist { list-style: none; margin: 0 0 1.75rem; padding: 0; display: grid; gap: 0.62rem; }
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+.checklist svg { width: 19px; height: 19px; color: var(--fd-gold-deep); flex: none; margin-top: 2px; }
+.plan--featured .checklist svg { color: var(--fd-gold); }
+
+.plan__cta { margin-top: auto; }
+.plan__foot {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  color: var(--steel);
+  text-align: center;
+}
+.plan--featured .plan__foot { color: var(--steel-light); }
+
+.notice {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 1.75rem;
+  padding: 1.15rem 1.35rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--fd-gold-deep);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.92rem;
+  color: var(--steel);
+}
+.notice svg { width: 21px; height: 21px; color: var(--fd-gold-deep); flex: none; margin-top: 2px; }
+.notice a { color: var(--fd-ink); font-weight: 600; }
+
+/* ==========================================================================
+   24/7 access band
+   ========================================================================== */
+
+.band {
+  position: relative;
+  background: var(--fd-ink);
+  color: var(--white);
+  overflow: hidden;
+  isolation: isolate;
+}
+.band__media { position: absolute; inset: 0; z-index: -2; }
+.band__media img { width: 100%; height: 100%; object-fit: cover; }
+.band__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 13, 13, 0.97) 0%, rgba(13, 13, 13, 0.9) 48%, rgba(13, 13, 13, 0.6) 100%);
+}
+.band__inner { padding-block: var(--section-y); max-width: 40rem; }
+
+.clock {
+  font-family: var(--display);
+  font-size: clamp(4.5rem, 13vw, 9rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+.clock span { color: var(--fd-gold); }
+
+.feature-list { list-style: none; margin: 2rem 0 2.25rem; padding: 0; display: grid; gap: 1.05rem; }
+.feature-list li { display: flex; gap: 1rem; align-items: flex-start; }
+.feature-list .fi {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(201, 162, 39, 0.18);
+  color: var(--fd-gold);
+  border-radius: 10px;
+  flex: none;
+}
+.feature-list .fi svg { width: 20px; height: 20px; }
+.feature-list strong {
+  display: block;
+  font-family: var(--display);
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.feature-list span { color: var(--steel-light); font-size: 0.96rem; }
+
+/* ==========================================================================
+   Equipment
+   ========================================================================== */
+
+.equip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.equip__card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.equip__card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+.equip__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.equip__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.equip__card:hover .equip__media img { transform: scale(1.06); }
+.equip__num {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1.1rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--fd-gold);
+  color: var(--fd-ink);
+  font-family: var(--display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.equip__body { padding: 1.65rem 1.6rem 1.85rem; display: flex; flex-direction: column; flex: 1; }
+.equip__body h3 { margin-bottom: 1rem; }
+.tick { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.tick li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.98rem;
+  color: var(--fd-ink);
+}
+.tick li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--fd-gold-deep);
+  transform: rotate(45deg);
+  flex: none;
+}
+
+.pt-banner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  background: var(--fd-ink);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+}
+.pt-banner h3 { color: var(--white); }
+.pt-banner p { color: var(--steel-light); }
+.pt-banner img { border-radius: var(--radius); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+
+/* ==========================================================================
+   Recovery — deliberately lighter/warmer than the equipment section
+   ========================================================================== */
+
+.recovery { background: var(--paper); position: relative; overflow: hidden; }
+.recovery::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  left: -140px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+.recovery__hero {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 4.5vw, 4rem);
+  align-items: center;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+.recovery__hero img {
+  width: 100%;
+  border-radius: var(--radius);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.pill {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: rgba(201, 162, 39, 0.15);
+  color: var(--fd-gold-text);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.tile {
+  display: flex;
+  gap: 1.05rem;
+  padding: 1.5rem 1.4rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.26s var(--ease), box-shadow 0.26s var(--ease);
+}
+.tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.tile__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--fd-ink);
+  color: var(--fd-gold);
+  border-radius: 11px;
+  flex: none;
+}
+.tile__icon svg { width: 22px; height: 22px; }
+.tile h4 { margin-bottom: 0.3rem; }
+.tile p { font-size: 0.93rem; color: var(--steel); margin: 0; }
+
+/* ==========================================================================
+   Kids
+   ========================================================================== */
+
+.kids__panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--white);
+}
+.kids__media img { width: 100%; height: 100%; object-fit: cover; min-height: 340px; }
+.kids__body { padding: clamp(1.9rem, 4vw, 3rem); }
+
+.spec { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; gap: 0; }
+.spec li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.98rem;
+}
+.spec li:last-child { border-bottom: 0; }
+.spec dt, .spec .k { color: var(--steel); }
+.spec .v {
+  font-family: var(--display);
+  font-size: 1.16rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+/* ==========================================================================
+   Gallery
+   ========================================================================== */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.gallery__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  aspect-ratio: 4 / 3;
+  background: var(--fd-ink-2);
+}
+.gallery__item--wide { grid-column: span 2; }
+.gallery__item--tall { grid-row: span 2; aspect-ratio: auto; }
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
+}
+.gallery__item:hover img { transform: scale(1.07); }
+.gallery__cap {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2.5rem 1.1rem 1rem;
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.9), transparent);
+  color: var(--white);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.gallery__item:hover .gallery__cap,
+.gallery__item:focus-visible .gallery__cap { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   Reviews (placeholder until verified reviews are added)
+   ========================================================================== */
+
+.reviews__panel {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(1.9rem, 4vw, 3rem);
+  border: 2px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+}
+.review-slot {
+  padding: 1.4rem 1.5rem;
+  background: var(--fd-ink-2);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  display: grid;
+  gap: 0.85rem;
+}
+.review-slot + .review-slot { margin-top: 1rem; }
+.review-slot__stars { display: flex; gap: 0.2rem; color: var(--fd-gold); }
+.review-slot__stars svg { width: 18px; height: 18px; }
+.review-slot__line {
+  height: 10px;
+  border-radius: 100px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
+}
+.review-slot__line--short { width: 62%; }
+.review-slot__note {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+/* ==========================================================================
+   Location
+   ========================================================================== */
+
+.location {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.info-block { margin-bottom: 1.9rem; }
+.info-block h3 { font-size: 1.22rem; margin-bottom: 0.7rem; }
+.info-block address { font-style: normal; font-size: 1.12rem; line-height: 1.55; }
+.info-block a { text-decoration: none; font-weight: 600; }
+.info-block a:hover { color: var(--fd-gold-text); }
+
+.hours { list-style: none; margin: 0; padding: 0; }
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.62rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.99rem;
+}
+.hours li:last-child { border-bottom: 0; }
+.hours .d { color: var(--steel); }
+.hours .t { font-weight: 600; }
+.hours .t--open { color: var(--fd-gold-text); font-weight: 700; }
+
+.map-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: var(--paper-2);
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+}
+.map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* ==========================================================================
+   Final CTA
+   ========================================================================== */
+
+.cta-final {
+  position: relative;
+  background: var(--fd-ink);
+  color: var(--white);
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cta-final::before,
+.cta-final::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 60vw;
+  max-width: 700px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--fd-gold-glow), transparent 68%);
+  opacity: 0.5;
+}
+.cta-final::before { top: -30%; left: -12%; }
+.cta-final::after { bottom: -38%; right: -12%; }
+.cta-final .shell { position: relative; padding-block: var(--section-y); }
+.cta-final h2 { font-size: clamp(2.6rem, 7vw, 5rem); margin-bottom: 1rem; }
+.cta-final p { color: var(--steel-light); font-size: 1.15rem; max-width: 40rem; margin-inline: auto; }
+.cta-final .btn-row { margin-top: 2.25rem; }
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+.faq { max-width: 60rem; margin-inline: auto; }
+.faq__item {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.faq__item[open] { border-color: rgba(201, 162, 39, 0.5); box-shadow: var(--shadow-sm); }
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.15rem 1.4rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--display);
+  font-size: 1.24rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary:hover { color: var(--fd-gold-text); }
+.faq__item summary::after {
+  content: "";
+  width: 13px;
+  height: 13px;
+  border-right: 2.5px solid var(--fd-gold-deep);
+  border-bottom: 2.5px solid var(--fd-gold-deep);
+  transform: rotate(45deg) translate(-3px, -3px);
+  transition: transform 0.26s var(--ease);
+  flex: none;
+}
+.faq__item[open] summary::after { transform: rotate(-135deg) translate(-3px, -3px); }
+.faq__answer { padding: 0 1.4rem 1.35rem; color: var(--steel); font-size: 1rem; }
+.faq__answer a { color: var(--fd-ink); font-weight: 600; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer { background: var(--fd-ink); color: var(--steel-light); padding-block: clamp(3rem, 6vw, 4.5rem) 0; }
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+.footer .logo { color: var(--white); margin-bottom: 1.1rem; }
+.footer .logo__loc { color: var(--steel); }
+.footer h3 {
+  color: var(--white);
+  font-size: 1.05rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.15rem;
+}
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.footer a { text-decoration: none; font-size: 0.97rem; transition: color 0.18s var(--ease); }
+.footer a:hover { color: var(--fd-gold); }
+.footer address { font-style: normal; font-size: 0.97rem; line-height: 1.7; }
+.footer__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.4rem;
+  border-top: 1px solid var(--line-dark);
+  font-size: 0.86rem;
+  color: var(--steel);
+}
+.footer__social { display: flex; gap: 0.6rem; margin-top: 1.25rem; }
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: var(--white);
+  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.footer__social a:hover { background: var(--fd-gold); transform: translateY(-2px); color: var(--fd-ink); }
+.footer__social svg { width: 19px; height: 19px; }
+
+/* ==========================================================================
+   Sticky mobile CTA + back to top
+   ========================================================================== */
+
+.mobile-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  display: none;
+  gap: 0.55rem;
+  padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(13, 13, 13, 0.97);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line-dark);
+}
+.mobile-cta .btn { flex: 1; padding: 0.9rem 0.5rem; font-size: 1rem; }
+.mobile-cta .btn--ghost { flex: 0 0 auto; padding-inline: 1.1rem; }
+
+.to-top {
+  position: fixed;
+  right: 1.15rem;
+  bottom: 1.15rem;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  background: var(--fd-ink);
+  color: var(--white);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+  box-shadow: var(--shadow);
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.to-top:hover { background: var(--fd-gold); color: var(--fd-ink); }
+.to-top svg { width: 20px; height: 20px; }
+
+/* ==========================================================================
+   Scroll reveal
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1080px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 1160px) {
+  :root { --header-h: 66px; }
+
+  .nav {
+    position: fixed;
+    inset: calc(var(--header-h) + 0px) 0 auto 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.75rem var(--gutter) 1.5rem;
+    background: var(--fd-ink);
+    border-bottom: 1px solid var(--line-dark);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.24s var(--ease), transform 0.24s var(--ease), visibility 0.24s;
+  }
+  .nav.is-open { opacity: 1; visibility: visible; transform: none; }
+  .nav a { padding: 0.95rem 0.25rem; font-size: 1.22rem; border-bottom: 1px solid var(--line-dark); }
+  .nav a::after { display: none; }
+
+  .nav-toggle { display: inline-flex; }
+  .header__cta .btn { display: none; }
+
+  .split, .recovery__hero, .pt-banner, .kids__panel,
+  .location, .reviews__panel { grid-template-columns: 1fr; }
+  .split--reverse .split__media { order: 0; }
+  .split__media::before { display: none; }
+  .kids__media img { min-height: 260px; }
+
+  .equip, .tiles, .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .plans { grid-template-columns: 1fr; }
+
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .gallery__item--wide { grid-column: span 2; }
+  .gallery__item--tall { grid-row: span 1; aspect-ratio: 4 / 3; }
+
+  .mobile-cta { display: flex; }
+  body { padding-bottom: 74px; }
+  .to-top { bottom: 84px; }
+
+  .topbar__group--secondary { display: none; }
+}
+
+@media (max-width: 640px) {
+  .grid--2, .grid--3, .grid--4, .equip, .tiles { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery__item--wide { grid-column: span 1; }
+  .btn { width: 100%; }
+  .btn-row { flex-direction: column; align-items: stretch; }
+  .mobile-cta .btn { width: auto; }
+  .header__cta .btn { width: auto; }
+  .hero__facts { gap: 0.55rem 1.2rem; }
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .plan__flag { font-size: 0.78rem; padding: 0.4rem 0.85rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .marquee__track { animation: none; }
+}
+
+@media print {
+  .header, .topbar, .mobile-cta, .to-top, .marquee, .nav-toggle { display: none !important; }
+  body { color: #000; }
+  .section--dark, .band, .cta-final, .hero { background: #fff !important; color: #000 !important; }
+}
+
+
+/* preview-only: static stand-in for the interactive map */
+.map-frame--static { background: var(--fd-ink); border-color: var(--fd-ink); }
+.map-static {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--white);
+}
+.map-static svg { color: var(--fd-gold); }
+.map-static__addr {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.map-static__note { color: var(--steel-light); font-size: 0.9rem; margin: 0 0 0.4rem; }
+.preview-note { color: var(--fd-gold); }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["HealthClub", "LocalBusiness"],
+      "@id": "https://www.fitnessdepotcolumbia.com/#gym",
+      "name": "Fitness Depot Columbia",
+      "alternateName": "Fitness Depot Columbia MS",
+      "description": "Fitness Depot Columbia is a locally owned 24/7 gym serving Columbia, Mississippi and Marion County. Free weights, squat racks, cardio equipment, a turf functional training area, personal training, HydroMassage recovery, tanning, showers and Fitness Depot Kids care.",
+      "url": "https://www.fitnessdepotcolumbia.com/",
+      "telephone": "+1-601-345-3344",
+      "image": "https://www.fitnessdepotcolumbia.com/assets/img/og-image.svg",
+      "priceRange": "$",
+      "currenciesAccepted": "USD",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "805 Hwy 98 Bypass",
+        "addressLocality": "Columbia",
+        "addressRegion": "MS",
+        "postalCode": "39429",
+        "addressCountry": "US"
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Fitness%20Depot%20805%20Hwy%2098%20Bypass%20Columbia%20MS%2039429",
+      "areaServed": [
+        { "@type": "City", "name": "Columbia", "containedInPlace": { "@type": "State", "name": "Mississippi" } },
+        { "@type": "AdministrativeArea", "name": "Marion County, Mississippi" }
+      ],
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Fitness Depot",
+        "url": "https://fdgyms.com/"
+      },
+      "sameAs": [
+        "https://fdgyms.com/columbia",
+        "https://www.facebook.com/fitnessdepotcolumbia/"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "name": "Staffed desk hours",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "08:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "name": "Staffed desk hours",
+          "dayOfWeek": "Friday",
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "amenityFeature": [
+        { "@type": "LocationFeatureSpecification", "name": "24/7 member access", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Fingerprint entry", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "24-hour security", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Free weights and squat racks", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Cardio equipment", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Turf functional training area", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Personal training", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "HydroMassage", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Tanning", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Showers", "value": true },
+        { "@type": "LocationFeatureSpecification", "name": "Kid Care", "value": true }
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Live 2 Lead membership",
+          "category": "Gym membership",
+          "url": "https://www.fitnessdepotcolumbia.com/#memberships",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "20.00",
+            "priceCurrency": "USD",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 2,
+              "unitCode": "WEE"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Neighborhood membership",
+          "category": "Gym membership",
+          "url": "https://www.fitnessdepotcolumbia.com/#memberships",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "15.00",
+            "priceCurrency": "USD",
+            "referenceQuantity": {
+              "@type": "QuantitativeValue",
+              "value": 2,
+              "unitCode": "WEE"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.fitnessdepotcolumbia.com/#website",
+      "url": "https://www.fitnessdepotcolumbia.com/",
+      "name": "Fitness Depot Columbia",
+      "publisher": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.fitnessdepotcolumbia.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Fitness Depot Columbia open 24/7?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Members have 24/7 access to the Columbia gym using fingerprint entry, and the building has 24-hour security. Staffed front desk hours are Monday through Thursday 8:00 AM to 7:00 PM and Friday 8:00 AM to 5:00 PM." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot require a contract?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Fitness Depot memberships are month-to-month with no long-term contract. A 30-day notice is required to cancel, and cancellations cannot be handled over the phone." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an annual fee at Fitness Depot Columbia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Both the Live 2 Lead and Neighborhood memberships are advertised with no annual fee." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a gym membership cost in Columbia, MS?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The Live 2 Lead membership is advertised at $20 biweekly with a $50 joining fee and the first two weeks free. The Neighborhood membership is advertised at $15 biweekly with a $99 joining fee. Pricing and promotions can change, so confirm current rates with the Columbia location at (601) 345-3344." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the membership include?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Live 2 Lead includes 24/7 gym access, the Fitness Depot App, daily nutrition tracking, a set training routine, bring-a-guest privileges, 2 daily HydroMassage sessions, multi-location club access, 24/7 tanning, showers, and Kid Care with the first child included. The Neighborhood membership includes 24/7 unlimited home-club access, unlimited tanning and showers." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia offer personal training?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Personal training is available at Fitness Depot. Ask the Columbia front desk about current trainer availability, session options and pricing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia have free weights?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Columbia gym has free weights, dumbbells, barbells, squat racks and plate-loaded equipment." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia have cardio equipment?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cardio equipment at the Columbia location includes treadmills, stepmills, elliptical cross-trainers and spin bikes, with cardio TVs on the floor." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia offer HydroMassage?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Columbia location has private recovery rooms with HydroMassage. Live 2 Lead members get two HydroMassage sessions per day." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia offer tanning?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tanning is included with the Live 2 Lead membership on a 24/7 basis, and the Neighborhood membership includes unlimited tanning." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia have showers?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Showers are included with both the Live 2 Lead and Neighborhood memberships." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Fitness Depot Columbia offer childcare?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Fitness Depot Kids is available for children from walking age through 12 years old. The first child is included with a Live 2 Lead membership and each additional child is $10 biweekly." }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the Fitness Depot Kids hours in Columbia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fitness Depot Kids at the Columbia location is open Monday through Thursday from 4:00 PM to 7:00 PM. Children can attend for up to two hours each day." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is Fitness Depot Columbia located?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Fitness Depot Columbia is at 805 Hwy 98 Bypass, Columbia, MS 39429, serving Columbia and the surrounding Marion County area. Phone: (601) 345-3344." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can members access other Fitness Depot locations?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Multi-location club access is listed as a Live 2 Lead membership benefit. The Neighborhood membership includes 24/7 access to your home club. Fitness Depot has locations across South Mississippi, so confirm which clubs your membership covers with the Columbia staff." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I join Fitness Depot Columbia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You can start your membership online or stop by the gym. To finish signing up and get set up with fingerprint entry, come by 805 Hwy 98 Bypass during staffed hours with a photo ID. Members 16 and older receive a fingerprint for 24/7 access. Call (601) 345-3344 with any questions." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- Icon sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="s" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.8a2 2 0 0 1 1.7 2Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-finger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11v3a9 9 0 0 1-.6 3.2"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0v2a13 13 0 0 1-.5 3.6"/><path d="M5.5 12a6.5 6.5 0 0 1 13 0v1.5a17 17 0 0 1-.4 3.8"/><path d="M3 9.5a9 9 0 0 1 15-3"/><path d="M8.7 19.8A9 9 0 0 0 9.5 16"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 20v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-shower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6a3 3 0 0 1 6 0v1"/><path d="M10 7h11"/><path d="M13 11v.01M16 11v.01M19 11v.01M14.5 15v.01M17.5 15v.01M13 19v.01M18 19v.01"/></symbol>
+  <symbol id="i-app" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1Z"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 17.5 17.5"/><path d="m3 8 1.5-1.5a2.1 2.1 0 0 1 3 0l1 1a2.1 2.1 0 0 1 0 3L7 12"/><path d="m21 16-1.5 1.5a2.1 2.1 0 0 1-3 0l-1-1a2.1 2.1 0 0 1 0-3L17 12"/><path d="m2 15 3 3M19 3l3 3"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 5.9a5 5 0 0 0-7.1 0L12 7.3l-1.4-1.4a5 5 0 1 0-7.1 7.1l8.5 8.5 8.5-8.5a5 5 0 0 0 0-7.1Z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><path d="M7.5 7.5h.01"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 21v-7h6v7"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2-8-8-2Z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M14 9V7.5c0-.8.2-1.2 1.4-1.2H17V3.1A20 20 0 0 0 14.6 3C12 3 10.2 4.6 10.2 7.5V9H7.5v3.5h2.7V21H14v-8.5h2.6l.4-3.5Z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-4l2-5h14l2 5v4h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M9.5 17h5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></symbol>
+</svg>
+
+<!-- ==========================================================================
+     Top bar — NAP visible on every screen
+     ========================================================================== -->
+<div class="topbar">
+  <div class="shell topbar__inner">
+    <div class="topbar__group">
+      <a class="topbar__item" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fitness+Depot%2C+805+Hwy+98+Bypass%2C+Columbia%2C+MS+39429" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-pin"></use></svg>
+        <span><strong>805 Hwy 98 Bypass</strong>, Columbia, MS 39429</span>
+      </a>
+      <a class="topbar__item" href="tel:+16013453344">
+        <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+        <strong>(601) 345-3344</strong>
+      </a>
+    </div>
+    <div class="topbar__group topbar__group--secondary">
+      <span class="topbar__item">
+        <svg aria-hidden="true"><use href="#i-clock"></use></svg>
+        <span data-desk-status>Open 24/7 for members &middot; Staffed Mon&ndash;Thu 8&ndash;7, Fri 8&ndash;5</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     Sticky header
+     ========================================================================== -->
+<header class="header">
+  <div class="shell shell--wide header__inner">
+    <!-- Replace this lockup with the official Fitness Depot logo file.
+         See docs/BRAND-AND-ASSETS.md -->
+    <a class="logo" href="#top" aria-label="Fitness Depot Columbia — home">
+      <span class="logo__mark" aria-hidden="true">FD</span>
+      <span class="logo__text">
+        <span class="logo__name">Fitness <span class="is-depot">Depot</span></span>
+        <span class="logo__loc">Columbia, MS</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="#memberships">Memberships</a>
+      <a href="#access">24/7 Access</a>
+      <a href="#equipment">Equipment</a>
+      <a href="#recovery">Recovery</a>
+      <a href="#kids">Kids</a>
+      <a href="#location">Location</a>
+    </nav>
+
+    <div class="header__cta">
+      <a class="btn btn--outline btn--sm" href="tel:+16013453344">
+        <svg width="16" height="16" aria-hidden="true"><use href="#i-phone"></use></svg>
+        Call
+      </a>
+      <a class="btn btn--sm" href="#memberships">Join Now</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg class="icon-open" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <svg class="icon-close" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ==========================================================================
+     HERO
+     ========================================================================== -->
+<section class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAwIDExMDAiIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjExMDAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iQ09MVU1CSUEgR1lNIEZMT09SIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxYzFhMTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQwZDBkIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIzMWYxNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJzdHJpcGVzIiB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgtMjQpIj4KICAgICAgPHJlY3Qgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBmaWxsPSJub25lIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI5IiBoZWlnaHQ9IjM0IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjAyMiIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSIxMTAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iMTEwMCIgZmlsbD0idXJsKCNzdHJpcGVzKSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxNjAwIiBoZWlnaHQ9IjYiIGZpbGw9IiNjOWEyMjciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4MDAgNTUwKSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidCYXJsb3cgQ29uZGVuc2VkJywnQXJpYWwgTmFycm93JyxBcmlhbCxzYW5zLXNlcmlmIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTc0KSI+CiAgICAgIDxyZWN0IHg9Ii00NiIgeT0iLTQ2IiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSIxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhMjI3IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgICAgPHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIyIj5GRDwvdGV4dD4KICAgIDwvZz4KICAgIDx0ZXh0IHk9IjEwIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMyI+Q09MVU1CSUEgR1lNIEZMT09SPC90ZXh0PgogICAgPHRleHQgeT0iNTIiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiNhOGE0OWEiIGxldHRlci1zcGFjaW5nPSIxLjUiPldpZGUgaGVybyBzaG90IG9mIHRoZSBDb2x1bWJpYSBmYWNpbGl0eTwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDE2MDAmIzIxNTsxMTAwPC90ZXh0PgogIDwvZz4KPC9zdmc+Cg==" alt="" width="1600" height="1100" fetchpriority="high" decoding="async">
+  </div>
+  <div class="shell hero__inner">
+    <p class="hero__badge">
+      <span class="pulse" aria-hidden="true"></span>
+      Columbia, Mississippi &middot; Open 24/7
+    </p>
+
+    <h1>
+      <span class="line">Columbia&rsquo;s 24/7 Gym</span>
+      <span class="line">Built For <span class="accent">Every Level</span></span>
+      <span class="line">Of Fitness</span>
+    </h1>
+
+    <p class="hero__sub">
+      Fitness Depot Columbia is a locally owned gym on Hwy 98 Bypass with free weights, cardio,
+      a turf functional training area, personal training and recovery amenities &mdash; open around
+      the clock for members across Columbia and Marion County.
+    </p>
+
+    <div class="btn-row">
+      <a class="btn btn--lg" href="#memberships">Join Now</a>
+      <a class="btn btn--lg btn--ghost" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+      <a class="btn btn--lg btn--ghost" href="#memberships">View Memberships</a>
+    </div>
+
+    <ul class="hero__facts">
+      <li><svg aria-hidden="true"><use href="#i-check"></use></svg> No contract</li>
+      <li><svg aria-hidden="true"><use href="#i-check"></use></svg> No annual fee</li>
+      <li><svg aria-hidden="true"><use href="#i-check"></use></svg> First two weeks free</li>
+      <li><svg aria-hidden="true"><use href="#i-finger"></use></svg> Fingerprint entry</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Amenity ticker -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <ul>
+      <li>24/7 Member Access</li><li>Free Weights</li><li>Squat Racks</li><li>Cardio Deck</li>
+      <li>Turf Training</li><li>Personal Training</li><li>HydroMassage</li><li>Tanning</li>
+      <li>Showers</li><li>Fitness Depot Kids</li>
+    </ul>
+    <ul>
+      <li>24/7 Member Access</li><li>Free Weights</li><li>Squat Racks</li><li>Cardio Deck</li>
+      <li>Turf Training</li><li>Personal Training</li><li>HydroMassage</li><li>Tanning</li>
+      <li>Showers</li><li>Fitness Depot Kids</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     ABOUT
+     ========================================================================== -->
+<section class="section" id="about" aria-labelledby="about-h">
+  <div class="shell split split--even">
+    <div class="split__media split__media--fill reveal">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik1FTUJFUlMgVFJBSU5JTkciPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFjMWExNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMwZDBkMGQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjMxZjE2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9InN0cmlwZXMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKC0yNCkiPgogICAgICA8cmVjdCB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIGZpbGw9Im5vbmUiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iMzQiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMDIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNnKSIvPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNzdHJpcGVzKSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYiIGZpbGw9IiNjOWEyMjciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MDAgNDUwKSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidCYXJsb3cgQ29uZGVuc2VkJywnQXJpYWwgTmFycm93JyxBcmlhbCxzYW5zLXNlcmlmIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTc0KSI+CiAgICAgIDxyZWN0IHg9Ii00NiIgeT0iLTQ2IiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSIxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhMjI3IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgICAgPHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIyIj5GRDwvdGV4dD4KICAgIDwvZz4KICAgIDx0ZXh0IHk9IjEwIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMyI+TUVNQkVSUyBUUkFJTklORzwvdGV4dD4KICAgIDx0ZXh0IHk9IjUyIiBmb250LXNpemU9IjIxIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjYThhNDlhIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5SZWFsIG1lbWJlcnMgb24gdGhlIENvbHVtYmlhIGd5bSBmbG9vcjwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDEyMDAmIzIxNTs5MDA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+           alt="Members training on the gym floor at Fitness Depot Columbia in Columbia, Mississippi"
+           width="1200" height="900" loading="lazy" decoding="async">
+    </div>
+
+    <div class="reveal" data-delay="1">
+      <p class="eyebrow">Who We Are</p>
+      <h2 id="about-h">A Columbia Gym, Run By People From Columbia</h2>
+      <p class="lead">
+        Fitness Depot is a locally owned fitness company serving communities across South Mississippi,
+        and the Columbia club is built for the people who live and work right here in Marion County.
+      </p>
+      <p>
+        Walk in and you&rsquo;ll find first-timers next to people who have been training for twenty years,
+        parents fitting in a workout before pickup, high-school athletes, shift workers coming in at
+        4 AM, and neighbors who just want to feel better than they did last year. Nobody here has to
+        earn the right to use the gym.
+      </p>
+      <p>
+        Equipment on its own doesn&rsquo;t change anything. What changes things is being able to show up
+        consistently &mdash; which is why the Columbia location is set up around access, flexibility and
+        the tools that keep you coming back: doors that open on your schedule, staff who know your
+        name, and an app that keeps your routine and your nutrition in one place.
+      </p>
+
+      <div class="quote-card">
+        <p>&ldquo;No matter your level of fitness, you&rsquo;ll find your place with us.&rdquo;</p>
+        <cite>Fitness Depot</cite>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     WHY CHOOSE FITNESS DEPOT
+     ========================================================================== -->
+<section class="section section--dark" id="why" aria-labelledby="why-h">
+  <div class="shell">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow eyebrow--center">Why Fitness Depot Columbia</p>
+      <h2 id="why-h">Everything You Need To Stay Consistent</h2>
+      <p>Eight reasons Columbia lifters, runners, parents and beginners train with us.</p>
+    </div>
+
+    <div class="grid grid--4">
+      <article class="card reveal">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-clock"></use></svg></div>
+        <h3>24/7 Access</h3>
+        <p>Work out on your schedule &mdash; before the shift, after the shift, or at midnight.</p>
+      </article>
+
+      <article class="card reveal" data-delay="1">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-tag"></use></svg></div>
+        <h3>No Contract</h3>
+        <p>Memberships are month-to-month, designed without a long-term contract.</p>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-check"></use></svg></div>
+        <h3>No Annual Fee</h3>
+        <p>Straightforward membership value with no surprise annual charge.</p>
+      </article>
+
+      <article class="card reveal" data-delay="3">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-home"></use></svg></div>
+        <h3>Local Gym</h3>
+        <p>A locally owned South Mississippi fitness facility serving Columbia and Marion County.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-dumbbell"></use></svg></div>
+        <h3>Train Your Way</h3>
+        <p>Cardio, free weights, functional turf training and personal training under one roof.</p>
+      </article>
+
+      <article class="card reveal" data-delay="1">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-heart"></use></svg></div>
+        <h3>Recovery &amp; Wellness</h3>
+        <p>HydroMassage, tanning, showers and recovery space to help you come back tomorrow.</p>
+      </article>
+
+      <article class="card reveal" data-delay="2">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-app"></use></svg></div>
+        <h3>Fitness Depot App</h3>
+        <p>Accountability, daily nutrition tracking and a set training routine in your pocket.</p>
+      </article>
+
+      <article class="card reveal" data-delay="3">
+        <div class="card__icon"><svg aria-hidden="true"><use href="#i-users"></use></svg></div>
+        <h3>Bring A Guest</h3>
+        <p>Guest privileges are included with Live 2 Lead &mdash; training is easier with a partner.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     MEMBERSHIPS
+     ========================================================================== -->
+<section class="section section--paper" id="memberships" aria-labelledby="mem-h">
+  <div class="shell">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow eyebrow--center">Gym Memberships in Columbia, MS</p>
+      <h2 id="mem-h">Pick Your Membership</h2>
+      <p>
+        No annual fee. No long-term contract. Two ways to train at Fitness Depot Columbia &mdash;
+        choose the one that matches how you want to use the gym.
+      </p>
+    </div>
+
+    <div class="plans">
+      <!-- LIVE 2 LEAD -->
+      <article class="plan plan--featured reveal" aria-labelledby="plan-l2l">
+        <span class="plan__flag">Most Popular</span>
+        <h3 class="plan__name" id="plan-l2l">Live 2 Lead</h3>
+        <p class="plan__tag">The full Fitness Depot experience</p>
+
+        <p class="plan__price">
+          <span class="plan__amount">$20</span>
+          <span class="plan__period">/ biweekly</span>
+        </p>
+
+        <ul class="plan__meta">
+          <li class="is-highlight">First two weeks free</li>
+          <li>$50 joining fee</li>
+          <li>No annual fee</li>
+          <li>No contract</li>
+        </ul>
+
+        <p class="plan__label">What&rsquo;s included</p>
+        <ul class="checklist">
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> 24/7 gym access</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Fitness Depot App</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Daily nutrition tracking</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Set training routine</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Bring a guest</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> 2 daily HydroMassage sessions</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Multi-location club access</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> 24/7 tanning</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Showers</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Kid Care &mdash; first child included</li>
+        </ul>
+
+        <div class="plan__cta">
+          <a class="btn btn--block btn--lg" href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Join Now</a>
+          <p class="plan__foot">Or call <a href="tel:+16013453344">(601) 345-3344</a> to get started</p>
+        </div>
+      </article>
+
+      <!-- NEIGHBORHOOD -->
+      <article class="plan reveal" data-delay="1" aria-labelledby="plan-nbh">
+        <h3 class="plan__name" id="plan-nbh">Neighborhood</h3>
+        <p class="plan__tag">Home club, keep it simple</p>
+
+        <p class="plan__price">
+          <span class="plan__amount">$15</span>
+          <span class="plan__period">/ biweekly</span>
+        </p>
+
+        <ul class="plan__meta">
+          <li>$99 joining fee</li>
+          <li>No annual fee</li>
+          <li>No contract</li>
+        </ul>
+
+        <p class="plan__label">What&rsquo;s included</p>
+        <ul class="checklist">
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> 24/7 unlimited home-club access</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Unlimited tanning</li>
+          <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Showers</li>
+        </ul>
+
+        <div class="plan__cta">
+          <a class="btn btn--block btn--lg btn--outline" href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Join Now</a>
+          <p class="plan__foot">Not sure which fits? <a href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a tour</a></p>
+        </div>
+      </article>
+    </div>
+
+    <p class="notice reveal">
+      <svg aria-hidden="true"><use href="#i-info"></use></svg>
+      <span>
+        <strong>Please confirm before you join.</strong>
+        Membership details, benefits, promotions and pricing can change and may vary by location.
+        Verify current rates and terms with the Columbia club at
+        <a href="tel:+16013453344">(601) 345-3344</a> or on the official
+        <a href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Fitness Depot Columbia page</a>.
+        Memberships are month-to-month; a 30-day notice is required to cancel and cancellations
+        cannot be processed over the phone.
+      </span>
+    </p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     24/7 ACCESS
+     ========================================================================== -->
+<section class="band" id="access" aria-labelledby="access-h">
+  <div class="band__media" aria-hidden="true">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IjI0LzcgQUNDRVNTIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxYzFhMTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQwZDBkIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIzMWYxNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJzdHJpcGVzIiB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgtMjQpIj4KICAgICAgPHJlY3Qgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBmaWxsPSJub25lIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI5IiBoZWlnaHQ9IjM0IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjAyMiIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc3RyaXBlcykiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2IiBmaWxsPSIjYzlhMjI3Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjAwIDQ1MCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQmFybG93IENvbmRlbnNlZCcsJ0FyaWFsIE5hcnJvdycsQXJpYWwsc2Fucy1zZXJpZiI+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC03NCkiPgogICAgICA8cmVjdCB4PSItNDYiIHk9Ii00NiIgd2lkdGg9IjkyIiBoZWlnaHQ9IjkyIiByeD0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M5YTIyNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICAgIDx0ZXh0IHk9IjE4IiBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMiI+RkQ8L3RleHQ+CiAgICA8L2c+CiAgICA8dGV4dCB5PSIxMCIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjMiPjI0LzcgQUNDRVNTPC90ZXh0PgogICAgPHRleHQgeT0iNTIiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiNhOGE0OWEiIGxldHRlci1zcGFjaW5nPSIxLjUiPkVudHJ5IC8gZmluZ2VycHJpbnQgcmVhZGVyIC8gbmlnaHQgZmxvb3I8L3RleHQ+CiAgICA8dGV4dCB5PSI5NiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iIzZkNmE2MyIgbGV0dGVyLXNwYWNpbmc9IjIiPlBIT1RPIFBMQUNFSE9MREVSICYjMTgzOyAxMjAwJiMyMTU7OTAwPC90ZXh0PgogIDwvZz4KPC9zdmc+Cg==" alt="" width="1200" height="900" loading="lazy" decoding="async">
+  </div>
+  <div class="shell band__inner">
+    <p class="eyebrow">24 Hour Gym in Columbia MS</p>
+    <p class="clock">24<span>/</span>7</p>
+    <h2 id="access-h">Member Access</h2>
+    <p class="lead">
+      Your workout shouldn&rsquo;t have to fit someone else&rsquo;s business hours. Members train at
+      Fitness Depot Columbia whenever it actually works &mdash; 4 AM before a shift at the mill,
+      lunch break, after the kids are down, or Sunday night.
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="fi"><svg aria-hidden="true"><use href="#i-finger"></use></svg></span>
+        <span>
+          <strong>Fingerprint entry</strong>
+          <span>Members 16 and older get a fingerprint for safe, keyless entry during staffed and unstaffed hours.</span>
+        </span>
+      </li>
+      <li>
+        <span class="fi"><svg aria-hidden="true"><use href="#i-shield"></use></svg></span>
+        <span>
+          <strong>24-hour security</strong>
+          <span>The facility is monitored around the clock so late nights and early mornings feel comfortable.</span>
+        </span>
+      </li>
+      <li>
+        <span class="fi"><svg aria-hidden="true"><use href="#i-users"></use></svg></span>
+        <span>
+          <strong>Staffed when you need help</strong>
+          <span>Front desk Monday&ndash;Thursday 8 AM&ndash;7 PM and Friday 8 AM&ndash;5 PM for sign-ups, tours and questions.</span>
+        </span>
+      </li>
+      <li>
+        <span class="fi"><svg aria-hidden="true"><use href="#i-car"></use></svg></span>
+        <span>
+          <strong>Easy in, easy out</strong>
+          <span>Convenient parking right off Hwy 98 Bypass, minutes from anywhere in Columbia.</span>
+        </span>
+      </li>
+    </ul>
+
+    <div class="btn-row">
+      <a class="btn btn--lg" href="#memberships">Join Now</a>
+      <a class="btn btn--lg btn--ghost" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     EQUIPMENT & TRAINING
+     ========================================================================== -->
+<section class="section" id="equipment" aria-labelledby="equip-h">
+  <div class="shell">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow eyebrow--center">Equipment &amp; Training</p>
+      <h2 id="equip-h">Built For Cardio And Strength</h2>
+      <p>
+        Whether you&rsquo;re walking your first mile, chasing a squat PR, or working through a
+        full-body circuit, the Columbia floor has what you came for.
+      </p>
+    </div>
+
+    <div class="equip">
+      <article class="equip__card reveal">
+        <div class="equip__media">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAwIDgwMCIgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkNBUkRJTyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjExMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU1MCA0MDApIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5DQVJESU88L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+VHJlYWRtaWxscywgc3RlcG1pbGxzLCBlbGxpcHRpY2Fscywgc3BpbiBiaWtlczwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDExMDAmIzIxNTs4MDA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+               alt="Cardio equipment including treadmills and ellipticals at Fitness Depot Columbia MS"
+               width="1100" height="800" loading="lazy" decoding="async">
+          <span class="equip__num">01</span>
+        </div>
+        <div class="equip__body">
+          <h3>Cardio</h3>
+          <ul class="tick">
+            <li>Treadmills</li>
+            <li>Stepmills</li>
+            <li>Elliptical cross-trainers</li>
+            <li>Spin bikes</li>
+            <li>Cardio TVs</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="equip__card reveal" data-delay="1">
+        <div class="equip__media">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAwIDgwMCIgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkZSRUUgV0VJR0hUUyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjExMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU1MCA0MDApIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5GUkVFIFdFSUdIVFM8L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+RHVtYmJlbGxzLCBiYXJiZWxscywgc3F1YXQgcmFja3MsIHBsYXRlIGxvYWRlZDwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDExMDAmIzIxNTs4MDA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+               alt="Free weights, dumbbells and squat racks in the weight lifting area at Fitness Depot Columbia"
+               width="1100" height="800" loading="lazy" decoding="async">
+          <span class="equip__num">02</span>
+        </div>
+        <div class="equip__body">
+          <h3>Free Weights &amp; Strength</h3>
+          <ul class="tick">
+            <li>Free weights</li>
+            <li>Squat racks</li>
+            <li>Plate-loaded equipment</li>
+            <li>Barbells</li>
+            <li>Dumbbells</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="equip__card reveal" data-delay="2">
+        <div class="equip__media">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAwIDgwMCIgd2lkdGg9IjExMDAiIGhlaWdodD0iODAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkZVTkNUSU9OQUwgVFJBSU5JTkciPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFjMWExNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMwZDBkMGQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjMxZjE2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9InN0cmlwZXMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKC0yNCkiPgogICAgICA8cmVjdCB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIGZpbGw9Im5vbmUiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iMzQiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMDIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMTAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNnKSIvPgogIDxyZWN0IHdpZHRoPSIxMTAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNzdHJpcGVzKSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMTAwIiBoZWlnaHQ9IjYiIGZpbGw9IiNjOWEyMjciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NTAgNDAwKSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidCYXJsb3cgQ29uZGVuc2VkJywnQXJpYWwgTmFycm93JyxBcmlhbCxzYW5zLXNlcmlmIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTc0KSI+CiAgICAgIDxyZWN0IHg9Ii00NiIgeT0iLTQ2IiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSIxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhMjI3IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgICAgPHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIyIj5GRDwvdGV4dD4KICAgIDwvZz4KICAgIDx0ZXh0IHk9IjEwIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMyI+RlVOQ1RJT05BTCBUUkFJTklORzwvdGV4dD4KICAgIDx0ZXh0IHk9IjUyIiBmb250LXNpemU9IjIxIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjYThhNDlhIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5UdXJmIGFyZWEgYW5kIGZ1bGwtYm9keSBjaXJjdWl0PC90ZXh0PgogICAgPHRleHQgeT0iOTYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiM2ZDZhNjMiIGxldHRlci1zcGFjaW5nPSIyIj5QSE9UTyBQTEFDRUhPTERFUiAmIzE4MzsgMTEwMCYjMjE1OzgwMDwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo="
+               alt="Turf functional training area at the Fitness Depot gym in Columbia, Mississippi"
+               width="1100" height="800" loading="lazy" decoding="async">
+          <span class="equip__num">03</span>
+        </div>
+        <div class="equip__body">
+          <h3>Functional Training</h3>
+          <ul class="tick">
+            <li>Turf functional training area</li>
+            <li>Full-body circuit</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="pt-banner reveal">
+      <div>
+        <p class="eyebrow">Personal Training in Columbia MS</p>
+        <h3>Want Someone In Your Corner?</h3>
+        <p>
+          Personal training is available at Fitness Depot. If you&rsquo;re new to lifting, coming back
+          from a long break, or stuck at the same numbers for months, a trainer can build the plan and
+          keep you honest about it.
+        </p>
+        <p>
+          Ask the Columbia front desk about current trainer availability, session options and pricing.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="tel:+16013453344">Call About Training</a>
+          <a class="btn btn--ghost" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+        </div>
+      </div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlBFUlNPTkFMIFRSQUlOSU5HIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxYzFhMTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQwZDBkIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIzMWYxNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJzdHJpcGVzIiB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgtMjQpIj4KICAgICAgPHJlY3Qgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBmaWxsPSJub25lIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI5IiBoZWlnaHQ9IjM0IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjAyMiIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc3RyaXBlcykiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2IiBmaWxsPSIjYzlhMjI3Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjAwIDQ1MCkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQmFybG93IENvbmRlbnNlZCcsJ0FyaWFsIE5hcnJvdycsQXJpYWwsc2Fucy1zZXJpZiI+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC03NCkiPgogICAgICA8cmVjdCB4PSItNDYiIHk9Ii00NiIgd2lkdGg9IjkyIiBoZWlnaHQ9IjkyIiByeD0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M5YTIyNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICAgIDx0ZXh0IHk9IjE4IiBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMiI+RkQ8L3RleHQ+CiAgICA8L2c+CiAgICA8dGV4dCB5PSIxMCIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjMiPlBFUlNPTkFMIFRSQUlOSU5HPC90ZXh0PgogICAgPHRleHQgeT0iNTIiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiNhOGE0OWEiIGxldHRlci1zcGFjaW5nPSIxLjUiPlRyYWluZXIgd29ya2luZyB3aXRoIGEgbWVtYmVyPC90ZXh0PgogICAgPHRleHQgeT0iOTYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiM2ZDZhNjMiIGxldHRlci1zcGFjaW5nPSIyIj5QSE9UTyBQTEFDRUhPTERFUiAmIzE4MzsgMTIwMCYjMjE1OzkwMDwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo="
+           alt="Personal trainer working with a member at Fitness Depot Columbia"
+           width="1200" height="900" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     RECOVERY & WELLNESS
+     ========================================================================== -->
+<section class="section recovery" id="recovery" aria-labelledby="rec-h">
+  <div class="shell">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow eyebrow--center">Recovery &amp; Wellness</p>
+      <h2 id="rec-h">The Part Most Gyms Skip</h2>
+      <p>
+        Training is only half of it. Fitness Depot Columbia gives you somewhere to unwind afterward
+        &mdash; and the tools to keep the rest of the week on track.
+      </p>
+    </div>
+
+    <div class="recovery__hero reveal">
+      <div>
+        <span class="pill">Included with Live 2 Lead</span>
+        <h3>HydroMassage</h3>
+        <p class="lead">
+          Private recovery rooms with HydroMassage &mdash; a heated water-massage bed you use fully
+          clothed, no appointment, no oils, no changing.
+        </p>
+        <p>
+          It&rsquo;s a comfortable way to relax your muscles after a hard session and take a few quiet
+          minutes before you head back to the rest of your day. Live 2 Lead members get
+          <strong>two sessions every day</strong>.
+        </p>
+        <a class="btn" href="#memberships">See Membership Options</a>
+      </div>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkhZRFJPTUFTU0FHRSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYwMCA0NTApIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5IWURST01BU1NBR0U8L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+UHJpdmF0ZSByZWNvdmVyeSByb29tPC90ZXh0PgogICAgPHRleHQgeT0iOTYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiM2ZDZhNjMiIGxldHRlci1zcGFjaW5nPSIyIj5QSE9UTyBQTEFDRUhPTERFUiAmIzE4MzsgMTIwMCYjMjE1OzkwMDwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo="
+           alt="Private HydroMassage recovery room at Fitness Depot Columbia, Mississippi"
+           width="1200" height="900" loading="lazy" decoding="async">
+    </div>
+
+    <div class="tiles">
+      <div class="tile reveal">
+        <span class="tile__icon"><svg aria-hidden="true"><use href="#i-sun"></use></svg></span>
+        <div>
+          <h4>Tanning</h4>
+          <p>24/7 tanning with Live 2 Lead; unlimited tanning with the Neighborhood membership.</p>
+        </div>
+      </div>
+
+      <div class="tile reveal" data-delay="1">
+        <span class="tile__icon"><svg aria-hidden="true"><use href="#i-shower"></use></svg></span>
+        <div>
+          <h4>Showers</h4>
+          <p>Clean up on site and head straight to work, school pickup or wherever you&rsquo;re headed next.</p>
+        </div>
+      </div>
+
+      <div class="tile reveal" data-delay="2">
+        <span class="tile__icon"><svg aria-hidden="true"><use href="#i-heart"></use></svg></span>
+        <div>
+          <h4>Recovery Areas</h4>
+          <p>Private recovery rooms give you space to decompress before or after your workout.</p>
+        </div>
+      </div>
+
+      <div class="tile reveal">
+        <span class="tile__icon"><svg aria-hidden="true"><use href="#i-app"></use></svg></span>
+        <div>
+          <h4>Fitness Depot App</h4>
+          <p>Your membership comes with the app built for accountability between visits.</p>
+        </div>
+      </div>
+
+      <div class="tile reveal" data-delay="1">
+        <span class="tile__icon"><svg aria-hidden="true"><use href="#i-target"></use></svg></span>
+        <div>
+          <h4>Nutrition Tracking</h4>
+          <p>Daily nutrition tracking in the app, so what happens outside the gym counts too.</p>
+        </div>
+      </div>
+
+      <div class="tile reveal" data-delay="2">
+        <span class="tile__icon"><svg aria-hidden="true"><use href="#i-calendar"></use></svg></span>
+        <div>
+          <h4>Training Routine</h4>
+          <p>A set training routine means you never walk in wondering what to do today.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FITNESS DEPOT KIDS
+     ========================================================================== -->
+<section class="section" id="kids" aria-labelledby="kids-h">
+  <div class="shell">
+    <div class="section-head reveal">
+      <p class="eyebrow">Fitness Depot Kids</p>
+      <h2 id="kids-h">Bring The Kids. Get Your Workout In.</h2>
+      <p>
+        Parents in Columbia shouldn&rsquo;t have to choose between their family and their health.
+        Kid Care is right here in the building while you train.
+      </p>
+    </div>
+
+    <div class="kids__panel reveal">
+      <div class="kids__media">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDkwMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkZJVE5FU1MgREVQT1QgS0lEUyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iOTAwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYwMCA0NTApIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5GSVRORVNTIERFUE9UIEtJRFM8L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+S2lkIENhcmUgcm9vbSBhdCBDb2x1bWJpYTwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDEyMDAmIzIxNTs5MDA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+             alt="Fitness Depot Kids care area at the Columbia, Mississippi gym"
+             width="1200" height="900" loading="lazy" decoding="async">
+      </div>
+      <div class="kids__body">
+        <h3>Kid Care Hours &amp; Details</h3>
+        <ul class="spec">
+          <li><span class="k">Days</span> <span class="v">Monday&ndash;Thursday</span></li>
+          <li><span class="k">Hours</span> <span class="v">4 PM &ndash; 7 PM</span></li>
+          <li><span class="k">Ages</span> <span class="v">Walking age &ndash; 12 years</span></li>
+          <li><span class="k">First child</span> <span class="v">Included with Live 2 Lead</span></li>
+          <li><span class="k">Additional children</span> <span class="v">$10 biweekly</span></li>
+          <li><span class="k">Daily limit</span> <span class="v">Up to 2 hours per day</span></li>
+        </ul>
+        <p>
+          Drop them off, get your training in, and pick them up on your way out. Questions about
+          Kid Care at the Columbia location? Call <a href="tel:+16013453344">(601) 345-3344</a>.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="#memberships">Join Now</a>
+          <a class="btn btn--outline" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     GALLERY
+     ========================================================================== -->
+<section class="section section--dark" id="gallery" aria-labelledby="gal-h">
+  <div class="shell">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow eyebrow--center">Photo Gallery</p>
+      <h2 id="gal-h">Take A Look Inside</h2>
+      <p>A walk through the Fitness Depot Columbia facility on Hwy 98 Bypass.</p>
+    </div>
+
+    <div class="gallery reveal">
+      <figure class="gallery__item gallery__item--wide">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkdZTSBGTE9PUiI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwMCAzNzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5HWU0gRkxPT1I8L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+TWFpbiB0cmFpbmluZyBmbG9vcjwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDEwMDAmIzIxNTs3NTA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+             alt="Main gym floor at Fitness Depot Columbia MS" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Gym Floor</figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkZSRUUgV0VJR0hUIEFSRUEiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFjMWExNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMwZDBkMGQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjMxZjE2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9InN0cmlwZXMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKC0yNCkiPgogICAgICA8cmVjdCB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIGZpbGw9Im5vbmUiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iMzQiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMDIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgZmlsbD0idXJsKCNnKSIvPgogIDxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgZmlsbD0idXJsKCNzdHJpcGVzKSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjYiIGZpbGw9IiNjOWEyMjciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MDAgMzc1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidCYXJsb3cgQ29uZGVuc2VkJywnQXJpYWwgTmFycm93JyxBcmlhbCxzYW5zLXNlcmlmIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTc0KSI+CiAgICAgIDxyZWN0IHg9Ii00NiIgeT0iLTQ2IiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSIxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhMjI3IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgICAgPHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIyIj5GRDwvdGV4dD4KICAgIDwvZz4KICAgIDx0ZXh0IHk9IjEwIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMyI+RlJFRSBXRUlHSFQgQVJFQTwvdGV4dD4KICAgIDx0ZXh0IHk9IjUyIiBmb250LXNpemU9IjIxIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjYThhNDlhIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5EdW1iYmVsbCByYWNrcyBhbmQgYmVuY2hlczwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDEwMDAmIzIxNTs3NTA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+             alt="Free weight area with dumbbells and benches at Fitness Depot Columbia" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Free Weights</figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkNBUkRJTyBERUNLIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxYzFhMTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQwZDBkIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIzMWYxNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJzdHJpcGVzIiB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgtMjQpIj4KICAgICAgPHJlY3Qgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBmaWxsPSJub25lIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI5IiBoZWlnaHQ9IjM0IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjAyMiIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI3NTAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI3NTAiIGZpbGw9InVybCgjc3RyaXBlcykiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI2IiBmaWxsPSIjYzlhMjI3Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTAwIDM3NSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQmFybG93IENvbmRlbnNlZCcsJ0FyaWFsIE5hcnJvdycsQXJpYWwsc2Fucy1zZXJpZiI+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC03NCkiPgogICAgICA8cmVjdCB4PSItNDYiIHk9Ii00NiIgd2lkdGg9IjkyIiBoZWlnaHQ9IjkyIiByeD0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M5YTIyNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICAgIDx0ZXh0IHk9IjE4IiBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMiI+RkQ8L3RleHQ+CiAgICA8L2c+CiAgICA8dGV4dCB5PSIxMCIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjMiPkNBUkRJTyBERUNLPC90ZXh0PgogICAgPHRleHQgeT0iNTIiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiNhOGE0OWEiIGxldHRlci1zcGFjaW5nPSIxLjUiPkNhcmRpbyByb3cgd2l0aCBUVnM8L3RleHQ+CiAgICA8dGV4dCB5PSI5NiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iIzZkNmE2MyIgbGV0dGVyLXNwYWNpbmc9IjIiPlBIT1RPIFBMQUNFSE9MREVSICYjMTgzOyAxMDAwJiMyMTU7NzUwPC90ZXh0PgogIDwvZz4KPC9zdmc+Cg=="
+             alt="Cardio equipment row with TVs at the Columbia Mississippi gym" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Cardio Deck</figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlNRVUFUIFJBQ0tTIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxYzFhMTQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU1IiBzdG9wLWNvbG9yPSIjMGQwZDBkIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzIzMWYxNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxwYXR0ZXJuIGlkPSJzdHJpcGVzIiB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgtMjQpIj4KICAgICAgPHJlY3Qgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBmaWxsPSJub25lIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI5IiBoZWlnaHQ9IjM0IiBmaWxsPSIjRkZGRkZGIiBvcGFjaXR5PSIwLjAyMiIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI3NTAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI3NTAiIGZpbGw9InVybCgjc3RyaXBlcykiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSI2IiBmaWxsPSIjYzlhMjI3Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTAwIDM3NSkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInQmFybG93IENvbmRlbnNlZCcsJ0FyaWFsIE5hcnJvdycsQXJpYWwsc2Fucy1zZXJpZiI+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIC03NCkiPgogICAgICA8cmVjdCB4PSItNDYiIHk9Ii00NiIgd2lkdGg9IjkyIiBoZWlnaHQ9IjkyIiByeD0iMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2M5YTIyNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgICAgIDx0ZXh0IHk9IjE4IiBmb250LXNpemU9IjUyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMiI+RkQ8L3RleHQ+CiAgICA8L2c+CiAgICA8dGV4dCB5PSIxMCIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjMiPlNRVUFUIFJBQ0tTPC90ZXh0PgogICAgPHRleHQgeT0iNTIiIGZvbnQtc2l6ZT0iMjEiIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiNhOGE0OWEiIGxldHRlci1zcGFjaW5nPSIxLjUiPlJhY2tzIGFuZCBwbGF0Zm9ybXM8L3RleHQ+CiAgICA8dGV4dCB5PSI5NiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iIzZkNmE2MyIgbGV0dGVyLXNwYWNpbmc9IjIiPlBIT1RPIFBMQUNFSE9MREVSICYjMTgzOyAxMDAwJiMyMTU7NzUwPC90ZXh0PgogIDwvZz4KPC9zdmc+Cg=="
+             alt="Squat racks and lifting platforms at Fitness Depot Columbia" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Squat Racks</figcaption>
+      </figure>
+      <figure class="gallery__item gallery__item--wide">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRVUkYgQVJFQSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwMCAzNzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5UVVJGIEFSRUE8L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+RnVuY3Rpb25hbCB0cmFpbmluZyB0dXJmPC90ZXh0PgogICAgPHRleHQgeT0iOTYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiM2ZDZhNjMiIGxldHRlci1zcGFjaW5nPSIyIj5QSE9UTyBQTEFDRUhPTERFUiAmIzE4MzsgMTAwMCYjMjE1Ozc1MDwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo="
+             alt="Turf functional training area at Fitness Depot Columbia MS" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Turf Functional Training</figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlJFQ09WRVJZIFJPT00iPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFjMWExNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMwZDBkMGQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjMxZjE2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9InN0cmlwZXMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKC0yNCkiPgogICAgICA8cmVjdCB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIGZpbGw9Im5vbmUiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iMzQiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMDIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgZmlsbD0idXJsKCNnKSIvPgogIDxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgZmlsbD0idXJsKCNzdHJpcGVzKSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjYiIGZpbGw9IiNjOWEyMjciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MDAgMzc1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidCYXJsb3cgQ29uZGVuc2VkJywnQXJpYWwgTmFycm93JyxBcmlhbCxzYW5zLXNlcmlmIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTc0KSI+CiAgICAgIDxyZWN0IHg9Ii00NiIgeT0iLTQ2IiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSIxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhMjI3IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgICAgPHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIyIj5GRDwvdGV4dD4KICAgIDwvZz4KICAgIDx0ZXh0IHk9IjEwIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMyI+UkVDT1ZFUlkgUk9PTTwvdGV4dD4KICAgIDx0ZXh0IHk9IjUyIiBmb250LXNpemU9IjIxIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjYThhNDlhIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5IeWRyb01hc3NhZ2UgLyByZWNvdmVyeSBzcGFjZTwvdGV4dD4KICAgIDx0ZXh0IHk9Ijk2IiBmb250LXNpemU9IjE3IiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjNmQ2YTYzIiBsZXR0ZXItc3BhY2luZz0iMiI+UEhPVE8gUExBQ0VIT0xERVIgJiMxODM7IDEwMDAmIzIxNTs3NTA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4K"
+             alt="HydroMassage recovery room at Fitness Depot Columbia" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Recovery Room</figcaption>
+      </figure>
+      <figure class="gallery__item">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IktJRFMgUk9PTSI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWMxYTE0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41NSIgc3RvcC1jb2xvcj0iIzBkMGQwZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzFmMTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8cGF0dGVybiBpZD0ic3RyaXBlcyIgd2lkdGg9IjM0IiBoZWlnaHQ9IjM0IiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBwYXR0ZXJuVHJhbnNmb3JtPSJyb3RhdGUoLTI0KSI+CiAgICAgIDxyZWN0IHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgZmlsbD0ibm9uZSIvPgogICAgICA8cmVjdCB3aWR0aD0iOSIgaGVpZ2h0PSIzNCIgZmlsbD0iI0ZGRkZGRiIgb3BhY2l0eT0iMC4wMjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSJ1cmwoI2cpIi8+CiAgPHJlY3Qgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiBmaWxsPSJ1cmwoI3N0cmlwZXMpIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNiIgZmlsbD0iI2M5YTIyNyIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwMCAzNzUpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ0JhcmxvdyBDb25kZW5zZWQnLCdBcmlhbCBOYXJyb3cnLEFyaWFsLHNhbnMtc2VyaWYiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtNzQpIj4KICAgICAgPHJlY3QgeD0iLTQ2IiB5PSItNDYiIHdpZHRoPSI5MiIgaGVpZ2h0PSI5MiIgcng9IjEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjOWEyMjciIHN0cm9rZS13aWR0aD0iNCIvPgogICAgICA8dGV4dCB5PSIxOCIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjIiPkZEPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeT0iMTAiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIzIj5LSURTIFJPT008L3RleHQ+CiAgICA8dGV4dCB5PSI1MiIgZm9udC1zaXplPSIyMSIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iI2E4YTQ5YSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+Rml0bmVzcyBEZXBvdCBLaWRzIGFyZWE8L3RleHQ+CiAgICA8dGV4dCB5PSI5NiIgZm9udC1zaXplPSIxNyIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0iIzZkNmE2MyIgbGV0dGVyLXNwYWNpbmc9IjIiPlBIT1RPIFBMQUNFSE9MREVSICYjMTgzOyAxMDAwJiMyMTU7NzUwPC90ZXh0PgogIDwvZz4KPC9zdmc+Cg=="
+             alt="Fitness Depot Kids room at the Columbia location" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Fitness Depot Kids</figcaption>
+      </figure>
+      <figure class="gallery__item gallery__item--wide">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDc1MCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iNzUwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkVYVEVSSU9SIFNJR05BR0UiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFjMWExNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuNTUiIHN0b3AtY29sb3I9IiMwZDBkMGQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjMxZjE2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHBhdHRlcm4gaWQ9InN0cmlwZXMiIHdpZHRoPSIzNCIgaGVpZ2h0PSIzNCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKC0yNCkiPgogICAgICA8cmVjdCB3aWR0aD0iMzQiIGhlaWdodD0iMzQiIGZpbGw9Im5vbmUiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjkiIGhlaWdodD0iMzQiIGZpbGw9IiNGRkZGRkYiIG9wYWNpdHk9IjAuMDIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgZmlsbD0idXJsKCNnKSIvPgogIDxyZWN0IHdpZHRoPSIxMDAwIiBoZWlnaHQ9Ijc1MCIgZmlsbD0idXJsKCNzdHJpcGVzKSIvPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjYiIGZpbGw9IiNjOWEyMjciLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MDAgMzc1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IidCYXJsb3cgQ29uZGVuc2VkJywnQXJpYWwgTmFycm93JyxBcmlhbCxzYW5zLXNlcmlmIj4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTc0KSI+CiAgICAgIDxyZWN0IHg9Ii00NiIgeT0iLTQ2IiB3aWR0aD0iOTIiIGhlaWdodD0iOTIiIHJ4PSIxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzlhMjI3IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgICAgPHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIyIj5GRDwvdGV4dD4KICAgIDwvZz4KICAgIDx0ZXh0IHk9IjEwIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMyI+RVhURVJJT1IgU0lHTkFHRTwvdGV4dD4KICAgIDx0ZXh0IHk9IjUyIiBmb250LXNpemU9IjIxIiBmb250LXdlaWdodD0iNTAwIiBmaWxsPSIjYThhNDlhIiBsZXR0ZXItc3BhY2luZz0iMS41Ij5CdWlsZGluZyBhbmQgRml0bmVzcyBEZXBvdCBzaWduPC90ZXh0PgogICAgPHRleHQgeT0iOTYiIGZvbnQtc2l6ZT0iMTciIGZvbnQtd2VpZ2h0PSI1MDAiIGZpbGw9IiM2ZDZhNjMiIGxldHRlci1zcGFjaW5nPSIyIj5QSE9UTyBQTEFDRUhPTERFUiAmIzE4MzsgMTAwMCYjMjE1Ozc1MDwvdGV4dD4KICA8L2c+Cjwvc3ZnPgo="
+             alt="Exterior and Fitness Depot signage at 805 Hwy 98 Bypass in Columbia, Mississippi" width="1000" height="750" loading="lazy" decoding="async">
+        <figcaption class="gallery__cap">Exterior &amp; Signage</figcaption>
+      </figure>
+    </div>
+
+    <div class="btn-row btn-row--center reveal" style="margin-top:2rem">
+      <a class="btn btn--lg" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+      <a class="btn btn--lg btn--ghost" href="#memberships">View Memberships</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     MEMBER REVIEWS
+     Placeholder by design — no testimonials are published here until real,
+     verified member reviews are supplied. See docs/CONTENT-SOURCES.md for the
+     markup to paste in once you have them.
+     ========================================================================== -->
+<section class="section section--dark" id="reviews" aria-labelledby="rev-h"
+         style="padding-top:0">
+  <div class="shell">
+    <div class="reviews__panel reveal">
+      <div>
+        <p class="eyebrow">Member Reviews</p>
+        <h2 id="rev-h">Hear It From Columbia</h2>
+        <p class="lead">
+          We&rsquo;d rather show you real words from real members than invent something.
+          Verified reviews from Fitness Depot Columbia members will be published here.
+        </p>
+        <p style="color:var(--steel-light)">
+          Already train with us? Leave a review on our Facebook page &mdash; it helps your
+          neighbors find the gym. Not a member yet? The most honest review is the one you
+          form yourself: come walk the floor.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+          <a class="btn btn--ghost" href="https://www.facebook.com/fitnessdepotcolumbia/" target="_blank" rel="noopener">
+            <svg width="18" height="18" aria-hidden="true"><use href="#i-facebook"></use></svg>
+            Read Facebook Reviews
+          </a>
+        </div>
+      </div>
+
+      <div aria-hidden="true">
+        <div class="review-slot">
+          <div class="review-slot__stars">
+            <svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg>
+          </div>
+          <div class="review-slot__line"></div>
+          <div class="review-slot__line review-slot__line--short"></div>
+          <p class="review-slot__note">Awaiting verified member review</p>
+        </div>
+        <div class="review-slot">
+          <div class="review-slot__stars">
+            <svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg>
+          </div>
+          <div class="review-slot__line"></div>
+          <div class="review-slot__line review-slot__line--short"></div>
+          <p class="review-slot__note">Awaiting verified member review</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     LOCATION
+     ========================================================================== -->
+<section class="section" id="location" aria-labelledby="loc-h">
+  <div class="shell">
+    <div class="section-head reveal">
+      <p class="eyebrow">Find Us</p>
+      <h2 id="loc-h">Fitness Depot Columbia</h2>
+      <p>
+        On Hwy 98 Bypass in Columbia, Mississippi &mdash; convenient to everywhere in Marion County
+        and the surrounding communities.
+      </p>
+    </div>
+
+    <div class="location">
+      <div class="reveal">
+        <div class="info-block">
+          <h3>Address</h3>
+          <address>
+            <strong>Fitness Depot Columbia</strong><br>
+            805 Hwy 98 Bypass<br>
+            Columbia, MS 39429
+          </address>
+          <div class="btn-row" style="margin-top:1.1rem">
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fitness+Depot%2C+805+Hwy+98+Bypass%2C+Columbia%2C+MS+39429"
+               target="_blank" rel="noopener">
+              <svg width="18" height="18" aria-hidden="true"><use href="#i-nav"></use></svg>
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <h3>Phone</h3>
+          <p><a href="tel:+16013453344">(601) 345-3344</a></p>
+        </div>
+
+        <div class="info-block">
+          <h3>Member Access</h3>
+          <ul class="hours">
+            <li><span class="d">Every day, all day</span> <span class="t t--open">24 / 7</span></li>
+          </ul>
+          <p style="font-size:.93rem;color:var(--steel);margin-top:.6rem">
+            Members enter with fingerprint access around the clock.
+          </p>
+        </div>
+
+        <div class="info-block">
+          <h3>Staffed Desk Hours</h3>
+          <ul class="hours">
+            <li><span class="d">Monday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
+            <li><span class="d">Tuesday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
+            <li><span class="d">Wednesday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
+            <li><span class="d">Thursday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
+            <li><span class="d">Friday</span> <span class="t">8:00 AM &ndash; 5:00 PM</span></li>
+          </ul>
+          <p class="notice" style="margin-top:1rem">
+            <svg aria-hidden="true"><use href="#i-info"></use></svg>
+            <span>
+              <strong>Staffed hours are not the same as member access.</strong>
+              Members work out 24/7. Come during staffed hours to sign up, take a tour,
+              set up fingerprint entry or talk to someone in person.
+              <span data-desk-status></span>
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal" data-delay="1">
+        <div class="map-frame map-frame--static">
+            <div class="map-static">
+              <svg width="34" height="34" aria-hidden="true"><use href="#i-pin"></use></svg>
+              <p class="map-static__addr">805 Hwy 98 Bypass<br>Columbia, MS 39429</p>
+              <p class="map-static__note">The live site shows an interactive map here.</p>
+              <a class="btn btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fitness+Depot%2C+805+Hwy+98+Bypass%2C+Columbia%2C+MS+39429" target="_blank" rel="noopener">Get Directions</a>
+            </div>
+          </div>
+        <p style="font-size:.92rem;color:var(--steel);margin-top:1rem">
+          Serving Columbia, Marion County and nearby South Mississippi communities.
+          Fitness Depot also has locations in Laurel, Meridian, McComb, Picayune, Ellisville and Wiggins &mdash;
+          see <a href="https://fdgyms.com/fdlocations" target="_blank" rel="noopener" style="color:var(--fd-ink);font-weight:600">all Fitness Depot locations</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FAQ
+     ========================================================================== -->
+<section class="section section--paper" id="faq" aria-labelledby="faq-h">
+  <div class="shell">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow eyebrow--center">Questions</p>
+      <h2 id="faq-h">Fitness Depot Columbia FAQ</h2>
+      <p>Straight answers about membership, access, equipment and Kid Care.</p>
+    </div>
+
+    <div class="faq reveal">
+      <details class="faq__item">
+        <summary>Is Fitness Depot Columbia open 24/7?</summary>
+        <div class="faq__answer">
+          <p>Yes. Members have 24/7 access using fingerprint entry, and the facility has 24-hour
+          security. The staffed front desk is open Monday&ndash;Thursday 8:00 AM&ndash;7:00 PM and
+          Friday 8:00 AM&ndash;5:00 PM &mdash; that&rsquo;s when to come by for sign-ups, tours and
+          in-person help.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot require a contract?</summary>
+        <div class="faq__answer">
+          <p>No. Memberships are month-to-month with no long-term contract. A 30-day notice is
+          required to cancel, and cancellations cannot be handled over the phone.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Is there an annual fee at Fitness Depot Columbia?</summary>
+        <div class="faq__answer">
+          <p>No. Both the Live 2 Lead and Neighborhood memberships are advertised with no annual fee.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>How much does a gym membership cost in Columbia, MS?</summary>
+        <div class="faq__answer">
+          <p><strong>Live 2 Lead:</strong> $20 biweekly, $50 joining fee, first two weeks free.<br>
+          <strong>Neighborhood:</strong> $15 biweekly, $99 joining fee.</p>
+          <p>Pricing and promotions can change. Confirm current rates with the Columbia club at
+          <a href="tel:+16013453344">(601) 345-3344</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>What does the membership include?</summary>
+        <div class="faq__answer">
+          <p>Live 2 Lead includes 24/7 gym access, the Fitness Depot App, daily nutrition tracking,
+          a set training routine, bring-a-guest privileges, 2 daily HydroMassage sessions,
+          multi-location club access, 24/7 tanning, showers, and Kid Care with the first child
+          included. The Neighborhood membership includes 24/7 unlimited home-club access, unlimited
+          tanning and showers. <a href="#memberships">Compare both memberships</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia offer personal training?</summary>
+        <div class="faq__answer">
+          <p>Yes, personal training is available at Fitness Depot. Ask the Columbia front desk about
+          current trainer availability, session options and pricing.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia have free weights?</summary>
+        <div class="faq__answer">
+          <p>Yes. The Columbia gym has free weights, dumbbells, barbells, squat racks and
+          plate-loaded equipment. <a href="#equipment">See the equipment lineup</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia have cardio equipment?</summary>
+        <div class="faq__answer">
+          <p>Yes &mdash; treadmills, stepmills, elliptical cross-trainers and spin bikes, with cardio
+          TVs on the floor.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia offer HydroMassage?</summary>
+        <div class="faq__answer">
+          <p>Yes. The Columbia location has private recovery rooms with HydroMassage, and Live 2 Lead
+          members get two sessions per day. <a href="#recovery">More about recovery and wellness</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia offer tanning?</summary>
+        <div class="faq__answer">
+          <p>Yes. Live 2 Lead includes 24/7 tanning, and the Neighborhood membership includes
+          unlimited tanning.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia have showers?</summary>
+        <div class="faq__answer">
+          <p>Yes. Showers are included with both memberships.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Does Fitness Depot Columbia offer childcare?</summary>
+        <div class="faq__answer">
+          <p>Yes. Fitness Depot Kids is available for children from walking age through 12 years old.
+          The first child is included with a Live 2 Lead membership, and each additional child is
+          $10 biweekly.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>What are the Fitness Depot Kids hours in Columbia?</summary>
+        <div class="faq__answer">
+          <p>Monday&ndash;Thursday, 4:00 PM&ndash;7:00 PM at the Columbia location. Children can attend
+          for up to two hours each day. <a href="#kids">See all Kid Care details</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Where is Fitness Depot Columbia located?</summary>
+        <div class="faq__answer">
+          <p>805 Hwy 98 Bypass, Columbia, MS 39429 &mdash; serving Columbia and the surrounding Marion
+          County area. Call <a href="tel:+16013453344">(601) 345-3344</a> or
+          <a href="#location">get directions</a>.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>Can members access other Fitness Depot locations?</summary>
+        <div class="faq__answer">
+          <p>Multi-location club access is listed as a Live 2 Lead benefit; the Neighborhood
+          membership covers 24/7 access to your home club. Fitness Depot has locations across South
+          Mississippi &mdash; confirm which clubs your membership covers with the Columbia staff.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary>How do I join Fitness Depot Columbia?</summary>
+        <div class="faq__answer">
+          <p>Start online or stop by the gym. To finish signing up and get set up with fingerprint
+          entry, come by 805 Hwy 98 Bypass during staffed hours with a photo ID &mdash; members 16 and
+          older receive a fingerprint for 24/7 access. Questions first? Call
+          <a href="tel:+16013453344">(601) 345-3344</a> or
+          <a href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">book a tour</a>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     FINAL CTA
+     ========================================================================== -->
+<section class="cta-final" id="get-started" aria-labelledby="cta-h">
+  <div class="shell">
+    <p class="eyebrow eyebrow--center">Get Started</p>
+    <h2 id="cta-h">Ready To Get Started?</h2>
+    <p>
+      The hardest part is walking through the door the first time. After that it&rsquo;s just
+      showing up. Your first two weeks are free with Live 2 Lead &mdash; stop waiting for Monday.
+    </p>
+    <div class="btn-row btn-row--center">
+      <a class="btn btn--lg" href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Join Now</a>
+      <a class="btn btn--lg btn--ghost" href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a>
+      <a class="btn btn--lg btn--ghost" href="#location">Contact Us</a>
+      <a class="btn btn--lg btn--ghost" href="tel:+16013453344">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-phone"></use></svg>
+        Call Fitness Depot
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="#top" aria-label="Fitness Depot Columbia — home">
+          <span class="logo__mark" aria-hidden="true">FD</span>
+          <span class="logo__text">
+            <span class="logo__name">Fitness <span class="is-depot">Depot</span></span>
+            <span class="logo__loc">Columbia, MS</span>
+          </span>
+        </a>
+        <p style="font-size:.97rem;max-width:30ch">
+          A locally owned 24/7 gym serving Columbia, Mississippi and Marion County.
+          No matter your level of fitness, you&rsquo;ll find your place with us.
+        </p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/fitnessdepotcolumbia/" target="_blank" rel="noopener" aria-label="Fitness Depot Columbia on Facebook">
+            <svg aria-hidden="true"><use href="#i-facebook"></use></svg>
+          </a>
+          <a href="tel:+16013453344" aria-label="Call Fitness Depot Columbia">
+            <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Fitness+Depot%2C+805+Hwy+98+Bypass%2C+Columbia%2C+MS+39429" target="_blank" rel="noopener" aria-label="Directions to Fitness Depot Columbia">
+            <svg aria-hidden="true"><use href="#i-nav"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#memberships">Memberships</a></li>
+          <li><a href="#access">24/7 Access</a></li>
+          <li><a href="#equipment">Equipment</a></li>
+          <li><a href="#recovery">Recovery &amp; Wellness</a></li>
+          <li><a href="#kids">Fitness Depot Kids</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Visit</h3>
+        <ul>
+          <li><a href="#gallery">Photo Gallery</a></li>
+          <li><a href="#location">Location &amp; Hours</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://fdgyms.com/book-tour" target="_blank" rel="noopener">Book a Tour</a></li>
+          <li><a href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Join Now</a></li>
+          <li><a href="https://fdgyms.com/fdlocations" target="_blank" rel="noopener">All Fitness Depot Locations</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Fitness Depot Columbia</h3>
+        <address>
+          805 Hwy 98 Bypass<br>
+          Columbia, MS 39429<br>
+          <a href="tel:+16013453344">(601) 345-3344</a>
+        </address>
+        <p style="margin-top:1rem;font-size:.93rem">
+          <strong style="color:#fff">Member access:</strong> 24/7<br>
+          <strong style="color:#fff">Staffed:</strong> Mon&ndash;Thu 8 AM&ndash;7 PM<br>
+          Fri 8 AM&ndash;5 PM
+        </p>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <p>&copy; <span data-year>2026</span> Fitness Depot Columbia. All rights reserved.</p>
+      <p class="preview-note">Design preview &mdash; not the live Fitness Depot website.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky mobile conversion bar -->
+<div class="mobile-cta">
+  <a class="btn" href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Join Now</a>
+  <a class="btn btn--ghost" href="tel:+16013453344" aria-label="Call Fitness Depot Columbia">
+    <svg width="20" height="20" aria-hidden="true"><use href="#i-phone"></use></svg>
+  </a>
+</div>
+
+<button class="to-top" type="button" aria-label="Back to top">
+  <svg aria-hidden="true"><use href="#i-arrow-up"></use></svg>
+</button>
+
+<script>
+/* Fitness Depot Columbia — site behaviour
+   Progressive enhancement only: every section works with JS disabled. */
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------------------------------------------------------------
+     Mobile navigation
+     --------------------------------------------------------------------- */
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("primary-nav");
+
+  if (toggle && nav) {
+    var closeNav = function () {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    };
+
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      nav.classList.toggle("is-open", !open);
+      toggle.setAttribute("aria-expanded", String(!open));
+    });
+
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) closeNav();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeNav();
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1160) closeNav();
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Header shadow once the page scrolls
+     --------------------------------------------------------------------- */
+  var header = document.querySelector(".header");
+  var toTop = document.querySelector(".to-top");
+
+  var onScroll = function () {
+    var y = window.scrollY || window.pageYOffset;
+    if (header) header.classList.toggle("is-stuck", y > 8);
+    if (toTop) toTop.classList.toggle("is-visible", y > 700);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if (toTop) {
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Scroll reveal
+     --------------------------------------------------------------------- */
+  var revealables = document.querySelectorAll(".reveal");
+
+  if (!("IntersectionObserver" in window) || reduceMotion) {
+    Array.prototype.forEach.call(revealables, function (el) {
+      el.classList.add("is-in");
+    });
+  } else {
+    var revealer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            revealer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    Array.prototype.forEach.call(revealables, function (el) {
+      revealer.observe(el);
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Nav scrollspy
+     --------------------------------------------------------------------- */
+  var navLinks = nav ? nav.querySelectorAll('a[href^="#"]') : [];
+  var sections = [];
+
+  Array.prototype.forEach.call(navLinks, function (link) {
+    var target = document.getElementById(link.getAttribute("href").slice(1));
+    if (target) sections.push({ link: link, target: target });
+  });
+
+  if (sections.length && "IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          var match = sections.filter(function (s) {
+            return s.target === entry.target;
+          })[0];
+          if (!match) return;
+          if (entry.isIntersecting) {
+            sections.forEach(function (s) {
+              s.link.removeAttribute("aria-current");
+            });
+            match.link.setAttribute("aria-current", "true");
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach(function (s) {
+      spy.observe(s.target);
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Defer the map iframe until it is close to the viewport
+     --------------------------------------------------------------------- */
+  var map = document.querySelector("[data-map-src]");
+  if (map) {
+    var loadMap = function () {
+      if (map.getAttribute("src")) return;
+      map.setAttribute("src", map.getAttribute("data-map-src"));
+    };
+    if ("IntersectionObserver" in window) {
+      var mapObserver = new IntersectionObserver(
+        function (entries) {
+          if (entries[0].isIntersecting) {
+            loadMap();
+            mapObserver.disconnect();
+          }
+        },
+        { rootMargin: "400px" }
+      );
+      mapObserver.observe(map);
+    } else {
+      loadMap();
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     Front-desk status.
+     Staffed desk hours (Central time): Mon-Thu 8:00am-7:00pm, Fri 8:00am-5:00pm.
+     Member access is 24/7, so the "closed" state says exactly that.
+     --------------------------------------------------------------------- */
+  var statusEls = document.querySelectorAll("[data-desk-status]");
+
+  if (statusEls.length) {
+    // day index -> [openHour, closeHour] in 24h Central time; absent = unstaffed
+    var STAFFED = { 1: [8, 19], 2: [8, 19], 3: [8, 19], 4: [8, 19], 5: [8, 17] };
+
+    var centralNow = function () {
+      try {
+        var parts = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Chicago",
+          weekday: "short",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: false
+        }).formatToParts(new Date());
+
+        var get = function (type) {
+          var p = parts.filter(function (x) {
+            return x.type === type;
+          })[0];
+          return p ? p.value : null;
+        };
+
+        var days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+        var hour = parseInt(get("hour"), 10);
+        return {
+          day: days[get("weekday")],
+          minutes: (hour === 24 ? 0 : hour) * 60 + parseInt(get("minute"), 10)
+        };
+      } catch (err) {
+        return null;
+      }
+    };
+
+    var now = centralNow();
+    if (now) {
+      var window_ = STAFFED[now.day];
+      var staffed =
+        !!window_ && now.minutes >= window_[0] * 60 && now.minutes < window_[1] * 60;
+
+      Array.prototype.forEach.call(statusEls, function (el) {
+        el.textContent = staffed
+          ? "Front desk open now"
+          : "Front desk closed — members have 24/7 access";
+      });
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     Current year in the footer
+     --------------------------------------------------------------------- */
+  var year = document.querySelector("[data-year]");
+  if (year) year.textContent = String(new Date().getFullYear());
+})();
+
+</script>
+</body>
+</html>

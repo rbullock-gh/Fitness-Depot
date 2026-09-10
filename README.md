@@ -7,6 +7,20 @@ surrounding South Mississippi area.
 Static HTML, CSS and vanilla JavaScript — no build step, no dependencies, no framework.
 Open `index.html` and it runs.
 
+## See it now
+
+`demo/fitness-depot-columbia-preview.html` is a **single self-contained file** — CSS,
+JavaScript and every image inlined. Double-click it and it opens; no server, no assets
+folder, nothing to install. Email it, drop it in a shared folder, or open it on a phone.
+It is labelled as a preview in the footer so a forwarded copy is never mistaken for the
+live site, and the interactive map is a static stand-in (a live map needs a real page).
+
+Rebuild it after any change:
+
+```bash
+python3 tools/build-demo.py
+```
+
 ## Run it locally
 
 ```bash
@@ -43,9 +57,11 @@ assets/
   js/main.js            Nav, scroll reveal, scrollspy, deferred map, desk status
   img/                  Photo placeholders — swap for real photos
   favicon/              Favicon + apple touch icon (placeholders)
+demo/                   Self-contained single-file preview for sharing
 tools/
   make-placeholders.sh  Regenerates the placeholder images
   apply-photos.sh       Swaps placeholders for real photos in one command
+  build-demo.py         Rebuilds the single-file preview
 docs/                   Launch checklist, photo checklist, brand notes, source record
 ```
 
