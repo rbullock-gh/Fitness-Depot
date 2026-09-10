@@ -44,7 +44,8 @@ photos were substituted — each slot is a labelled placeholder instead.
 | `gallery-recovery` | Gallery | 1000×750 | HydroMassage / recovery space. |
 | `gallery-kids` | Gallery | 1000×750 | Kids room. |
 | `gallery-exterior` | Gallery (wide) | 1000×750 | Building exterior and Fitness Depot signage. |
-| `og-image` | Social share card | 1200×630 | Best single image of the gym; it is what shows in Facebook/text previews. |
+_(The social share card, `assets/img/og-image.png`, is generated from the logo by
+`tools/install-logo.py` — no photo needed. Swap in a photo-based card later if you prefer.)_
 
 ## Shooting and prep notes
 

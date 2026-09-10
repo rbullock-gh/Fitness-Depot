@@ -1,37 +1,52 @@
 # Brand assets — what to replace
 
-The **colour palette is now the real one**, taken from the official Fitness Depot logo
-(gold and black). The **logo artwork itself is still a placeholder** — the logo was
-supplied as an image in conversation rather than as a file, and `fdgyms.com` is blocked by
-the build environment's network policy, so the artwork file could not be written into the
-repo. Dropping it in is a two-minute job (below).
+The **official logo and the real colour palette are both in place.** The logo is used in
+the header and footer, and every icon and the social share card are generated from it.
+The one thing still worth upgrading is the *source file* — see "Supply a vector" below.
 
 ## 1. The logo
 
-The header and footer currently use an interim CSS/text lockup: a gold `FD` monogram box
-plus *FITNESS* in white and *DEPOT* in gold — a nod to the logo's two-tone treatment, not a
-reproduction of it. The barbell-squat mascot and the arched lettering are **not** recreated;
-they should come from the official artwork.
+The artwork ships at `assets/img/logo-fitness-depot.png` — background removed, trimmed to
+the artwork, 720×514. Everything else is generated from it by `tools/install-logo.py`:
 
-**To use the official logo**, replace the markup in `index.html` — it appears twice, in
-`<header class="header">` and in `<footer class="footer">`, both marked with a comment:
+| File | Size | Used for |
+|---|---|---|
+| `assets/img/logo-fitness-depot.png` | 720×514 | Header and footer |
+| `assets/img/logo-mark.png` | 384×325 | The mascot alone, for small sizes |
+| `assets/favicon/favicon-32.png` | 32×32 | Browser tab (mascot only — the full lockup turns to mush below ~100px) |
+| `assets/favicon/apple-touch-icon.png` | 180×180 | Home-screen icon |
+| `assets/favicon/icon-512.png` | 512×512 | PWA / manifest |
+| `assets/img/og-image.png` | 1200×630 | Facebook / text-message share card |
 
-```html
-<a class="logo" href="#top" aria-label="Fitness Depot Columbia — home">
-  <img src="assets/img/logo-fitness-depot.svg"
-       alt="Fitness Depot Columbia"
-       width="200" height="44">
-</a>
+Regenerate them all from a new source file with:
+
+```bash
+python3 tools/install-logo.py path/to/logo.png
 ```
 
-Prefer an **SVG**. The header and footer are both near-black, so a single logo that works
-on a dark ground covers both — the full-colour logo on white will need a version with the
-lettering knocked out to white, or a light plate behind it.
-The `.logo__loc` line ("COLUMBIA, MS") is worth keeping under a wordmark — it reinforces
-the location on every screen.
+The script removes a solid white background by flood-filling **inward from the border**,
+not by keying out every white pixel — that distinction matters here, because the mascot's
+highlights and the counters inside the letters are white too and would otherwise be punched
+into holes.
 
-`assets/favicon/favicon.svg` and `assets/favicon/apple-touch-icon.png` are also
-placeholders built from the same monogram. Replace them with the real mark.
+### Two consequences of the artwork worth knowing
+
+**The header is white.** The lettering is black with a gold outline, so the logo needs a
+light ground. That is why the header and the mobile nav drawer are light rather than the
+black used elsewhere — the logo drove the decision, not the other way round.
+
+**The footer logo sits on a white plate.** The footer is near-black, where black lettering
+would disappear. Rather than recolour the artwork — which would mean altering the brand —
+it sits on a white rounded plate. If Fitness Depot has an official reversed (knock-out)
+version for dark backgrounds, drop it in and replace `.logo--plate` with a plain `<img>`.
+
+### Supply a vector
+
+The current source is a **raster** image (extracted at 1852×1321), which is sharp at the
+sizes used here but will soften if the logo is ever needed much larger — a banner, print,
+or signage. If Fitness Depot has the original **SVG, EPS or AI** file, it is worth swapping
+in: replace the `<img>` `src` in the header and footer with the `.svg`, and keep the
+generated PNGs for the favicons, which have to stay raster anyway.
 
 ## 2. The colour palette — matched to the logo
 

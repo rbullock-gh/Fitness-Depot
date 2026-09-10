@@ -31,13 +31,12 @@ Then open <http://localhost:8000>.
 
 ## Before you deploy
 
-Three things ship as placeholders and need real assets. **Start with
+Two things ship as placeholders and need real assets. **Start with
 [`docs/LAUNCH-CHECKLIST.md`](docs/LAUNCH-CHECKLIST.md)** — it covers all of them in order.
 
 | What | Why | Where |
 |---|---|---|
 | **Photography** | The build environment's network policy blocked `fdgyms.com` and every image CDN, so no authentic Fitness Depot photos could be downloaded. Rather than substitute stock photos, every slot is a labelled placeholder. | [`docs/PHOTO-CHECKLIST.md`](docs/PHOTO-CHECKLIST.md) |
-| **Logo artwork** | The colours are the real ones (gold and black, from the official logo), but the artwork file itself could not be written into the repo — it was supplied as an image, not a file. The header/footer use an interim two-tone wordmark. | [`docs/BRAND-AND-ASSETS.md`](docs/BRAND-AND-ASSETS.md) |
 | **Live domain** | The canonical URL, Open Graph tags, schema and sitemap use a placeholder domain. | [`docs/LAUNCH-CHECKLIST.md`](docs/LAUNCH-CHECKLIST.md) §1 |
 
 Everything factual on the site — pricing, hours, amenities, equipment, Kid Care details —
@@ -59,6 +58,7 @@ assets/
   favicon/              Favicon + apple touch icon (placeholders)
 demo/                   Self-contained single-file preview for sharing
 tools/
+  install-logo.py       Regenerates the logo, icons and share card from a source file
   make-placeholders.sh  Regenerates the placeholder images
   apply-photos.sh       Swaps placeholders for real photos in one command
   build-demo.py         Rebuilds the single-file preview

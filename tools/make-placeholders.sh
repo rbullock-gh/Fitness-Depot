@@ -57,5 +57,4 @@ make_svg gallery-squat-racks      1000 750  "SQUAT RACKS"           "Racks and p
 make_svg gallery-recovery         1000 750  "RECOVERY ROOM"         "HydroMassage / recovery space"
 make_svg gallery-kids             1000 750  "KIDS ROOM"             "Fitness Depot Kids area"
 make_svg gallery-exterior         1000 750  "EXTERIOR SIGNAGE"      "Building and Fitness Depot sign"
-make_svg og-image                 1200 630  "FITNESS DEPOT COLUMBIA" "805 Hwy 98 Bypass &#183; Open 24/7"
 echo "Done."

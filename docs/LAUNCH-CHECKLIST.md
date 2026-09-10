@@ -27,10 +27,11 @@ Profile and every directory listing exactly.
 See **`docs/PHOTO-CHECKLIST.md`**. The site is presentable with placeholders but will not
 convert without real photos of the Columbia facility — the brief is built around them.
 
-## 4. Add the real logo artwork
+## 4. Supply a vector logo if one exists (optional)
 
-The palette is already the official gold and black. Only the logo artwork is still a
-placeholder — see **`docs/BRAND-AND-ASSETS.md`**.
+The official logo and palette are already in place. The logo source is a raster image,
+which is sharp at the sizes the site uses. If the original SVG/EPS is available it is
+worth swapping in for future large-format use — see **`docs/BRAND-AND-ASSETS.md`**.
 
 ## 5. Check the "Join Now" destination
 

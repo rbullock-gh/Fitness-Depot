@@ -53,7 +53,7 @@ html = re.sub(r'src="(assets/img/[^"]+)"', to_data_uri, html)
 
 # ---- drop references that need a server ------------------------------------
 for dead in (
-    '<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">',
+    '<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">',
     '<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">',
     '<link rel="manifest" href="site.webmanifest">',
 ):
