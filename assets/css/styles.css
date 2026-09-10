@@ -22,7 +22,6 @@
 
   --fd-ink: #0d0d0d;
   --fd-ink-2: #161616;
-  --fd-ink-3: #232323;
 
   /* ---- Neutrals (warmed slightly to sit with the gold) ---- */
   --steel: #6d6a63;
@@ -86,6 +85,9 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+/* <figure> carries a UA default margin of 1em 40px. The gallery tiles are
+   figures, so every one was inset by 40px inside its own grid cell. */
+figure { margin: 0; }
 a { color: inherit; }
 button { font: inherit; }
 
@@ -165,7 +167,9 @@ p:last-child { margin-bottom: 0; }
 
 .section-head { max-width: 46rem; margin-bottom: clamp(2.25rem, 4.5vw, 3.5rem); }
 .section-head--center { margin-inline: auto; text-align: center; }
-.section-head p { color: var(--steel); font-size: 1.09rem; }
+/* ~66 characters per line; it was running to about 90. */
+.section-head p { color: var(--steel); font-size: 1.09rem; max-width: 34rem; }
+.section-head--center p { margin-inline: auto; }
 .section--dark .section-head p { color: var(--steel-light); }
 
 .eyebrow {
@@ -598,9 +602,7 @@ p:last-child { margin-bottom: 0; }
   gap: clamp(2.25rem, 5vw, 4.5rem);
   align-items: center;
 }
-.split--reverse .split__media { order: 2; }
 .split--even { align-items: stretch; grid-template-columns: 1.05fr 1.15fr; }
-.split--even .split__media--fill { display: flex; }
 .split--even .split__media--fill { display: flex; }
 .split--even .split__media--fill::before { display: none; }
 .split--even .split__media--fill img {
@@ -610,10 +612,11 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* full-width stat band under the split */
-.stats--wide { margin-top: clamp(2rem, 4vw, 3rem); }
-.stats--wide div { padding-block: 1.75rem; }
 
-.split__media { position: relative; }
+/* isolation creates the stacking context that ::before's z-index:-1 needs.
+   position:relative alone does not, so the gold offset frame was painting
+   behind the page background and had never once been visible. */
+.split__media { position: relative; isolation: isolate; }
 .split__media img {
   width: 100%;
   border-radius: var(--radius-lg);
@@ -657,40 +660,12 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* Stat row */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  margin-top: 2rem;
-}
-.stats div { background: var(--white); padding: 1.35rem 1.25rem; text-align: center; }
-.stats dt {
-  font-family: var(--display);
-  font-size: clamp(1.7rem, 3.4vw, 2.35rem);
-  font-weight: 700;
-  color: var(--fd-gold-deep);
-  line-height: 1;
-}
-.stats dd {
-  margin: 0.4rem 0 0;
-  font-size: 0.79rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--steel);
-}
 
 /* ==========================================================================
    Cards
    ========================================================================== */
 
 .grid { display: grid; gap: 1.35rem; }
-.grid--2 { grid-template-columns: repeat(2, 1fr); }
-.grid--3 { grid-template-columns: repeat(3, 1fr); }
 .grid--4 { grid-template-columns: repeat(4, 1fr); }
 
 .card {
@@ -1141,6 +1116,11 @@ p:last-child { margin-bottom: 0; }
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 210px;
+  /* No grid-auto-flow: dense. The wide/narrow sequence below tiles four
+     columns exactly as authored, so visual order matches DOM order and a
+     screen reader hears the tiles in the order they are seen. Keep that
+     property when swapping in real photos -- see docs/PHOTO-CHECKLIST.md. */
   gap: 1rem;
 }
 .gallery__item {
@@ -1148,11 +1128,10 @@ p:last-child { margin-bottom: 0; }
   display: block;
   overflow: hidden;
   border-radius: var(--radius);
-  aspect-ratio: 4 / 3;
+  height: 100%;
   background: var(--fd-ink-2);
 }
 .gallery__item--wide { grid-column: span 2; }
-.gallery__item--tall { grid-row: span 2; aspect-ratio: auto; }
 .gallery__item img {
   width: 100%;
   height: 100%;
@@ -1225,7 +1204,7 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: start;
+  align-items: stretch;
 }
 
 .info-block { margin-bottom: 1.9rem; }
@@ -1254,8 +1233,13 @@ p:last-child { margin-bottom: 0; }
   overflow: hidden;
   box-shadow: var(--shadow);
   background: var(--paper-2);
-  aspect-ratio: 4 / 3;
   border: 1px solid var(--line);
+  /* No aspect-ratio here. Stretching to the column sets the height, and an
+     aspect-ratio would then derive the WIDTH from that height and blow the
+     grid column out. min-height still reserves space before the deferred
+     iframe loads, so this costs nothing in layout shift. */
+  height: 100%;
+  min-height: 360px;
 }
 .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 .map-fallback {
@@ -1341,7 +1325,8 @@ p:last-child { margin-bottom: 0; }
   flex: none;
 }
 .faq__item[open] summary::after { transform: rotate(-135deg) translate(-3px, -3px); }
-.faq__answer { padding: 0 1.4rem 1.35rem; color: var(--steel); font-size: 1rem; }
+/* ~86 characters per line; it was running to about 127. */
+.faq__answer { padding: 0 1.4rem 1.35rem; color: var(--steel); font-size: 1rem; max-width: 46rem; }
 .faq__answer a { color: var(--fd-ink); font-weight: 600; }
 
 /* ==========================================================================
@@ -1356,7 +1341,6 @@ p:last-child { margin-bottom: 0; }
   padding-bottom: 3rem;
 }
 .footer .logo { color: var(--white); margin-bottom: 1.1rem; }
-.footer .logo__loc { color: var(--steel); }
 .footer h3 {
   color: var(--white);
   font-size: 1.05rem;
@@ -1463,6 +1447,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 1080px) {
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 1160px) {
@@ -1502,16 +1487,13 @@ p:last-child { margin-bottom: 0; }
 
   .split, .recovery__hero, .pt-banner, .kids__panel,
   .location, .reviews__panel { grid-template-columns: 1fr; }
-  .split--reverse .split__media { order: 0; }
-  .split__media::before { display: none; }
+    .split__media::before { display: none; }
   .kids__media img { min-height: 260px; }
 
-  .equip, .tiles, .grid--3 { grid-template-columns: repeat(2, 1fr); }
-  .plans { grid-template-columns: 1fr; }
+  .equip, .tiles,   .plans { grid-template-columns: 1fr; }
 
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .gallery__item--wide { grid-column: span 2; }
-  .gallery__item--tall { grid-row: span 1; aspect-ratio: 4 / 3; }
 
   .mobile-cta { display: flex; }
   /* The bar measures ~79px, so the old 74px reserve left the last slice of the
@@ -1524,8 +1506,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 @media (max-width: 640px) {
-  .grid--2, .grid--3, .grid--4, .equip, .tiles { grid-template-columns: 1fr; }
-  .stats { grid-template-columns: 1fr; }
+  .grid--4, .equip, .tiles { grid-template-columns: 1fr; }
+  .split__media::before { display: none; }
   .gallery { grid-template-columns: 1fr; }
   .gallery__item--wide { grid-column: span 1; }
   .btn { width: 100%; }
