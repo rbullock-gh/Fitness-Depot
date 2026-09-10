@@ -23,7 +23,7 @@ Three things ship as placeholders and need real assets. **Start with
 | What | Why | Where |
 |---|---|---|
 | **Photography** | The build environment's network policy blocked `fdgyms.com` and every image CDN, so no authentic Fitness Depot photos could be downloaded. Rather than substitute stock photos, every slot is a labelled placeholder. | [`docs/PHOTO-CHECKLIST.md`](docs/PHOTO-CHECKLIST.md) |
-| **Logo + brand colours** | Same reason — the official logo and exact brand values could not be verified. The palette is a calibrated stand-in isolated to six CSS variables. | [`docs/BRAND-AND-ASSETS.md`](docs/BRAND-AND-ASSETS.md) |
+| **Logo artwork** | The colours are the real ones (gold and black, from the official logo), but the artwork file itself could not be written into the repo — it was supplied as an image, not a file. The header/footer use an interim two-tone wordmark. | [`docs/BRAND-AND-ASSETS.md`](docs/BRAND-AND-ASSETS.md) |
 | **Live domain** | The canonical URL, Open Graph tags, schema and sitemap use a placeholder domain. | [`docs/LAUNCH-CHECKLIST.md`](docs/LAUNCH-CHECKLIST.md) §1 |
 
 Everything factual on the site — pricing, hours, amenities, equipment, Kid Care details —
@@ -77,7 +77,7 @@ bottom bar on mobile, and every major section.
 
 | Change | Where |
 |---|---|
-| Brand colours | `--fd-*` variables at the top of `assets/css/styles.css` |
+| Brand colours | `--fd-gold*` / `--fd-ink*` variables at the top of `assets/css/styles.css` (read the three-golds note in the brand doc first) |
 | Phone number | Search `6013453344` and `(601) 345-3344` in `index.html` |
 | Address | Search `805 Hwy 98 Bypass` in `index.html` |
 | Hours | The Location section, the JSON-LD `openingHoursSpecification`, and `STAFFED` in `assets/js/main.js` |

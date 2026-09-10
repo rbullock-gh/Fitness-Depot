@@ -27,9 +27,10 @@ Profile and every directory listing exactly.
 See **`docs/PHOTO-CHECKLIST.md`**. The site is presentable with placeholders but will not
 convert without real photos of the Columbia facility — the brief is built around them.
 
-## 4. Add the real logo and confirm brand colours
+## 4. Add the real logo artwork
 
-See **`docs/BRAND-AND-ASSETS.md`**.
+The palette is already the official gold and black. Only the logo artwork is still a
+placeholder — see **`docs/BRAND-AND-ASSETS.md`**.
 
 ## 5. Check the "Join Now" destination
 

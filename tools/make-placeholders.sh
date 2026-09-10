@@ -12,9 +12,9 @@ make_svg () {
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 $w $h" width="$w" height="$h" role="img" aria-label="$label">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#141922"/>
-      <stop offset="0.55" stop-color="#0C0E12"/>
-      <stop offset="1" stop-color="#1B222C"/>
+      <stop offset="0" stop-color="#1c1a14"/>
+      <stop offset="0.55" stop-color="#0d0d0d"/>
+      <stop offset="1" stop-color="#231f16"/>
     </linearGradient>
     <pattern id="stripes" width="34" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
       <rect width="34" height="34" fill="none"/>
@@ -23,15 +23,15 @@ make_svg () {
   </defs>
   <rect width="$w" height="$h" fill="url(#g)"/>
   <rect width="$w" height="$h" fill="url(#stripes)"/>
-  <rect x="0" y="0" width="$w" height="6" fill="#E01B22"/>
+  <rect x="0" y="0" width="$w" height="6" fill="#c9a227"/>
   <g transform="translate($((w/2)) $((h/2)))" text-anchor="middle" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif">
     <g transform="translate(0 -74)">
-      <rect x="-46" y="-46" width="92" height="92" rx="10" fill="none" stroke="#E01B22" stroke-width="4"/>
+      <rect x="-46" y="-46" width="92" height="92" rx="10" fill="none" stroke="#c9a227" stroke-width="4"/>
       <text y="18" font-size="52" font-weight="700" fill="#FFFFFF" letter-spacing="2">FD</text>
     </g>
     <text y="10" font-size="34" font-weight="700" fill="#FFFFFF" letter-spacing="3">$label</text>
-    <text y="52" font-size="21" font-weight="500" fill="#8A93A0" letter-spacing="1.5">$note</text>
-    <text y="96" font-size="17" font-weight="500" fill="#5C6674" letter-spacing="2">PHOTO PLACEHOLDER &#183; ${w}&#215;${h}</text>
+    <text y="52" font-size="21" font-weight="500" fill="#a8a49a" letter-spacing="1.5">$note</text>
+    <text y="96" font-size="17" font-weight="500" fill="#6d6a63" letter-spacing="2">PHOTO PLACEHOLDER &#183; ${w}&#215;${h}</text>
   </g>
 </svg>
 SVG

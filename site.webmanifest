@@ -4,8 +4,8 @@
   "description": "A locally owned 24/7 gym in Columbia, Mississippi.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0c0e12",
-  "theme_color": "#0c0e12",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
   "icons": [
     { "src": "/assets/favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
     { "src": "/assets/favicon/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }

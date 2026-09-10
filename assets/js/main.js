@@ -32,7 +32,7 @@
     });
 
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 1100) closeNav();
+      if (window.innerWidth > 1160) closeNav();
     });
   }
 
