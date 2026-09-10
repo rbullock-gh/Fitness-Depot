@@ -1,10 +1,9 @@
 /* ==========================================================================
    Fitness Depot Columbia — stylesheet
    --------------------------------------------------------------------------
-   Brand tokens live in :root. The palette below is a placeholder calibrated
-   to Fitness Depot's industrial look — swap the six --fd-* values for the
-   official brand-kit values and the whole site follows. Nothing else needs
-   to change.
+   Brand tokens live in :root and carry the official Fitness Depot gold and
+   black, taken from the logo. Change them there and the whole site follows —
+   nothing else needs to change. Read the three-golds note below first.
    ========================================================================== */
 
 :root {
@@ -96,7 +95,7 @@ h1, h2, h3, h4 {
 h1 { font-size: clamp(2.85rem, 7.4vw, 5.4rem); }
 h2 { font-size: clamp(2.1rem, 5vw, 3.5rem); }
 h3 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); }
-h4 { font-size: 1.15rem; }
+h4 { font-size: 1.15rem; }  /* no h4 on the page today — kept for future sections */
 p { margin: 0 0 1.1rem; }
 p:last-child { margin-bottom: 0; }
 
@@ -1050,7 +1049,7 @@ p:last-child { margin-bottom: 0; }
   flex: none;
 }
 .tile__icon svg { width: 22px; height: 22px; }
-.tile h4 { margin-bottom: 0.3rem; }
+.tile h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }
 .tile p { font-size: 0.93rem; color: var(--steel); margin: 0; }
 
 /* ==========================================================================
@@ -1156,7 +1155,9 @@ p:last-child { margin-bottom: 0; }
   gap: 0.85rem;
 }
 .review-slot + .review-slot { margin-top: 1rem; }
-.review-slot__stars { display: flex; gap: 0.2rem; color: var(--fd-gold); }
+/* Deliberately unfilled: these are empty slots, not a rating. Real reviews
+   get real stars — an empty slot must never look like five gold ones. */
+.review-slot__stars { display: flex; gap: 0.2rem; color: rgba(255, 255, 255, 0.16); }
 .review-slot__stars svg { width: 18px; height: 18px; }
 .review-slot__line {
   height: 10px;
