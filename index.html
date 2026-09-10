@@ -61,6 +61,7 @@
       "url": "https://www.fitnessdepotcolumbia.com/",
       "telephone": "+1-601-345-3344",
       "image": "https://www.fitnessdepotcolumbia.com/assets/img/og-image.png",
+      "logo": "https://www.fitnessdepotcolumbia.com/assets/img/logo-fitness-depot.png",
       "priceRange": "$",
       "currenciesAccepted": "USD",
       "address": {
@@ -88,19 +89,31 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "name": "Staffed desk hours",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-          "opens": "08:00",
-          "closes": "19:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "name": "Staffed desk hours",
-          "dayOfWeek": "Friday",
-          "opens": "08:00",
-          "closes": "17:00"
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
         }
       ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "name": "Staffed front desk",
+        "telephone": "+1-601-345-3344",
+        "hoursAvailable": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "08:00",
+            "closes": "17:00"
+          }
+        ]
+      },
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "24/7 member access", "value": true },
         { "@type": "LocationFeatureSpecification", "name": "Fingerprint entry", "value": true },
@@ -120,15 +133,36 @@
           "name": "Live 2 Lead membership",
           "category": "Gym membership",
           "url": "https://www.fitnessdepotcolumbia.com/#memberships",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Live 2 Lead gym membership",
+            "provider": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" }
+          },
           "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "20.00",
+            "@type": "CompoundPriceSpecification",
             "priceCurrency": "USD",
-            "referenceQuantity": {
-              "@type": "QuantitativeValue",
-              "value": 2,
-              "unitCode": "WEE"
-            }
+            "priceComponent": [
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Membership",
+                "price": "20.00",
+                "priceCurrency": "USD",
+                "referenceQuantity": {
+                  "@type": "QuantitativeValue",
+                  "value": 2,
+                  "unitCode": "WEE"
+                }
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Joining fee",
+                "price": "50.00",
+                "priceCurrency": "USD",
+                "priceType": "https://schema.org/InvoicePrice"
+              }
+            ]
           }
         },
         {
@@ -136,15 +170,36 @@
           "name": "Neighborhood membership",
           "category": "Gym membership",
           "url": "https://www.fitnessdepotcolumbia.com/#memberships",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Neighborhood gym membership",
+            "provider": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" }
+          },
           "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "15.00",
+            "@type": "CompoundPriceSpecification",
             "priceCurrency": "USD",
-            "referenceQuantity": {
-              "@type": "QuantitativeValue",
-              "value": 2,
-              "unitCode": "WEE"
-            }
+            "priceComponent": [
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Membership",
+                "price": "15.00",
+                "priceCurrency": "USD",
+                "referenceQuantity": {
+                  "@type": "QuantitativeValue",
+                  "value": 2,
+                  "unitCode": "WEE"
+                }
+              },
+              {
+                "@type": "UnitPriceSpecification",
+                "name": "Joining fee",
+                "price": "99.00",
+                "priceCurrency": "USD",
+                "priceType": "https://schema.org/InvoicePrice"
+              }
+            ]
           }
         }
       ]
@@ -158,8 +213,13 @@
       "inLanguage": "en-US"
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://www.fitnessdepotcolumbia.com/#faq",
+      "@type": ["WebPage", "FAQPage"],
+      "@id": "https://www.fitnessdepotcolumbia.com/#webpage",
+      "url": "https://www.fitnessdepotcolumbia.com/",
+      "name": "Fitness Depot Columbia MS | 24/7 Gym in Columbia, Mississippi",
+      "isPartOf": { "@id": "https://www.fitnessdepotcolumbia.com/#website" },
+      "about": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" },
+      "inLanguage": "en-US",
       "mainEntity": [
         {
           "@type": "Question",
