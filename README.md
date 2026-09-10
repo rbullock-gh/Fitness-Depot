@@ -58,6 +58,7 @@ assets/
   favicon/              Favicon + apple touch icon (placeholders)
 demo/                   Self-contained single-file preview for sharing
 tools/
+  set-domain.sh         Points every absolute URL at the live domain
   install-logo.py       Regenerates the logo, icons and share card from a source file
   make-placeholders.sh  Regenerates the placeholder images
   apply-photos.sh       Swaps placeholders for real photos in one command

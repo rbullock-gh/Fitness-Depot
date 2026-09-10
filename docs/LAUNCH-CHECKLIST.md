@@ -5,16 +5,33 @@ local-search results the brief is aimed at.
 
 ## 1. Set the real domain (required)
 
-The site ships with the placeholder `https://www.fitnessdepotcolumbia.com`. Replace it
-everywhere with the live domain:
+The site ships with a placeholder domain. One command points everything at the real one:
 
 ```bash
-grep -rl "www.fitnessdepotcolumbia.com" . --exclude-dir=.git \
-  | xargs sed -i "s#https://www.fitnessdepotcolumbia.com#https://YOUR-REAL-DOMAIN#g"
+./tools/set-domain.sh https://your-real-domain.com
 ```
 
-That covers the canonical tag, Open Graph/Twitter URLs, the JSON-LD `@id`s and URLs,
-`sitemap.xml` and `robots.txt`. Verify with `grep -r "fitnessdepotcolumbia" .` afterwards.
+That rewrites the canonical tag, the Open Graph and Twitter tags, the structured data,
+`sitemap.xml` and `robots.txt` in one pass. Run it with no arguments to see the current
+setting.
+
+### Why this matters for link previews
+
+When the site's address is pasted into Instagram, a text message, Facebook or Slack, the
+app fetches the page and reads its `og:image` tag to build the preview card. That tag has
+to be an **absolute, publicly reachable URL** — a relative path or a placeholder domain
+gives the scraper nothing to fetch, and it falls back to a bare link or the host's own
+branding.
+
+Once the domain is set and the site is live, the card shows `assets/img/og-image.png` —
+the Fitness Depot logo on white with the address and phone number.
+
+Previews are **cached hard**. If a link was shared before the site went live, the old card
+sticks. Force a refresh:
+
+- Facebook / Instagram — <https://developers.facebook.com/tools/debug/>, paste the URL, *Scrape Again*
+- X — <https://cards-dev.twitter.com/validator>
+- iMessage / Slack caches expire on their own; adding `?v=2` to the URL forces a fresh fetch
 
 ## 2. Confirm the facts
 
