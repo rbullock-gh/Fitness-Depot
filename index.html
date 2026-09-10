@@ -44,9 +44,35 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
+<!-- Hides .reveal blocks before first paint so they can animate in. The flag
+     only means "scripting is on", which is not the same as "main.js arrived":
+     if the script 404s, is blocked or is truncated, nothing would ever add
+     .is-in and the whole page would render as headings over empty space. So
+     main.js marks itself ready, and if that mark is missing by load we drop
+     the flag and show everything. A failed script costs the animation only. -->
+<script>
+  document.documentElement.className += " js";
+  window.addEventListener("load", function () {
+    if (!document.documentElement.hasAttribute("data-reveal-ready")) {
+      document.documentElement.className =
+        document.documentElement.className.replace(/(^|\s)js(\s|$)/, "$1$2");
+    }
+  });
+</script>
 <noscript>
-  <!-- scroll-reveal is a JS enhancement; without it the content must simply be there -->
-  <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+  <!-- Without JS: the reveal must not hide content, and the hamburger cannot
+       open anything — so drop it and lay the nav out inline instead. -->
+  <style>
+    .nav-toggle, .marquee__toggle { display: none !important; }
+    @media (max-width: 1160px) {
+      .nav {
+        position: static !important; visibility: visible !important;
+        opacity: 1 !important; transform: none !important;
+        max-height: none !important; box-shadow: none !important;
+        flex-wrap: wrap !important; padding: 0 !important;
+      }
+    }
+  </style>
 </noscript>
 
 <script type="application/ld+json">
@@ -331,6 +357,8 @@
   <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
   <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5.5v13l11-6.5z"/></symbol>
   <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
   <symbol id="i-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 17.5 17.5"/><path d="m3 8 1.5-1.5a2.1 2.1 0 0 1 3 0l1 1a2.1 2.1 0 0 1 0 3L7 12"/><path d="m21 16-1.5 1.5a2.1 2.1 0 0 1-3 0l-1-1a2.1 2.1 0 0 1 0-3L17 12"/><path d="m2 15 3 3M19 3l3 3"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 5.9a5 5 0 0 0-7.1 0L12 7.3l-1.4-1.4a5 5 0 1 0-7.1 7.1l8.5 8.5 8.5-8.5a5 5 0 0 0 0-7.1Z"/></symbol>
@@ -393,7 +421,7 @@
         Call
       </a>
       <a class="btn btn--sm" href="#memberships">Join Now</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
         <svg class="icon-open" aria-hidden="true"><use href="#i-menu"></use></svg>
         <svg class="icon-close" aria-hidden="true"><use href="#i-close"></use></svg>
       </button>
@@ -401,7 +429,7 @@
   </div>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
 <!-- ==========================================================================
      HERO
@@ -434,7 +462,7 @@
       <a class="btn btn--lg btn--ghost" href="#memberships">View Memberships</a>
     </div>
 
-    <ul class="hero__facts">
+    <ul role="list" class="hero__facts">
       <li><svg aria-hidden="true"><use href="#i-check"></use></svg> No contract</li>
       <li><svg aria-hidden="true"><use href="#i-check"></use></svg> No annual fee</li>
       <li><svg aria-hidden="true"><use href="#i-check"></use></svg> First two weeks free</li>
@@ -444,8 +472,9 @@
 </section>
 
 <!-- Amenity ticker -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
+<div class="marquee">
+  <div class="marquee__viewport" aria-hidden="true">
+    <div class="marquee__track">
     <ul>
       <li>24/7 Member Access</li><li>Free Weights</li><li>Squat Racks</li><li>Cardio Deck</li>
       <li>Turf Training</li><li>Personal Training</li><li>HydroMassage</li><li>Tanning</li>
@@ -456,7 +485,13 @@
       <li>Turf Training</li><li>Personal Training</li><li>HydroMassage</li><li>Tanning</li>
       <li>Showers</li><li>Fitness Depot Kids</li>
     </ul>
+    </div>
   </div>
+  <button class="marquee__toggle" type="button" data-marquee-toggle aria-pressed="false">
+    <svg class="icon-pause" aria-hidden="true"><use href="#i-pause"></use></svg>
+    <svg class="icon-play" aria-hidden="true"><use href="#i-play"></use></svg>
+    <span class="sr-only">Pause the scrolling amenity list</span>
+  </button>
 </div>
 
 <!-- ==========================================================================
@@ -588,7 +623,7 @@
           <span class="plan__period">/ biweekly</span>
         </p>
 
-        <ul class="plan__meta">
+        <ul role="list" class="plan__meta">
           <li class="is-highlight">First two weeks free</li>
           <li>$50 joining fee</li>
           <li>No annual fee</li>
@@ -596,7 +631,7 @@
         </ul>
 
         <p class="plan__label">What&rsquo;s included</p>
-        <ul class="checklist">
+        <ul role="list" class="checklist">
           <li><svg aria-hidden="true"><use href="#i-check"></use></svg> 24/7 gym access</li>
           <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Fitness Depot App</li>
           <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Daily nutrition tracking</li>
@@ -625,14 +660,14 @@
           <span class="plan__period">/ biweekly</span>
         </p>
 
-        <ul class="plan__meta">
+        <ul role="list" class="plan__meta">
           <li>$99 joining fee</li>
           <li>No annual fee</li>
           <li>No contract</li>
         </ul>
 
         <p class="plan__label">What&rsquo;s included</p>
-        <ul class="checklist">
+        <ul role="list" class="checklist">
           <li><svg aria-hidden="true"><use href="#i-check"></use></svg> 24/7 unlimited home-club access</li>
           <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Unlimited tanning</li>
           <li><svg aria-hidden="true"><use href="#i-check"></use></svg> Showers</li>
@@ -677,7 +712,7 @@
       lunch break, after the kids are down, or Sunday night.
     </p>
 
-    <ul class="feature-list">
+    <ul role="list" class="feature-list">
       <li>
         <span class="fi"><svg aria-hidden="true"><use href="#i-finger"></use></svg></span>
         <span>
@@ -739,7 +774,7 @@
         </div>
         <div class="equip__body">
           <h3>Cardio</h3>
-          <ul class="tick">
+          <ul role="list" class="tick">
             <li>Treadmills</li>
             <li>Stepmills</li>
             <li>Elliptical cross-trainers</li>
@@ -758,7 +793,7 @@
         </div>
         <div class="equip__body">
           <h3>Free Weights &amp; Strength</h3>
-          <ul class="tick">
+          <ul role="list" class="tick">
             <li>Free weights</li>
             <li>Squat racks</li>
             <li>Plate-loaded equipment</li>
@@ -777,7 +812,7 @@
         </div>
         <div class="equip__body">
           <h3>Functional Training</h3>
-          <ul class="tick">
+          <ul role="list" class="tick">
             <li>Turf functional training area</li>
             <li>Full-body circuit</li>
           </ul>
@@ -917,7 +952,7 @@
       </div>
       <div class="kids__body">
         <h3>Kid Care Hours &amp; Details</h3>
-        <ul class="spec">
+        <ul role="list" class="spec">
           <li><span class="k">Days</span> <span class="v">Monday&ndash;Thursday</span></li>
           <li><span class="k">Hours</span> <span class="v">4 PM &ndash; 7 PM</span></li>
           <li><span class="k">Ages</span> <span class="v">Walking age &ndash; 12 years</span></li>
@@ -1091,7 +1126,7 @@
 
         <div class="info-block">
           <h3>Member Access</h3>
-          <ul class="hours">
+          <ul role="list" class="hours">
             <li><span class="d">Every day, all day</span> <span class="t t--open">24 / 7</span></li>
           </ul>
           <p style="font-size:.93rem;color:var(--steel);margin-top:.6rem">
@@ -1101,7 +1136,7 @@
 
         <div class="info-block">
           <h3>Staffed Desk Hours</h3>
-          <ul class="hours">
+          <ul role="list" class="hours">
             <li><span class="d">Monday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
             <li><span class="d">Tuesday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
             <li><span class="d">Wednesday</span> <span class="t">8:00 AM &ndash; 7:00 PM</span></li>
@@ -1114,13 +1149,14 @@
               <strong>Staffed hours are not the same as member access.</strong>
               Members work out 24/7. Come during staffed hours to sign up, take a tour,
               set up fingerprint entry or talk to someone in person.
-              <span data-desk-status></span>
+              <span data-desk-status>Staffed Mon&ndash;Thu 8&ndash;7, Fri 8&ndash;5.</span>
             </span>
           </p>
         </div>
       </div>
 
       <div class="reveal" data-delay="1">
+        <!-- map:start -->
         <div class="map-frame">
           <iframe
             title="Map to Fitness Depot Columbia, 805 Hwy 98 Bypass, Columbia, MS 39429"
@@ -1128,7 +1164,14 @@
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen></iframe>
+          <noscript>
+            <div class="map-fallback">
+              <p><strong>Fitness Depot Columbia</strong><br>805 Hwy 98 Bypass<br>Columbia, MS 39429</p>
+              <a class="btn btn--sm" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fitness+Depot%2C+805+Hwy+98+Bypass%2C+Columbia%2C+MS+39429" target="_blank" rel="noopener">Open in Google Maps</a>
+            </div>
+          </noscript>
         </div>
+        <!-- map:end -->
         <p style="font-size:.92rem;color:var(--steel);margin-top:1rem">
           Serving Columbia, Marion County and nearby South Mississippi communities.
           Fitness Depot also has locations in Laurel, Meridian, McComb, Picayune, Ellisville and Wiggins &mdash;
@@ -1387,7 +1430,7 @@
 
     <div class="footer__bar">
       <p>&copy; <span data-year>2026</span> Fitness Depot Columbia. All rights reserved.</p>
-      <p>
+      <p id="footer-tagline">
         Locally owned and operated in Columbia, Mississippi &middot; open 24/7 for members
       </p>
     </div>
@@ -1396,7 +1439,7 @@
 
 <!-- Sticky mobile conversion bar -->
 <div class="mobile-cta">
-  <a class="btn" href="https://fdgyms.com/columbia" target="_blank" rel="noopener">Join Now</a>
+  <a class="btn" href="#memberships">Join Now</a>
   <a class="btn btn--ghost" href="tel:+16013453344" aria-label="Call Fitness Depot Columbia">
     <svg width="20" height="20" aria-hidden="true"><use href="#i-phone"></use></svg>
   </a>

@@ -12,6 +12,13 @@ Output: demo/fitness-depot-columbia-preview.html
 import base64
 import pathlib
 import re
+import sys
+
+
+def require(condition, message):
+    """A silent no-op here ships a preview that is wrong in a way nobody sees."""
+    if not condition:
+        sys.exit("build-demo: " + message)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "demo" / "fitness-depot-columbia-preview.html"
@@ -61,7 +68,10 @@ for dead in (
     html = html.replace(dead, "")
 
 # ---- the map needs a live frame, so the preview shows a static stand-in ----
-map_block = re.search(r'<div class="map-frame">.*?</div>', html, re.S)
+# Delimited by explicit markers: the previous non-greedy match to the first
+# </div> broke the moment the map frame gained a nested element.
+map_block = re.search(r"<!-- map:start -->.*?<!-- map:end -->", html, re.S)
+require(map_block, "map block markers not found in index.html")
 if map_block:
     html = html.replace(map_block.group(0), """<div class="map-frame map-frame--static">
             <div class="map-static">
@@ -72,6 +82,9 @@ if map_block:
             </div>
           </div>""")
 
+# count=1: the FIRST </style> closes the inlined stylesheet. Without the bound
+# this also injected preview CSS into the <noscript> block.
+require(html.count("</style>") >= 1, "no </style> found to append preview CSS to")
 html = html.replace("</style>", """
 /* preview-only: static stand-in for the interactive map */
 .map-frame--static { background: var(--fd-ink); border-color: var(--fd-ink); }
@@ -97,14 +110,18 @@ html = html.replace("</style>", """
 }
 .map-static__note { color: var(--steel-light); font-size: 0.9rem; margin: 0 0 0.4rem; }
 .preview-note { color: var(--fd-gold); }
-</style>""")
+</style>""", 1)
 
 # ---- label it, so a shared copy is never mistaken for the live site --------
-html = re.sub(
-    r"<p>\s*Gym in Columbia MS[^<]*</p>",
+# Targets an id rather than the tagline text, which has already changed once
+# and silently dropped this label from the shared preview.
+html, n_label = re.subn(
+    r'<p id="footer-tagline">.*?</p>',
     '<p class="preview-note">Design preview &mdash; not the live Fitness Depot website.</p>',
     html,
+    flags=re.S,
 )
+require(n_label == 1, "preview label not applied -- #footer-tagline missing from index.html")
 html = html.replace(
     "<title>Fitness Depot Columbia MS | 24/7 Gym in Columbia, Mississippi</title>",
     "<title>Fitness Depot Columbia — website preview</title>",

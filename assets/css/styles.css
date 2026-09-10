@@ -11,11 +11,12 @@
      Gold is legible on black (8:1) but NOT as text on white (2.4:1), so:
        --fd-gold       fills, borders, icons, and accents on dark surfaces
        --fd-gold-deep  hover fills, and LARGE gold text on light surfaces
-       --fd-gold-text  small gold text on light surfaces (4.9:1)
+       --fd-gold-text  small gold text on light surfaces (5.0:1 on paper,
+                       5.6:1 on white — checked against BOTH, not just white)
      Gold buttons always take BLACK text, never white. ---------------------- */
   --fd-gold: #c9a227;
   --fd-gold-deep: #a8851c;
-  --fd-gold-text: #8a6d12;
+  --fd-gold-text: #80650f;
   --fd-gold-light: #e0bc4a;
   --fd-gold-glow: rgba(201, 162, 39, 0.32);
 
@@ -49,6 +50,7 @@
   --shadow-lg: 0 26px 60px rgba(13, 13, 13, 0.17);
 
   --header-h: 94px;
+  --cta-h: 86px; /* sticky mobile CTA bar; see the reserve in the media query */
   --ease: cubic-bezier(0.22, 0.68, 0.28, 1);
 }
 
@@ -76,7 +78,11 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* NO overflow-x here. overflow on <body> is only propagated to the viewport
+     when <html> is visible; <html> already sets it, so a value here instead
+     makes <body> its own scroll container -- and position:sticky on .header
+     then sticks to a box that never scrolls. The header scrolled away and
+     never came back. Clipping is handled by the html rule alone. */
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -101,9 +107,17 @@ p:last-child { margin-bottom: 0; }
 
 ::selection { background: var(--fd-gold); color: var(--fd-ink); }
 
+/* The ring must survive every surface it can land on. Gold alone is 2.42:1 on
+   white, 2.18:1 on paper and 1.00:1 on a gold button — invisible exactly where
+   most of the site's controls live. The ink halo carries the contrast (19.44:1
+   on white, 17.53:1 on paper) and gold reads 8.03:1 against the halo. */
 :focus-visible {
   outline: 3px solid var(--fd-gold);
   outline-offset: 3px;
+  /* !important because several focusable elements (.to-top, .btn:hover, cards)
+     set their own box-shadow, which would otherwise win on source order and
+     leave a gold-on-gold ring at 1.32:1. */
+  box-shadow: 0 0 0 6px var(--fd-ink) !important;
   border-radius: 4px;
 }
 
@@ -242,7 +256,7 @@ p:last-child { margin-bottom: 0; }
 .btn--outline {
   --btn-bg: transparent;
   --btn-fg: var(--fd-ink);
-  border-color: rgba(13, 13, 13, 0.22);
+  border-color: rgba(13, 13, 13, 0.5);
 }
 .btn--outline:hover {
   background: var(--fd-ink);
@@ -283,7 +297,9 @@ p:last-child { margin-bottom: 0; }
   padding-block: 0.35rem;
 }
 .topbar__group { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-.topbar__item { display: inline-flex; align-items: center; gap: 0.45rem; text-decoration: none; }
+/* padding-block lifts these from 22.7px to clear the 24px WCAG 2.2 minimum —
+   the address and phone are the two most-tapped links on the site. */
+.topbar__item { display: inline-flex; align-items: center; gap: 0.45rem; text-decoration: none; padding-block: 0.3rem; }
 .topbar a.topbar__item:hover { color: var(--white); }
 .topbar__item svg { width: 15px; height: 15px; flex: none; color: var(--fd-gold); }
 .topbar strong { color: var(--white); font-weight: 600; }
@@ -293,6 +309,7 @@ p:last-child { margin-bottom: 0; }
   top: 0;
   z-index: 90;
   background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
   backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid var(--line);
   transition: box-shadow 0.25s var(--ease);
@@ -374,7 +391,7 @@ p:last-child { margin-bottom: 0; }
   right: clamp(0.34rem, 0.9vw, 0.72rem);
   bottom: 0.3rem;
   height: 2px;
-  background: var(--fd-gold);
+  background: var(--fd-gold-text);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.24s var(--ease);
@@ -516,9 +533,11 @@ p:last-child { margin-bottom: 0; }
 .marquee {
   background: var(--fd-gold);
   color: var(--fd-ink);
-  overflow: hidden;
   border-block: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
 }
+.marquee__viewport { flex: 1; overflow: hidden; min-width: 0; }
 .marquee__track {
   display: flex;
   width: max-content;
@@ -544,7 +563,30 @@ p:last-child { margin-bottom: 0; }
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee:hover .marquee__track,
+.marquee.is-paused .marquee__track { animation-play-state: paused; }
+
+/* WCAG 2.2.2: motion that starts on its own and runs past five seconds needs an
+   on-page way to stop it. Hover-to-pause is mouse-only, so it does not count. */
+.marquee__toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-inline: 0.3rem 0.55rem;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.32);
+  border-radius: 9px;
+  color: var(--fd-ink);
+  cursor: pointer;
+}
+.marquee__toggle:hover { background: rgba(0, 0, 0, 0.09); }
+.marquee__toggle svg { width: 17px; height: 17px; }
+.marquee__toggle .icon-play { display: none; }
+.marquee__toggle[aria-pressed="true"] .icon-pause { display: none; }
+.marquee__toggle[aria-pressed="true"] .icon-play { display: block; }
 
 /* ==========================================================================
    Split media/text blocks
@@ -710,8 +752,11 @@ p:last-child { margin-bottom: 0; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.75rem;
-  align-items: stretch;
+  align-items: start;
 }
+/* Without this a grid item cannot shrink below min-content, and at 320px the
+   "Most Popular" flag was clipped off the right edge with no way to scroll. */
+.plans > * { min-width: 0; }
 
 .plan {
   position: relative;
@@ -1169,7 +1214,7 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.82rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--steel);
+  color: var(--steel-light);
 }
 
 /* ==========================================================================
@@ -1213,6 +1258,16 @@ p:last-child { margin-bottom: 0; }
   border: 1px solid var(--line);
 }
 .map-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.map-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+}
 
 /* ==========================================================================
    Final CTA
@@ -1320,7 +1375,7 @@ p:last-child { margin-bottom: 0; }
   padding-block: 1.4rem;
   border-top: 1px solid var(--line-dark);
   font-size: 0.86rem;
-  color: var(--steel);
+  color: var(--steel-light);
 }
 .footer__social { display: flex; gap: 0.6rem; margin-top: 1.25rem; }
 .footer__social a {
@@ -1350,6 +1405,7 @@ p:last-child { margin-bottom: 0; }
   gap: 0.55rem;
   padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
   background: rgba(13, 13, 13, 0.97);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--line-dark);
 }
@@ -1384,16 +1440,21 @@ p:last-child { margin-bottom: 0; }
    Scroll reveal
    ========================================================================== */
 
-.reveal {
+/* Scoped to .js, which an inline script in <head> sets. <noscript> only fires
+   when scripting is DISABLED -- it does nothing if main.js 404s, is blocked by
+   an extension or arrives truncated, and in those cases every one of these
+   blocks stayed at opacity 0 and the page rendered as headings over empty
+   space. Defaulting to visible means a failed script costs the animation,
+   never the content. */
+.js .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
-.reveal.is-in { opacity: 1; transform: none; }
-.reveal[data-delay="1"] { transition-delay: 0.08s; }
-.reveal[data-delay="2"] { transition-delay: 0.16s; }
-.reveal[data-delay="3"] { transition-delay: 0.24s; }
-.reveal[data-delay="4"] { transition-delay: 0.32s; }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.js .reveal[data-delay="1"] { transition-delay: 0.08s; }
+.js .reveal[data-delay="2"] { transition-delay: 0.16s; }
+.js .reveal[data-delay="3"] { transition-delay: 0.24s; }
 
 /* ==========================================================================
    Responsive
@@ -1422,9 +1483,17 @@ p:last-child { margin-bottom: 0; }
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.24s var(--ease), transform 0.24s var(--ease), visibility 0.24s;
+    /* visibility is delayed only on the way OUT, so the panel stays visible
+       while it fades. On the way in it flips at once -- otherwise the links
+       are unfocusable for 240ms and moving focus into the menu silently fails. */
+    transition: opacity 0.24s var(--ease), transform 0.24s var(--ease), visibility 0s 0.24s;
   }
-  .nav.is-open { opacity: 1; visibility: visible; transform: none; }
+  .nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity 0.24s var(--ease), transform 0.24s var(--ease), visibility 0s 0s;
+  }
   .nav a { padding: 0.95rem 0.25rem; font-size: 1.22rem; border-bottom: 1px solid var(--line); }
   .nav a::after { display: none; }
 
@@ -1445,8 +1514,11 @@ p:last-child { margin-bottom: 0; }
   .gallery__item--tall { grid-row: span 1; aspect-ratio: 4 / 3; }
 
   .mobile-cta { display: flex; }
-  body { padding-bottom: 74px; }
-  .to-top { bottom: 84px; }
+  /* The bar measures ~79px, so the old 74px reserve left the last slice of the
+     footer under it -- and ~39px under it on a phone with a home indicator.
+     --cta-h is the reserve; .to-top clears it by a gap. */
+  body { padding-bottom: calc(var(--cta-h) + env(safe-area-inset-bottom, 0px)); }
+  .to-top { bottom: calc(var(--cta-h) + 0.75rem + env(safe-area-inset-bottom, 0px)); }
 
   .topbar__group--secondary { display: none; }
 }
@@ -1472,8 +1544,10 @@ p:last-child { margin-bottom: 0; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
   .marquee__track { animation: none; }
+  /* nothing is moving, so there is nothing to pause */
+  .marquee__toggle { display: none; }
 }
 
 @media print {
