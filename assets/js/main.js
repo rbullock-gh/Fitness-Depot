@@ -27,6 +27,7 @@
       // which would restart tabbing from the top of the document.
       var focusInside = nav.contains(document.activeElement);
       nav.classList.remove("is-open");
+      nav.style.maxHeight = "";
       toggle.setAttribute("aria-expanded", "false");
       if (focusInside) toggle.focus();
     };
@@ -38,6 +39,12 @@
       }
       nav.classList.add("is-open");
       toggle.setAttribute("aria-expanded", "true");
+      // Size the panel to the space actually below it. The CSS fallback assumes
+      // the header sits at the top of the viewport, which is not true while the
+      // topbar is still on screen -- on a short phone that over-allocated and
+      // pushed the last link off the bottom with no way to scroll to it.
+      nav.style.maxHeight =
+        Math.max(160, window.innerHeight - nav.getBoundingClientRect().top - 12) + "px";
       // The toggle sits after the panel in source order, so without this the
       // next Tab would skip the menu entirely and land behind the overlay.
       // The panel is coming out of visibility:hidden and focus() is a no-op

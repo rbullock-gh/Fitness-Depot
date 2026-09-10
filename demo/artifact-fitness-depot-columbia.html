@@ -773,7 +773,13 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-.plan__name { font-size: clamp(1.85rem, 3.4vw, 2.4rem); margin-bottom: 0.15rem; }
+/* The vw term has to be large enough to actually bite on a phone: at 3.4vw the
+   floor won until 871px, so a long single word overhung the card border. */
+.plan__name {
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  margin-bottom: 0.15rem;
+  overflow-wrap: anywhere;
+}
 .plan__tag {
   font-size: 0.8rem;
   font-weight: 600;
@@ -1043,7 +1049,7 @@ p:last-child { margin-bottom: 0; }
   background: rgba(201, 162, 39, 0.15);
   color: var(--fd-gold-text);
   border-radius: 100px;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1350,7 +1356,9 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.15em;
   margin-bottom: 1.15rem;
 }
-.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+/* 17px tall on a 26.6px pitch was a hard target to hit with a thumb. */
+.footer ul a { display: inline-block; padding-block: 0.5rem; }
 .footer a { text-decoration: none; font-size: 0.97rem; transition: color 0.18s var(--ease); }
 .footer a:hover { color: var(--fd-gold); }
 .footer address { font-style: normal; font-size: 0.97rem; line-height: 1.7; }
@@ -1365,11 +1373,11 @@ p:last-child { margin-bottom: 0; }
   color: var(--steel-light);
 }
 .footer__social { display: flex; gap: 0.6rem; margin-top: 1.25rem; }
-.footer__social a {
+.footer__social a { /* 44x44 minimum */
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 10px;
   color: var(--white);
@@ -1450,15 +1458,22 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 1080px) {
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 1160px) {
   :root { --header-h: 74px; }
 
   .nav {
-    position: fixed;
-    inset: calc(var(--header-h) + 0px) 0 auto 0;
+    /* Absolute against .header, which is sticky and therefore positioned. It
+       used to be position:fixed and only landed here because backdrop-filter
+       on .header makes it a containing block for fixed descendants -- layout
+       depending on a visual effect. top:100% also drops the assumption that
+       the header is exactly --header-h tall and starts at the viewport top,
+       which is false while the topbar is still on screen. */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -1466,8 +1481,12 @@ p:last-child { margin-bottom: 0; }
     background: var(--white);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 18px 40px rgba(13, 13, 13, 0.16);
+    /* Fallback only. main.js measures the real space below the panel's top
+       edge on open; without that this over-allocates by the topbar height and
+       the last item falls off a short phone with no way to scroll to it. */
     max-height: calc(100dvh - var(--header-h));
     overflow-y: auto;
+    overscroll-behavior: contain;
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
@@ -1493,7 +1512,8 @@ p:last-child { margin-bottom: 0; }
     .split__media::before { display: none; }
   .kids__media img { min-height: 260px; }
 
-  .equip, .tiles,   .plans { grid-template-columns: 1fr; }
+  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
+  .plans { grid-template-columns: 1fr; }
 
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .gallery__item--wide { grid-column: span 2; }
@@ -1519,7 +1539,7 @@ p:last-child { margin-bottom: 0; }
   .header__cta .btn { width: auto; }
   .hero__facts { gap: 0.55rem 1.2rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .plan__flag { font-size: 0.78rem; padding: 0.4rem 0.85rem; }
+  .plan__flag { font-size: 0.84rem; padding: 0.4rem 0.85rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1601,15 +1621,22 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 1080px) {
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 1160px) {
   :root { --header-h: 74px; }
 
   .nav {
-    position: fixed;
-    inset: calc(var(--header-h) + 0px) 0 auto 0;
+    /* Absolute against .header, which is sticky and therefore positioned. It
+       used to be position:fixed and only landed here because backdrop-filter
+       on .header makes it a containing block for fixed descendants -- layout
+       depending on a visual effect. top:100% also drops the assumption that
+       the header is exactly --header-h tall and starts at the viewport top,
+       which is false while the topbar is still on screen. */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -1617,8 +1644,12 @@ p:last-child { margin-bottom: 0; }
     background: var(--white);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 18px 40px rgba(13, 13, 13, 0.16);
+    /* Fallback only. main.js measures the real space below the panel's top
+       edge on open; without that this over-allocates by the topbar height and
+       the last item falls off a short phone with no way to scroll to it. */
     max-height: calc(100dvh - var(--header-h));
     overflow-y: auto;
+    overscroll-behavior: contain;
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
@@ -1644,7 +1675,8 @@ p:last-child { margin-bottom: 0; }
     .split__media::before { display: none; }
   .kids__media img { min-height: 260px; }
 
-  .equip, .tiles,   .plans { grid-template-columns: 1fr; }
+  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
+  .plans { grid-template-columns: 1fr; }
 
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .gallery__item--wide { grid-column: span 2; }
@@ -1670,7 +1702,7 @@ p:last-child { margin-bottom: 0; }
   .header__cta .btn { width: auto; }
   .hero__facts { gap: 0.55rem 1.2rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .plan__flag { font-size: 0.78rem; padding: 0.4rem 0.85rem; }
+  .plan__flag { font-size: 0.84rem; padding: 0.4rem 0.85rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2441,7 +2473,13 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-.plan__name { font-size: clamp(1.85rem, 3.4vw, 2.4rem); margin-bottom: 0.15rem; }
+/* The vw term has to be large enough to actually bite on a phone: at 3.4vw the
+   floor won until 871px, so a long single word overhung the card border. */
+.plan__name {
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  margin-bottom: 0.15rem;
+  overflow-wrap: anywhere;
+}
 .plan__tag {
   font-size: 0.8rem;
   font-weight: 600;
@@ -2711,7 +2749,7 @@ p:last-child { margin-bottom: 0; }
   background: rgba(201, 162, 39, 0.15);
   color: var(--fd-gold-text);
   border-radius: 100px;
-  font-size: 0.78rem;
+  font-size: 0.84rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3018,7 +3056,9 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.15em;
   margin-bottom: 1.15rem;
 }
-.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+/* 17px tall on a 26.6px pitch was a hard target to hit with a thumb. */
+.footer ul a { display: inline-block; padding-block: 0.5rem; }
 .footer a { text-decoration: none; font-size: 0.97rem; transition: color 0.18s var(--ease); }
 .footer a:hover { color: var(--fd-gold); }
 .footer address { font-style: normal; font-size: 0.97rem; line-height: 1.7; }
@@ -3033,11 +3073,11 @@ p:last-child { margin-bottom: 0; }
   color: var(--steel-light);
 }
 .footer__social { display: flex; gap: 0.6rem; margin-top: 1.25rem; }
-.footer__social a {
+.footer__social a { /* 44x44 minimum */
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 10px;
   color: var(--white);
@@ -3118,15 +3158,22 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 1080px) {
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 1160px) {
   :root { --header-h: 74px; }
 
   .nav {
-    position: fixed;
-    inset: calc(var(--header-h) + 0px) 0 auto 0;
+    /* Absolute against .header, which is sticky and therefore positioned. It
+       used to be position:fixed and only landed here because backdrop-filter
+       on .header makes it a containing block for fixed descendants -- layout
+       depending on a visual effect. top:100% also drops the assumption that
+       the header is exactly --header-h tall and starts at the viewport top,
+       which is false while the topbar is still on screen. */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -3134,8 +3181,12 @@ p:last-child { margin-bottom: 0; }
     background: var(--white);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 18px 40px rgba(13, 13, 13, 0.16);
+    /* Fallback only. main.js measures the real space below the panel's top
+       edge on open; without that this over-allocates by the topbar height and
+       the last item falls off a short phone with no way to scroll to it. */
     max-height: calc(100dvh - var(--header-h));
     overflow-y: auto;
+    overscroll-behavior: contain;
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
@@ -3161,7 +3212,8 @@ p:last-child { margin-bottom: 0; }
     .split__media::before { display: none; }
   .kids__media img { min-height: 260px; }
 
-  .equip, .tiles,   .plans { grid-template-columns: 1fr; }
+  .equip, .tiles { grid-template-columns: repeat(2, 1fr); }
+  .plans { grid-template-columns: 1fr; }
 
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .gallery__item--wide { grid-column: span 2; }
@@ -3187,7 +3239,7 @@ p:last-child { margin-bottom: 0; }
   .header__cta .btn { width: auto; }
   .hero__facts { gap: 0.55rem 1.2rem; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
-  .plan__flag { font-size: 0.78rem; padding: 0.4rem 0.85rem; }
+  .plan__flag { font-size: 0.84rem; padding: 0.4rem 0.85rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4659,6 +4711,7 @@ p:last-child { margin-bottom: 0; }
       // which would restart tabbing from the top of the document.
       var focusInside = nav.contains(document.activeElement);
       nav.classList.remove("is-open");
+      nav.style.maxHeight = "";
       toggle.setAttribute("aria-expanded", "false");
       if (focusInside) toggle.focus();
     };
@@ -4670,6 +4723,12 @@ p:last-child { margin-bottom: 0; }
       }
       nav.classList.add("is-open");
       toggle.setAttribute("aria-expanded", "true");
+      // Size the panel to the space actually below it. The CSS fallback assumes
+      // the header sits at the top of the viewport, which is not true while the
+      // topbar is still on screen -- on a short phone that over-allocated and
+      // pushed the last link off the bottom with no way to scroll to it.
+      nav.style.maxHeight =
+        Math.max(160, window.innerHeight - nav.getBoundingClientRect().top - 12) + "px";
       // The toggle sits after the panel in source order, so without this the
       // next Tab would skip the menu entirely and land behind the overlay.
       // The panel is coming out of visibility:hidden and focus() is a no-op
