@@ -1,42 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- ==========================================================================
-     BEFORE LAUNCH: replace every occurrence of https://www.fitnessdepotcolumbia.com
-     with the live domain (canonical, Open Graph, sitemap.xml, robots.txt, schema).
-     See docs/LAUNCH-CHECKLIST.md
-     ========================================================================== -->
-
-<title>Fitness Depot Columbia — website preview</title>
-<meta name="description" content="Locally owned 24/7 gym in Columbia, MS. Free weights, cardio, turf training, personal training, HydroMassage, tanning and Kid Care. No contract.">
-<link rel="canonical" href="https://www.fitnessdepotcolumbia.com/">
-<meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0d0d0d">
-<meta name="geo.region" content="US-MS">
-<meta name="geo.placename" content="Columbia, Mississippi">
-
-<!-- Open Graph / social -->
-<meta property="og:type" content="business.business">
-<meta property="og:site_name" content="Fitness Depot Columbia">
-<meta property="og:title" content="Fitness Depot Columbia MS | 24/7 Gym in Columbia, Mississippi">
-<meta property="og:description" content="A locally owned 24/7 gym in Columbia, MS. Free weights, cardio, turf functional training, personal training, HydroMassage, tanning and Kid Care. No contract. No annual fee.">
-<meta property="og:url" content="https://www.fitnessdepotcolumbia.com/">
-<meta property="og:image" content="https://www.fitnessdepotcolumbia.com/assets/img/og-image.png">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fitness Depot Columbia MS | 24/7 Gym in Columbia, Mississippi">
-<meta name="twitter:description" content="A locally owned 24/7 gym in Columbia, MS. Strength, cardio, functional training, recovery and Kid Care.">
-<meta name="twitter:image" content="https://www.fitnessdepotcolumbia.com/assets/img/og-image.png">
-
-
-
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Fitness Depot Columbia</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* ==========================================================================
@@ -1548,6 +1510,32 @@ p:last-child { margin-bottom: 0; }
 .map-static__note { color: var(--steel-light); font-size: 0.9rem; margin: 0 0 0.4rem; }
 .preview-note { color: var(--fd-gold); }
 </style>
+<style>.reveal { opacity: 1 !important; transform: none !important; }
+/* preview-only: static stand-in for the interactive map */
+.map-frame--static { background: var(--fd-ink); border-color: var(--fd-ink); }
+.map-static {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--white);
+}
+.map-static svg { color: var(--fd-gold); }
+.map-static__addr {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.map-static__note { color: var(--steel-light); font-size: 0.9rem; margin: 0 0 0.4rem; }
+.preview-note { color: var(--fd-gold); }
+</style>
 <noscript>
   <!-- scroll-reveal is a JS enhancement; without it the content must simply be there -->
   <style>.reveal { opacity: 1 !important; transform: none !important; }
@@ -1577,208 +1565,6 @@ p:last-child { margin-bottom: 0; }
 .preview-note { color: var(--fd-gold); }
 </style>
 </noscript>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": ["HealthClub", "LocalBusiness"],
-      "@id": "https://www.fitnessdepotcolumbia.com/#gym",
-      "name": "Fitness Depot Columbia",
-      "alternateName": "Fitness Depot Columbia MS",
-      "description": "Fitness Depot Columbia is a locally owned 24/7 gym serving Columbia, Mississippi and Marion County. Free weights, squat racks, cardio equipment, a turf functional training area, personal training, HydroMassage recovery, tanning, showers and Fitness Depot Kids care.",
-      "url": "https://www.fitnessdepotcolumbia.com/",
-      "telephone": "+1-601-345-3344",
-      "image": "https://www.fitnessdepotcolumbia.com/assets/img/og-image.png",
-      "priceRange": "$",
-      "currenciesAccepted": "USD",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "805 Hwy 98 Bypass",
-        "addressLocality": "Columbia",
-        "addressRegion": "MS",
-        "postalCode": "39429",
-        "addressCountry": "US"
-      },
-      "hasMap": "https://www.google.com/maps/search/?api=1&query=Fitness%20Depot%20805%20Hwy%2098%20Bypass%20Columbia%20MS%2039429",
-      "areaServed": [
-        { "@type": "City", "name": "Columbia", "containedInPlace": { "@type": "State", "name": "Mississippi" } },
-        { "@type": "AdministrativeArea", "name": "Marion County, Mississippi" }
-      ],
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "Fitness Depot",
-        "url": "https://fdgyms.com/"
-      },
-      "sameAs": [
-        "https://fdgyms.com/columbia",
-        "https://www.facebook.com/fitnessdepotcolumbia/"
-      ],
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "name": "Staffed desk hours",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-          "opens": "08:00",
-          "closes": "19:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "name": "Staffed desk hours",
-          "dayOfWeek": "Friday",
-          "opens": "08:00",
-          "closes": "17:00"
-        }
-      ],
-      "amenityFeature": [
-        { "@type": "LocationFeatureSpecification", "name": "24/7 member access", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Fingerprint entry", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "24-hour security", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Free weights and squat racks", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Cardio equipment", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Turf functional training area", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Personal training", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "HydroMassage", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Tanning", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Showers", "value": true },
-        { "@type": "LocationFeatureSpecification", "name": "Kid Care", "value": true }
-      ],
-      "makesOffer": [
-        {
-          "@type": "Offer",
-          "name": "Live 2 Lead membership",
-          "category": "Gym membership",
-          "url": "https://www.fitnessdepotcolumbia.com/#memberships",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "20.00",
-            "priceCurrency": "USD",
-            "referenceQuantity": {
-              "@type": "QuantitativeValue",
-              "value": 2,
-              "unitCode": "WEE"
-            }
-          }
-        },
-        {
-          "@type": "Offer",
-          "name": "Neighborhood membership",
-          "category": "Gym membership",
-          "url": "https://www.fitnessdepotcolumbia.com/#memberships",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "15.00",
-            "priceCurrency": "USD",
-            "referenceQuantity": {
-              "@type": "QuantitativeValue",
-              "value": 2,
-              "unitCode": "WEE"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.fitnessdepotcolumbia.com/#website",
-      "url": "https://www.fitnessdepotcolumbia.com/",
-      "name": "Fitness Depot Columbia",
-      "publisher": { "@id": "https://www.fitnessdepotcolumbia.com/#gym" },
-      "inLanguage": "en-US"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.fitnessdepotcolumbia.com/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is Fitness Depot Columbia open 24/7?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Members have 24/7 access to the Columbia gym using fingerprint entry, and the building has 24-hour security. Staffed front desk hours are Monday through Thursday 8:00 AM to 7:00 PM and Friday 8:00 AM to 5:00 PM." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot require a contract?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Fitness Depot memberships are month-to-month with no long-term contract. A 30-day notice is required to cancel, and cancellations cannot be handled over the phone." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there an annual fee at Fitness Depot Columbia?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Both the Live 2 Lead and Neighborhood memberships are advertised with no annual fee." }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does a gym membership cost in Columbia, MS?",
-          "acceptedAnswer": { "@type": "Answer", "text": "The Live 2 Lead membership is advertised at $20 biweekly with a $50 joining fee and the first two weeks free. The Neighborhood membership is advertised at $15 biweekly with a $99 joining fee. Pricing and promotions can change, so confirm current rates with the Columbia location at (601) 345-3344." }
-        },
-        {
-          "@type": "Question",
-          "name": "What does the membership include?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Live 2 Lead includes 24/7 gym access, the Fitness Depot App, daily nutrition tracking, a set training routine, bring-a-guest privileges, 2 daily HydroMassage sessions, multi-location club access, 24/7 tanning, showers, and Kid Care with the first child included. The Neighborhood membership includes 24/7 unlimited home-club access, unlimited tanning and showers." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia offer personal training?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Personal training is available at Fitness Depot. Ask the Columbia front desk about current trainer availability, session options and pricing." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia have free weights?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Columbia gym has free weights, dumbbells, barbells, squat racks and plate-loaded equipment." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia have cardio equipment?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cardio equipment at the Columbia location includes treadmills, stepmills, elliptical cross-trainers and spin bikes, with cardio TVs on the floor." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia offer HydroMassage?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Columbia location has private recovery rooms with HydroMassage. Live 2 Lead members get two HydroMassage sessions per day." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia offer tanning?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tanning is included with the Live 2 Lead membership on a 24/7 basis, and the Neighborhood membership includes unlimited tanning." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia have showers?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Showers are included with both the Live 2 Lead and Neighborhood memberships." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does Fitness Depot Columbia offer childcare?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Fitness Depot Kids is available for children from walking age through 12 years old. The first child is included with a Live 2 Lead membership and each additional child is $10 biweekly." }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the Fitness Depot Kids hours in Columbia?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Fitness Depot Kids at the Columbia location is open Monday through Thursday from 4:00 PM to 7:00 PM. Children can attend for up to two hours each day." }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is Fitness Depot Columbia located?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Fitness Depot Columbia is at 805 Hwy 98 Bypass, Columbia, MS 39429, serving Columbia and the surrounding Marion County area. Phone: (601) 345-3344." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can members access other Fitness Depot locations?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Multi-location club access is listed as a Live 2 Lead membership benefit. The Neighborhood membership includes 24/7 access to your home club. Fitness Depot has locations across South Mississippi, so confirm which clubs your membership covers with the Columbia staff." }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I join Fitness Depot Columbia?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You can start your membership online or stop by the gym. To finish signing up and get set up with fingerprint entry, come by 805 Hwy 98 Bypass during staffed hours with a photo ID. Members 16 and older receive a fingerprint for 24/7 access. Call (601) 345-3344 with any questions." }
-        }
-      ]
-    }
-  ]
-}
-</script>
-</head>
-<body>
-
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- Icon sprite -->
@@ -3078,5 +2864,3 @@ p:last-child { margin-bottom: 0; }
 })();
 
 </script>
-</body>
-</html>

@@ -15,6 +15,7 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "demo" / "fitness-depot-columbia-preview.html"
+ARTIFACT_OUT = ROOT / "demo" / "artifact-fitness-depot-columbia.html"
 
 html = (ROOT / "index.html").read_text(encoding="utf-8")
 css = (ROOT / "assets" / "css" / "styles.css").read_text(encoding="utf-8")
@@ -115,3 +116,19 @@ OUT.parent.mkdir(exist_ok=True)
 OUT.write_text(html, encoding="utf-8")
 kb = OUT.stat().st_size // 1024
 print(f"{OUT.relative_to(ROOT)} written — {kb} KB, {inlined} image(s) inlined")
+
+# ---- second output: a body-only fragment for a hosted Artifact page ---------
+# The host wraps the file in its own document skeleton, so no doctype/html/head
+# /body tags may appear; the title, font link and styles ride at the top.
+title = re.search(r"<title>(.*?)</title>", html, re.S).group(1)
+fonts = re.search(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^>]*>', html).group(0)
+styles = re.findall(r"<style>.*?</style>", html, re.S)
+noscript = re.findall(r"<noscript>.*?</noscript>", html, re.S)
+body = re.search(r"<body>(.*)</body>", html, re.S).group(1)
+
+fragment = "\n".join(
+    ["<title>Fitness Depot Columbia</title>", fonts] + styles + noscript + [body.strip()]
+)
+ARTIFACT_OUT.write_text(fragment, encoding="utf-8")
+akb = ARTIFACT_OUT.stat().st_size // 1024
+print(f"{ARTIFACT_OUT.relative_to(ROOT)} written — {akb} KB (body-only, for hosting)")
