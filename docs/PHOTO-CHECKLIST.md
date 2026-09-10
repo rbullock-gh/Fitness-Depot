@@ -22,6 +22,10 @@ photos were substituted — each slot is a labelled placeholder instead.
    differ from the placeholder, and adjust the `alt` text if the shot differs from what
    was planned.
 
+> **Two placeholders carry no label.** `hero-facility` and `access-247` sit *behind*
+> headline copy, where label text ghosting through a headline reads as a bug — so they are
+> plain textured panels. The table below is the record of what belongs in them.
+
 ## The slots
 
 | Filename (basename) | Where it appears | Target size | What to shoot |

@@ -38,10 +38,40 @@ SVG
   echo "  $OUT/$name.svg"
 }
 
+# Slots that sit behind headline copy get no lettering -- label text ghosting
+# through a headline looks like a bug. What belongs in these shots is recorded in
+# docs/PHOTO-CHECKLIST.md instead.
+make_bg () {
+  local name="$1" w="$2" h="$3"
+  cat > "$OUT/$name.svg" <<SVG
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 $w $h" width="$w" height="$h" role="presentation">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c1a14"/>
+      <stop offset="0.5" stop-color="#0d0d0d"/>
+      <stop offset="1" stop-color="#231f16"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.3" r="0.55">
+      <stop offset="0" stop-color="#c9a227" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#c9a227" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="stripes" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+      <rect width="46" height="46" fill="none"/>
+      <rect width="12" height="46" fill="#ffffff" opacity="0.018"/>
+    </pattern>
+  </defs>
+  <rect width="$w" height="$h" fill="url(#g)"/>
+  <rect width="$w" height="$h" fill="url(#stripes)"/>
+  <rect width="$w" height="$h" fill="url(#glow)"/>
+</svg>
+SVG
+  echo "  $OUT/$name.svg (background, no lettering)"
+}
+
 echo "Generating placeholders:"
-make_svg hero-facility            1600 1100 "COLUMBIA GYM FLOOR"    "Wide hero shot of the Columbia facility"
+make_bg  hero-facility            1600 1100
 make_svg about-community          1200 900  "MEMBERS TRAINING"      "Real members on the Columbia gym floor"
-make_svg access-247               1200 900  "24/7 ACCESS"           "Entry / fingerprint reader / night floor"
+make_bg  access-247               1200 900
 make_svg equipment-cardio         1100 800  "CARDIO"                "Treadmills, stepmills, ellipticals, spin bikes"
 make_svg equipment-strength       1100 800  "FREE WEIGHTS"          "Dumbbells, barbells, squat racks, plate loaded"
 make_svg equipment-functional     1100 800  "FUNCTIONAL TRAINING"   "Turf area and full-body circuit"
