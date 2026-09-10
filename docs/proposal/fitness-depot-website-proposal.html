@@ -229,12 +229,14 @@ h3 {
 .path li:last-child { border-bottom: 0; }
 .path li::before {
   content: counter(step, decimal-leading-zero);
+  grid-column: 1;
   font-family: var(--display);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--gold);
   line-height: 1.2;
 }
+.path strong, .path span { grid-column: 2; }
 .path strong {
   display: block;
   font-family: var(--display);
@@ -243,7 +245,7 @@ h3 {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.path span { color: var(--ink-soft); font-size: 0.98rem; }
+.path span { color: var(--ink-soft); font-size: 0.98rem; max-width: var(--measure); }
 
 /* checklists */
 .checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
@@ -351,6 +353,11 @@ td:last-child { color: var(--ink-soft); }
 .docmeta--light dt { color: var(--muted); }
 .docmeta--light dd { color: var(--ink); }
 
+.cost > div { align-content: start; }
+.cost dd { display: flex; align-items: baseline; gap: 0.15rem; }
+.cost .per { font-size: 1rem; font-weight: 600; color: var(--muted); }
+.cost-note { margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
+
 /* closing */
 .closing {
   margin-top: clamp(2.75rem, 6vw, 4.25rem);
@@ -396,8 +403,8 @@ footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.86rem; }
 
     <dl class="docmeta">
       <div><dt>Prepared for</dt><dd>Fitness Depot Columbia</dd></div>
-      <div><dt>Prepared by</dt><dd class="fill">[ your name ]</dd></div>
-      <div><dt>Date</dt><dd class="fill">[ date ]</dd></div>
+      <div><dt>Location</dt><dd>805 Hwy 98 Bypass</dd></div>
+      <div><dt>Status</dt><dd>Built &amp; ready to launch</dd></div>
     </dl>
   </div>
 </header>
@@ -568,33 +575,30 @@ footer { margin-top: 2.5rem; color: var(--muted); font-size: 0.86rem; }
 <section>
   <h2>Investment &amp; timeline</h2>
   <dl class="cost">
-    <div><dt>Build</dt><dd class="fill">[ fee ]</dd></div>
-    <div><dt>Launch</dt><dd class="fill">[ timeline ]</dd></div>
-    <div><dt>Hosting</dt><dd class="fill">[ monthly ]</dd></div>
-    <div><dt>Photo shoot <span style="text-transform:none;letter-spacing:0;font-weight:500">(optional)</span></dt><dd class="fill">[ shoot fee ]</dd></div>
+    <div><dt>Website build</dt><dd>$2,500</dd><p class="cost-note">One-time. Everything listed above, yours to keep.</p></div>
+    <div><dt>Photo shoot</dt><dd>$600</dd><p class="cost-note">Optional. Half a day on site, edited images plus full-resolution originals.</p></div>
+    <div><dt>Hosting &amp; care</dt><dd>$25<span class="per">/mo</span></dd><p class="cost-note">Hosting, security updates and small content changes. Cancel anytime.</p></div>
+    <div><dt>Launch</dt><dd>2 weeks</dd><p class="cost-note">From the day photos are done. Faster if you already have them.</p></div>
   </dl>
-  <div class="note">
-    <span aria-hidden="true">→</span>
-    <span><b>Fill these in before sending.</b> The figures above and your name and date in the
-    header are the only blanks in this document.</span>
-  </div>
+  <p style="margin-top:1.5rem">
+    The build is a one-time cost, not a subscription. There's no page-builder licence and no
+    platform fee climbing every year — if you ever want to move the site elsewhere, you can take it
+    with you.
+  </p>
 </section>
 
 <section class="closing">
   <h2>Next step</h2>
   <p>
-    Open the preview on your phone — that's how most of your future members will see it. Then send me
-    the photos, and we'll set a launch date.
+    Open the preview on your phone — that's how most of your future members will see it. If it looks
+    like the gym you want people to walk into, send me a message and we'll set a launch date. If you'd
+    rather I handle the photography too, say so and I'll bring the camera.
   </p>
   <p>
     <a class="btn" href="https://claude.ai/code/artifact/1e208f79-9e33-4960-87d7-1612a8df8d93" target="_blank" rel="noopener">Open the live preview</a>
   </p>
 
-  <dl class="docmeta docmeta--light">
-    <div><dt>Get in touch</dt><dd class="fill">[ your name ]</dd></div>
-    <div><dt>Email</dt><dd class="fill">[ your email ]</dd></div>
-    <div><dt>Phone</dt><dd class="fill">[ your phone ]</dd></div>
-  </dl>
+
   <footer>
     <p>
       Prepared for Fitness Depot Columbia · 805 Hwy 98 Bypass, Columbia, MS 39429 · (601) 345-3344.
