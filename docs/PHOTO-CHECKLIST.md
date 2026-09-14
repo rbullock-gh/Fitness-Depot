@@ -43,11 +43,27 @@ photos were substituted — each slot is a labelled placeholder instead.
 | `gallery-gym-floor` | Gallery (wide) | 1000×750 | Main training floor. |
 | `gallery-free-weights` | Gallery | 1000×750 | Free weight area. |
 | `gallery-cardio-deck` | Gallery | 1000×750 | Cardio row with TVs. |
-| `gallery-squat-racks` | Gallery | 1000×750 | Racks and platforms. |
+| `gallery-squat-racks` | Gallery (wide) | 1000×750 | Racks and platforms. |
 | `gallery-turf` | Gallery (wide) | 1000×750 | Functional training turf. |
 | `gallery-recovery` | Gallery | 1000×750 | HydroMassage / recovery space. |
 | `gallery-kids` | Gallery | 1000×750 | Kids room. |
 | `gallery-exterior` | Gallery (wide) | 1000×750 | Building exterior and Fitness Depot signage. |
+
+### The gallery grid tiles exactly — keep it that way
+
+The gallery is four columns of fixed-height rows. A **wide** tile spans two columns, a
+normal tile spans one. The eight slots above are ordered `wide, normal, normal, wide,
+wide, normal, normal, wide` — twelve column-slots, which fills three rows with no gaps,
+in the order they are written.
+
+If you add, remove or re-order photos, keep the column-slots a **multiple of four**
+(count a wide tile as two) and keep the sequence packing left to right without a wide
+tile needing to straddle a row break. Getting this wrong leaves a hole in the mosaic.
+Deliberately *not* using `grid-auto-flow: dense` to paper over it, because that reorders
+tiles visually away from the order a screen reader reads them.
+
+Wide slots suit horizontal subjects — a rack row, a turf lane, the building frontage.
+Crop them wider than 4:3; the tile is roughly 2.9:1.
 _(The social share card, `assets/img/og-image.png`, is generated from the logo by
 `tools/install-logo.py` — no photo needed. Swap in a photo-based card later if you prefer.)_
 

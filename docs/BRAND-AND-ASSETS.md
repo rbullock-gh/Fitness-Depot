@@ -7,16 +7,22 @@ The one thing still worth upgrading is the *source file* — see "Supply a vecto
 ## 1. The logo
 
 The artwork ships at `assets/img/logo-fitness-depot.png` — background removed, trimmed to
-the artwork, 720×514. Everything else is generated from it by `tools/install-logo.py`:
+the artwork, 320×228. It is exported at 320 rather than the source resolution because the
+header renders it at most 98×70 CSS px, so 320 already covers a 3× display; the previous
+720-wide export was 42 KB and made up most of what a phone downloaded before first paint.
+Everything else is generated from it by `tools/install-logo.py`:
 
 | File | Size | Used for |
 |---|---|---|
-| `assets/img/logo-fitness-depot.png` | 720×514 | Header and footer |
+| `assets/img/logo-fitness-depot.png` | 320×228 | Header and footer |
 | `assets/img/logo-mark.png` | 384×325 | The mascot alone, for small sizes |
 | `assets/favicon/favicon-32.png` | 32×32 | Browser tab (mascot only — the full lockup turns to mush below ~100px) |
 | `assets/favicon/apple-touch-icon.png` | 180×180 | Home-screen icon |
 | `assets/favicon/icon-512.png` | 512×512 | PWA / manifest |
 | `assets/img/og-image.png` | 1200×630 | Facebook / text-message share card |
+
+All of these are saved as palette PNGs — the artwork is flat colour, so a palette is
+visually identical and roughly a third of the size. Do not re-save them as truecolor.
 
 Regenerate them all from a new source file with:
 

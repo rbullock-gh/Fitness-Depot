@@ -104,8 +104,10 @@ def main() -> int:
     (ROOT / "assets" / "favicon").mkdir(parents=True, exist_ok=True)
 
     # --- full lockup, sized for retina in the header/footer ---
+    # The slot renders at most 98x70 CSS px, so 320 covers a 3x display. 720
+    # was 42 KB for a 98px slot -- most of the initial payload on a phone.
     master = logo.copy()
-    master.thumbnail((720, 720), Image.LANCZOS)
+    master.thumbnail((320, 320), Image.LANCZOS)
     save_compact(master, ROOT / "assets/img/logo-fitness-depot.png")
     print(f"  logo-fitness-depot.png  {master.width}x{master.height}")
 
@@ -121,7 +123,9 @@ def main() -> int:
     for name, box in (("favicon-32.png", 32), ("apple-touch-icon.png", 180), ("icon-512.png", 512)):
         art = mark if box <= 64 else logo
         icon = on_ground(art, box, (255, 255, 255, 255))
-        icon.convert("RGB").save(ROOT / "assets/favicon" / name, optimize=True)
+        # Palette, not truecolor: this artwork is flat, and saving it as RGB
+        # made icon-512.png 103 KB.
+        save_compact(icon.convert("RGB"), ROOT / "assets/favicon" / name)
         print(f"  {name:<23} {box}x{box}")
 
     # --- social share card ---
@@ -147,7 +151,10 @@ def main() -> int:
 
     centered("24/7 GYM IN COLUMBIA, MISSISSIPPI", 470, font(38), INK)
     centered("805 Hwy 98 Bypass  ·  (601) 345-3344", H - 62, font(26), GOLD)
-    card.save(ROOT / "assets/img/og-image.png", optimize=True)
+    # 256-colour palette: the card is flat artwork plus text, and truecolor
+    # made it 144 KB -- which is what a phone downloads to render the link
+    # preview when someone texts the site to a friend.
+    save_compact(card, ROOT / "assets/img/og-image.png", colors=256)
     print(f"  og-image.png            {W}x{H}")
 
     old = ROOT / "assets/img/og-image.svg"
