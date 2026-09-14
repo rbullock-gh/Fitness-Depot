@@ -1,0 +1,388 @@
+<title>601 Call Sheet</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#eef1ee; --surface:#fff; --surface-2:#f7f9f7;
+    --ink:#16201a; --ink-2:#3f4e45; --muted:#67746c;
+    --rule:#d5dcd5; --rule-2:#e6ebe6;
+    --accent:#1c6b45; --accent-ink:#fff; --accent-soft:rgba(28,107,69,.09);
+    --hot:#b3760f; --hot-soft:rgba(179,118,15,.12);
+    --cool:#4a6b8a;
+    --ok:#1c6b45; --warn:#b3760f; --dead:#8a8f8b;
+    --focus:#1c6b45;
+    --shadow:0 1px 2px rgba(22,32,26,.06),0 4px 14px rgba(22,32,26,.05);
+    --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+    --body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0d1310; --surface:#141c18; --surface-2:#18211c;
+      --ink:#e6ece7; --ink-2:#b3c0b7; --muted:#8a978f;
+      --rule:#25302a; --rule-2:#1d2721;
+      --accent:#4ea87a; --accent-ink:#08120c; --accent-soft:rgba(78,168,122,.14);
+      --hot:#d9a441; --hot-soft:rgba(217,164,65,.15);
+      --cool:#8ab0d0;
+      --ok:#4ea87a; --warn:#d9a441; --dead:#6f7a73;
+      --focus:#4ea87a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0d1310; --surface:#141c18; --surface-2:#18211c;
+    --ink:#e6ece7; --ink-2:#b3c0b7; --muted:#8a978f;
+    --rule:#25302a; --rule-2:#1d2721;
+    --accent:#4ea87a; --accent-ink:#08120c; --accent-soft:rgba(78,168,122,.14);
+    --hot:#d9a441; --hot-soft:rgba(217,164,65,.15);
+    --cool:#8ab0d0;
+    --ok:#4ea87a; --warn:#d9a441; --dead:#6f7a73;
+    --focus:#4ea87a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+       font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin-inline:auto;padding-inline:clamp(16px,3vw,32px);padding-block:0 64px}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- masthead ---------- */
+  header.top{border-bottom:2px solid var(--accent);background:var(--surface)}
+  .top .wrap{padding-block:clamp(20px,3vw,30px) 18px}
+  .eyebrow{font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.2em;
+           text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.6rem}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent)}
+  h1{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:1.02;
+     font-size:clamp(2rem,5vw,3rem);margin:.35rem 0 .3rem;letter-spacing:.01em;text-wrap:balance}
+  .sub{color:var(--ink-2);max-width:64ch;margin:0;font-size:.95rem}
+
+  /* ---------- summary ---------- */
+  .stats{display:flex;flex-wrap:wrap;gap:0;margin-top:20px;border:1px solid var(--rule);
+         border-radius:6px;overflow:hidden;background:var(--surface-2)}
+  .stat{flex:1 1 120px;padding:11px 14px;border-right:1px solid var(--rule);min-width:0}
+  .stat:last-child{border-right:0}
+  .stat dt{font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--muted);margin:0}
+  .stat dd{margin:2px 0 0;font-family:var(--mono);font-size:1.3rem;font-weight:600;
+           font-variant-numeric:tabular-nums;line-height:1.1}
+  .stat dd small{font-size:.72rem;color:var(--muted);font-weight:500;margin-left:3px}
+
+  /* ---------- controls ---------- */
+  .controls{position:sticky;top:0;z-index:20;background:var(--ground);
+            padding-block:12px;border-bottom:1px solid var(--rule);margin-bottom:2px}
+  .ctl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .ctl-row + .ctl-row{margin-top:8px}
+  input[type=search]{flex:1 1 220px;min-width:0;font:inherit;font-size:.92rem;color:var(--ink);
+    background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:7px 11px}
+  input[type=search]::placeholder{color:var(--muted)}
+  .grp{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .grp-label{font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.14em;
+             text-transform:uppercase;color:var(--muted);margin-right:2px}
+  .chip{font:inherit;font-size:.8rem;font-weight:500;color:var(--ink-2);cursor:pointer;
+    background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:4px 11px;
+    transition:background .12s,border-color .12s,color .12s}
+  .chip:hover{border-color:var(--accent)}
+  .chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .btn{font:inherit;font-size:.8rem;font-weight:600;font-family:var(--display);letter-spacing:.09em;
+    text-transform:uppercase;cursor:pointer;background:var(--surface);color:var(--ink);
+    border:1px solid var(--rule);border-radius:5px;padding:6px 13px}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+
+  /* ---------- list ---------- */
+  .count{font-size:.82rem;color:var(--muted);padding:10px 2px 8px;
+         font-variant-numeric:tabular-nums}
+  ol.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+  .row{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--stripe,var(--rule));
+       border-radius:5px;overflow:hidden}
+  .row.is-open{border-color:var(--accent)}
+  .row.is-done{opacity:.58}
+  .rowbtn{width:100%;display:grid;grid-template-columns:2.4rem minmax(0,1fr) auto;gap:10px;
+    align-items:center;text-align:left;font:inherit;color:inherit;background:none;border:0;
+    padding:9px 12px;cursor:pointer}
+  .rowbtn:hover{background:var(--surface-2)}
+  .rank{font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--muted);
+        font-variant-numeric:tabular-nums}
+  .who{min-width:0}
+  .name{display:block;font-weight:600;font-size:.95rem;line-height:1.3;overflow-wrap:anywhere}
+  .meta{display:block;font-size:.78rem;color:var(--muted);margin-top:1px;overflow-wrap:anywhere}
+  .meta b{font-weight:500;color:var(--ink-2)}
+  .right{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+  .pill{font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.09em;
+    text-transform:uppercase;padding:2.5px 8px;border-radius:3px;white-space:nowrap;
+    border:1px solid var(--rule-2);color:var(--ink-2);background:var(--surface-2)}
+  .pill.sig-none,.pill.sig-fb{background:var(--hot-soft);border-color:transparent;color:var(--hot)}
+  .pill.sig-dated{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+  .score{font-family:var(--mono);font-size:.88rem;font-weight:600;font-variant-numeric:tabular-nums;
+         color:var(--ink-2);min-width:2ch;text-align:right}
+  .sdot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--rule)}
+  .sdot.working{background:var(--warn)} .sdot.won{background:var(--ok)}
+  .sdot.dead{background:var(--dead)} .sdot.called{background:var(--cool)}
+
+  /* ---------- detail ---------- */
+  .detail{border-top:1px solid var(--rule-2);padding:13px 12px 15px;background:var(--surface-2);
+          display:grid;gap:12px}
+  .facts{display:grid;gap:7px;font-size:.87rem}
+  .fact{display:grid;grid-template-columns:5.2rem minmax(0,1fr);gap:9px;align-items:start}
+  .fact dt{font-family:var(--display);font-size:.71rem;font-weight:600;letter-spacing:.12em;
+           text-transform:uppercase;color:var(--muted);padding-top:2px}
+  .fact dd{margin:0;overflow-wrap:anywhere}
+  .fact a{color:var(--accent);font-weight:600}
+  .gap{color:var(--muted);font-style:italic}
+  .statusbar{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  textarea{width:100%;font:inherit;font-size:.87rem;color:var(--ink);background:var(--surface);
+    border:1px solid var(--rule);border-radius:5px;padding:8px 10px;resize:vertical;min-height:58px}
+  .saveline{font-size:.75rem;color:var(--muted);min-height:1.1em}
+
+  footer.foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);
+              font-size:.82rem;color:var(--muted);display:grid;gap:7px}
+  footer.foot b{color:var(--ink-2);font-weight:600}
+  .empty{padding:36px 12px;text-align:center;color:var(--muted);font-size:.9rem}
+  @media (max-width:560px){
+    .rowbtn{grid-template-columns:2.1rem minmax(0,1fr);row-gap:7px}
+    .right{grid-column:1/-1;justify-content:flex-start}
+    .fact{grid-template-columns:1fr;gap:1px}
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Area codes 601 &amp; 769 &middot; prospect pipeline</p>
+    <h1>601 Call Sheet</h1>
+    <p class="sub">150 real south-Mississippi businesses, ranked as buyers for the $2,500 website
+      package. Sorted by how badly they need one, what they can pay, and how far you have to drive.
+      Tap a row for the detail and to log a call.</p>
+    <dl class="stats" id="stats"></dl>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="controls">
+    <div class="ctl-row">
+      <input type="search" id="q" placeholder="Search name, town, county or category&hellip;" aria-label="Search prospects">
+      <button class="btn" id="export" type="button">Export CSV</button>
+    </div>
+    <div class="ctl-row">
+      <span class="grp" role="group" aria-label="Filter by drive time">
+        <span class="grp-label">Drive</span>
+        <button class="chip" type="button" data-f="tier" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="tier" data-v="1" aria-pressed="false">&le;20 min</button>
+        <button class="chip" type="button" data-f="tier" data-v="2" aria-pressed="false">20&ndash;50</button>
+        <button class="chip" type="button" data-f="tier" data-v="3" aria-pressed="false">50&ndash;90</button>
+      </span>
+      <span class="grp" role="group" aria-label="Filter by web signal">
+        <span class="grp-label">Site</span>
+        <button class="chip" type="button" data-f="web" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="web" data-v="hot" aria-pressed="false">No site</button>
+        <button class="chip" type="button" data-f="web" data-v="dated" aria-pressed="false">Dated</button>
+        <button class="chip" type="button" data-f="web" data-v="unknown" aria-pressed="false">Unchecked</button>
+        <button class="chip" type="button" data-f="web" data-v="own" aria-pressed="false">Has site</button>
+      </span>
+      <span class="grp" role="group" aria-label="Filter by status">
+        <span class="grp-label">Status</span>
+        <button class="chip" type="button" data-f="st" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="st" data-v="new" aria-pressed="false">Not called</button>
+        <button class="chip" type="button" data-f="st" data-v="open" aria-pressed="false">In play</button>
+        <button class="chip" type="button" data-f="st" data-v="won" aria-pressed="false">Won</button>
+      </span>
+    </div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <ol class="list" id="list"></ol>
+
+  <footer class="foot">
+    <p><b>Every name here is real</b> &mdash; sourced from Yelp, YellowPages, the Marion County
+      chamber directory, BBB and Healthgrades. Nothing was invented, and blank phone/address
+      fields were left blank rather than guessed.</p>
+    <p><b>&ldquo;Site&rdquo; is an inference, not an audit.</b> It records whether the business's own
+      domain showed up in search &mdash; no site could actually be opened and judged from here.
+      Confirm in Google Maps: <b>no Website button is your best lead.</b></p>
+    <p id="sync">Status and notes save to this page.</p>
+  </footer>
+</main>
+
+<script>
+const DATA = /*__DATA__*/[];
+const SIGLABEL = {none:"No site",fb:"FB only",dated:"Dated site",own:"Has site",corp:"Franchise",unknown:"Unchecked"};
+const TIERLABEL = {1:"≤20 min",2:"20–50 min",3:"50–90 min"};
+const STATUSES = [["","To call"],["called","Called"],["working","In play"],["won","Won"],["dead","Dead"]];
+const state = {q:"",tier:"all",web:"all",st:"all"};
+let marks = {};                     // rank -> {status, notes}
+let db = null, open = null;
+const listEl = document.getElementById("list");
+const esc = s => String(s??"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- local fallback so the page works with no viewer ---------- */
+function localLoad(){ try{ return JSON.parse(localStorage.getItem("cs601")||"{}"); }catch(e){ return {}; } }
+function localSave(){ try{ localStorage.setItem("cs601", JSON.stringify(marks)); }catch(e){} }
+
+function mark(r){ return marks[r] || {status:"",notes:""}; }
+function setMark(r, patch){
+  marks[r] = Object.assign({status:"",notes:""}, marks[r], patch);
+  localSave();
+  if (db) db.doc("prospects/p"+r).set(marks[r]).catch(()=>{});
+}
+
+/* ---------- filtering ---------- */
+function visible(){
+  const q = state.q.trim().toLowerCase();
+  return DATA.filter(d => {
+    if (state.tier !== "all" && String(d.t) !== state.tier) return false;
+    if (state.web !== "all"){
+      const w = d.w;
+      if (state.web === "hot"  && !(w==="none"||w==="fb")) return false;
+      if (state.web === "dated"   && w !== "dated") return false;
+      if (state.web === "unknown" && w !== "unknown") return false;
+      if (state.web === "own" && !(w==="own"||w==="corp")) return false;
+    }
+    if (state.st !== "all"){
+      const s = mark(d.r).status;
+      if (state.st === "new" && s !== "") return false;
+      if (state.st === "open" && !(s==="called"||s==="working")) return false;
+      if (state.st === "won" && s !== "won") return false;
+    }
+    if (q && !(d.b+" "+d.c+" "+d.co+" "+d.cat).toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+/* ---------- render ---------- */
+function stripe(w){
+  if (w==="none"||w==="fb") return "var(--hot)";
+  if (w==="dated") return "var(--accent)";
+  if (w==="unknown") return "var(--rule)";
+  return "var(--rule-2)";
+}
+function renderStats(){
+  const won = DATA.filter(d=>mark(d.r).status==="won").length;
+  const open_ = DATA.filter(d=>["called","working"].includes(mark(d.r).status)).length;
+  const hot = DATA.filter(d=>d.w==="none"||d.w==="fb").length;
+  const t1 = DATA.filter(d=>d.t===1).length;
+  document.getElementById("stats").innerHTML = [
+    ["Prospects", DATA.length, ""],
+    ["No site found", hot, "best leads"],
+    ["Inside 20 min", t1, "Marion Co."],
+    ["In play", open_, ""],
+    ["Won", won, ""],
+  ].map(([k,v,n]) => `<div class="stat"><dt>${esc(k)}</dt><dd>${v}${n?`<small>${esc(n)}</small>`:""}</dd></div>`).join("");
+}
+function rowHTML(d){
+  const m = mark(d.r), isOpen = open === d.r;
+  const done = m.status==="won"||m.status==="dead";
+  const loc = [d.c, d.co && d.co+" Co."].filter(Boolean).join(" · ");
+  return `<li class="row${isOpen?" is-open":""}${done?" is-done":""}" style="--stripe:${stripe(d.w)}">
+    <button class="rowbtn" type="button" data-r="${d.r}" aria-expanded="${isOpen}">
+      <span class="rank">${d.r}</span>
+      <span class="who">
+        <span class="name">${esc(d.b)}</span>
+        <span class="meta"><b>${esc(loc)}</b> &middot; ${esc(d.cat)}${d.ch?" &middot; chamber":""}</span>
+      </span>
+      <span class="right">
+        <span class="sdot ${esc(m.status)}" title="${esc((STATUSES.find(s=>s[0]===m.status)||STATUSES[0])[1])}"></span>
+        <span class="pill sig-${esc(d.w)}">${esc(SIGLABEL[d.w]||d.w)}</span>
+        <span class="pill">${esc(TIERLABEL[d.t])}</span>
+        <span class="score">${d.s}</span>
+      </span>
+    </button>
+    ${isOpen ? detailHTML(d, m) : ""}
+  </li>`;
+}
+function detailHTML(d, m){
+  const tel = d.p ? `<a href="tel:${esc(d.p.replace(/[^\d+]/g,""))}">${esc(d.p)}</a>` : `<span class="gap">not sourced &mdash; look it up in Maps</span>`;
+  const addr = d.a ? esc(d.a) : `<span class="gap">not sourced &mdash; look it up in Maps</span>`;
+  return `<div class="detail">
+    <dl class="facts">
+      <div class="fact"><dt>Phone</dt><dd>${tel}</dd></div>
+      <div class="fact"><dt>Address</dt><dd>${addr}</dd></div>
+      <div class="fact"><dt>Why</dt><dd>${esc(d.y)}</dd></div>
+      <div class="fact"><dt>Score</dt><dd>${d.s} &mdash; site signal + budget fit + proximity</dd></div>
+    </dl>
+    <div class="statusbar" role="group" aria-label="Call status for ${esc(d.b)}">
+      ${STATUSES.map(([v,l]) => `<button class="chip" type="button" data-st="${v}" data-r="${d.r}" aria-pressed="${m.status===v}">${esc(l)}</button>`).join("")}
+    </div>
+    <div>
+      <textarea id="n${d.r}" data-note="${d.r}" placeholder="Who you spoke to, what they said, when to call back&hellip;" aria-label="Notes">${esc(m.notes)}</textarea>
+      <p class="saveline" id="sv${d.r}"></p>
+    </div>
+  </div>`;
+}
+function render(){
+  const v = visible();
+  listEl.innerHTML = v.length ? v.map(rowHTML).join("")
+    : `<li class="empty">No prospects match those filters.</li>`;
+  document.getElementById("count").textContent =
+    `${v.length} of ${DATA.length} shown` + (v.length ? ` · top score ${v[0].s}` : "");
+  renderStats();
+}
+
+/* ---------- events ---------- */
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+document.querySelectorAll(".chip[data-f]").forEach(btn => btn.addEventListener("click", () => {
+  const f = btn.dataset.f;
+  state[f] = btn.dataset.v;
+  document.querySelectorAll(`.chip[data-f="${f}"]`).forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.v === state[f])));
+  render();
+}));
+listEl.addEventListener("click", e => {
+  const st = e.target.closest("[data-st]");
+  if (st){ setMark(+st.dataset.r, {status: st.dataset.st}); render(); return; }
+  const row = e.target.closest(".rowbtn");
+  if (row){ const r = +row.dataset.r; open = (open === r ? null : r); render(); }
+});
+let timer;
+listEl.addEventListener("input", e => {
+  const ta = e.target.closest("[data-note]");
+  if (!ta) return;
+  const r = +ta.dataset.note;
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    setMark(r, {notes: ta.value});
+    const sv = document.getElementById("sv"+r);
+    if (sv){ sv.textContent = "Saved"; setTimeout(()=>{ if(sv) sv.textContent=""; }, 1600); }
+  }, 600);
+});
+
+/* ---------- export ---------- */
+document.getElementById("export").addEventListener("click", async () => {
+  const q = s => `"${String(s??"").replace(/"/g,'""')}"`;
+  const head = ["rank","business","city","county","category","address","phone","web_signal","tier","score","status","notes"];
+  const body = visible().map(d => {
+    const m = mark(d.r);
+    return [d.r,d.b,d.c,d.co,d.cat,d.a,d.p,d.w,d.t,d.s,m.status,m.notes].map(q).join(",");
+  });
+  const csv = head.join(",") + "\n" + body.join("\n");
+  const dl = await window.claude?.use?.("downloads");
+  const btn = document.getElementById("export");
+  if (!dl){ btn.textContent = "Export unavailable"; setTimeout(()=>btn.textContent="Export CSV",2200); return; }
+  try{
+    await dl.save({filename:"call-sheet-601.csv", data:csv});
+    btn.textContent = "Exported"; setTimeout(()=>btn.textContent="Export CSV",1800);
+  }catch(err){
+    btn.textContent = err?.code === "declined" ? "Cancelled" : "Export failed";
+    setTimeout(()=>btn.textContent="Export CSV",2200);
+  }
+});
+
+/* ---------- boot ---------- */
+marks = localLoad();
+render();
+
+window.claude?.use?.("db").then(handle => {
+  if (!handle) return;
+  db = handle;
+  db.collection("prospects").onSnapshot(snap => {
+    const next = {};
+    snap.docs.forEach(doc => {
+      const r = parseInt(String(doc.id).replace(/^p/,""), 10);
+      const v = doc.data() || {};
+      if (!Number.isNaN(r)) next[r] = {status: v.status || "", notes: v.notes || ""};
+    });
+    marks = Object.assign({}, marks, next);
+    localSave();
+    render();
+  }, () => {});
+  document.getElementById("sync").textContent = "Status and notes sync across your devices.";
+}).catch(()=>{});
+</script>

@@ -1,0 +1,388 @@
+<title>601 Call Sheet</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#eef1ee; --surface:#fff; --surface-2:#f7f9f7;
+    --ink:#16201a; --ink-2:#3f4e45; --muted:#67746c;
+    --rule:#d5dcd5; --rule-2:#e6ebe6;
+    --accent:#1c6b45; --accent-ink:#fff; --accent-soft:rgba(28,107,69,.09);
+    --hot:#b3760f; --hot-soft:rgba(179,118,15,.12);
+    --cool:#4a6b8a;
+    --ok:#1c6b45; --warn:#b3760f; --dead:#8a8f8b;
+    --focus:#1c6b45;
+    --shadow:0 1px 2px rgba(22,32,26,.06),0 4px 14px rgba(22,32,26,.05);
+    --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+    --body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#0d1310; --surface:#141c18; --surface-2:#18211c;
+      --ink:#e6ece7; --ink-2:#b3c0b7; --muted:#8a978f;
+      --rule:#25302a; --rule-2:#1d2721;
+      --accent:#4ea87a; --accent-ink:#08120c; --accent-soft:rgba(78,168,122,.14);
+      --hot:#d9a441; --hot-soft:rgba(217,164,65,.15);
+      --cool:#8ab0d0;
+      --ok:#4ea87a; --warn:#d9a441; --dead:#6f7a73;
+      --focus:#4ea87a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0d1310; --surface:#141c18; --surface-2:#18211c;
+    --ink:#e6ece7; --ink-2:#b3c0b7; --muted:#8a978f;
+    --rule:#25302a; --rule-2:#1d2721;
+    --accent:#4ea87a; --accent-ink:#08120c; --accent-soft:rgba(78,168,122,.14);
+    --hot:#d9a441; --hot-soft:rgba(217,164,65,.15);
+    --cool:#8ab0d0;
+    --ok:#4ea87a; --warn:#d9a441; --dead:#6f7a73;
+    --focus:#4ea87a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+       font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin-inline:auto;padding-inline:clamp(16px,3vw,32px);padding-block:0 64px}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---------- masthead ---------- */
+  header.top{border-bottom:2px solid var(--accent);background:var(--surface)}
+  .top .wrap{padding-block:clamp(20px,3vw,30px) 18px}
+  .eyebrow{font-family:var(--display);font-weight:600;font-size:.82rem;letter-spacing:.2em;
+           text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:.6rem}
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent)}
+  h1{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:1.02;
+     font-size:clamp(2rem,5vw,3rem);margin:.35rem 0 .3rem;letter-spacing:.01em;text-wrap:balance}
+  .sub{color:var(--ink-2);max-width:64ch;margin:0;font-size:.95rem}
+
+  /* ---------- summary ---------- */
+  .stats{display:flex;flex-wrap:wrap;gap:0;margin-top:20px;border:1px solid var(--rule);
+         border-radius:6px;overflow:hidden;background:var(--surface-2)}
+  .stat{flex:1 1 120px;padding:11px 14px;border-right:1px solid var(--rule);min-width:0}
+  .stat:last-child{border-right:0}
+  .stat dt{font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--muted);margin:0}
+  .stat dd{margin:2px 0 0;font-family:var(--mono);font-size:1.3rem;font-weight:600;
+           font-variant-numeric:tabular-nums;line-height:1.1}
+  .stat dd small{font-size:.72rem;color:var(--muted);font-weight:500;margin-left:3px}
+
+  /* ---------- controls ---------- */
+  .controls{position:sticky;top:0;z-index:20;background:var(--ground);
+            padding-block:12px;border-bottom:1px solid var(--rule);margin-bottom:2px}
+  .ctl-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .ctl-row + .ctl-row{margin-top:8px}
+  input[type=search]{flex:1 1 220px;min-width:0;font:inherit;font-size:.92rem;color:var(--ink);
+    background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:7px 11px}
+  input[type=search]::placeholder{color:var(--muted)}
+  .grp{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .grp-label{font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.14em;
+             text-transform:uppercase;color:var(--muted);margin-right:2px}
+  .chip{font:inherit;font-size:.8rem;font-weight:500;color:var(--ink-2);cursor:pointer;
+    background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:4px 11px;
+    transition:background .12s,border-color .12s,color .12s}
+  .chip:hover{border-color:var(--accent)}
+  .chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .btn{font:inherit;font-size:.8rem;font-weight:600;font-family:var(--display);letter-spacing:.09em;
+    text-transform:uppercase;cursor:pointer;background:var(--surface);color:var(--ink);
+    border:1px solid var(--rule);border-radius:5px;padding:6px 13px}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+
+  /* ---------- list ---------- */
+  .count{font-size:.82rem;color:var(--muted);padding:10px 2px 8px;
+         font-variant-numeric:tabular-nums}
+  ol.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+  .row{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--stripe,var(--rule));
+       border-radius:5px;overflow:hidden}
+  .row.is-open{border-color:var(--accent)}
+  .row.is-done{opacity:.58}
+  .rowbtn{width:100%;display:grid;grid-template-columns:2.4rem minmax(0,1fr) auto;gap:10px;
+    align-items:center;text-align:left;font:inherit;color:inherit;background:none;border:0;
+    padding:9px 12px;cursor:pointer}
+  .rowbtn:hover{background:var(--surface-2)}
+  .rank{font-family:var(--mono);font-size:.82rem;font-weight:600;color:var(--muted);
+        font-variant-numeric:tabular-nums}
+  .who{min-width:0}
+  .name{display:block;font-weight:600;font-size:.95rem;line-height:1.3;overflow-wrap:anywhere}
+  .meta{display:block;font-size:.78rem;color:var(--muted);margin-top:1px;overflow-wrap:anywhere}
+  .meta b{font-weight:500;color:var(--ink-2)}
+  .right{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+  .pill{font-family:var(--display);font-size:.7rem;font-weight:600;letter-spacing:.09em;
+    text-transform:uppercase;padding:2.5px 8px;border-radius:3px;white-space:nowrap;
+    border:1px solid var(--rule-2);color:var(--ink-2);background:var(--surface-2)}
+  .pill.sig-none,.pill.sig-fb{background:var(--hot-soft);border-color:transparent;color:var(--hot)}
+  .pill.sig-dated{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+  .score{font-family:var(--mono);font-size:.88rem;font-weight:600;font-variant-numeric:tabular-nums;
+         color:var(--ink-2);min-width:2ch;text-align:right}
+  .sdot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--rule)}
+  .sdot.working{background:var(--warn)} .sdot.won{background:var(--ok)}
+  .sdot.dead{background:var(--dead)} .sdot.called{background:var(--cool)}
+
+  /* ---------- detail ---------- */
+  .detail{border-top:1px solid var(--rule-2);padding:13px 12px 15px;background:var(--surface-2);
+          display:grid;gap:12px}
+  .facts{display:grid;gap:7px;font-size:.87rem}
+  .fact{display:grid;grid-template-columns:5.2rem minmax(0,1fr);gap:9px;align-items:start}
+  .fact dt{font-family:var(--display);font-size:.71rem;font-weight:600;letter-spacing:.12em;
+           text-transform:uppercase;color:var(--muted);padding-top:2px}
+  .fact dd{margin:0;overflow-wrap:anywhere}
+  .fact a{color:var(--accent);font-weight:600}
+  .gap{color:var(--muted);font-style:italic}
+  .statusbar{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  textarea{width:100%;font:inherit;font-size:.87rem;color:var(--ink);background:var(--surface);
+    border:1px solid var(--rule);border-radius:5px;padding:8px 10px;resize:vertical;min-height:58px}
+  .saveline{font-size:.75rem;color:var(--muted);min-height:1.1em}
+
+  footer.foot{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);
+              font-size:.82rem;color:var(--muted);display:grid;gap:7px}
+  footer.foot b{color:var(--ink-2);font-weight:600}
+  .empty{padding:36px 12px;text-align:center;color:var(--muted);font-size:.9rem}
+  @media (max-width:560px){
+    .rowbtn{grid-template-columns:2.1rem minmax(0,1fr);row-gap:7px}
+    .right{grid-column:1/-1;justify-content:flex-start}
+    .fact{grid-template-columns:1fr;gap:1px}
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Area codes 601 &amp; 769 &middot; prospect pipeline</p>
+    <h1>601 Call Sheet</h1>
+    <p class="sub">150 real south-Mississippi businesses, ranked as buyers for the $2,500 website
+      package. Sorted by how badly they need one, what they can pay, and how far you have to drive.
+      Tap a row for the detail and to log a call.</p>
+    <dl class="stats" id="stats"></dl>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="controls">
+    <div class="ctl-row">
+      <input type="search" id="q" placeholder="Search name, town, county or category&hellip;" aria-label="Search prospects">
+      <button class="btn" id="export" type="button">Export CSV</button>
+    </div>
+    <div class="ctl-row">
+      <span class="grp" role="group" aria-label="Filter by drive time">
+        <span class="grp-label">Drive</span>
+        <button class="chip" type="button" data-f="tier" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="tier" data-v="1" aria-pressed="false">&le;20 min</button>
+        <button class="chip" type="button" data-f="tier" data-v="2" aria-pressed="false">20&ndash;50</button>
+        <button class="chip" type="button" data-f="tier" data-v="3" aria-pressed="false">50&ndash;90</button>
+      </span>
+      <span class="grp" role="group" aria-label="Filter by web signal">
+        <span class="grp-label">Site</span>
+        <button class="chip" type="button" data-f="web" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="web" data-v="hot" aria-pressed="false">No site</button>
+        <button class="chip" type="button" data-f="web" data-v="dated" aria-pressed="false">Dated</button>
+        <button class="chip" type="button" data-f="web" data-v="unknown" aria-pressed="false">Unchecked</button>
+        <button class="chip" type="button" data-f="web" data-v="own" aria-pressed="false">Has site</button>
+      </span>
+      <span class="grp" role="group" aria-label="Filter by status">
+        <span class="grp-label">Status</span>
+        <button class="chip" type="button" data-f="st" data-v="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="st" data-v="new" aria-pressed="false">Not called</button>
+        <button class="chip" type="button" data-f="st" data-v="open" aria-pressed="false">In play</button>
+        <button class="chip" type="button" data-f="st" data-v="won" aria-pressed="false">Won</button>
+      </span>
+    </div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <ol class="list" id="list"></ol>
+
+  <footer class="foot">
+    <p><b>Every name here is real</b> &mdash; sourced from Yelp, YellowPages, the Marion County
+      chamber directory, BBB and Healthgrades. Nothing was invented, and blank phone/address
+      fields were left blank rather than guessed.</p>
+    <p><b>&ldquo;Site&rdquo; is an inference, not an audit.</b> It records whether the business's own
+      domain showed up in search &mdash; no site could actually be opened and judged from here.
+      Confirm in Google Maps: <b>no Website button is your best lead.</b></p>
+    <p id="sync">Status and notes save to this page.</p>
+  </footer>
+</main>
+
+<script>
+const DATA = [{"r":1,"b":"Fitness Depot (7-location group)","c":"Columbia","co":"Marion","cat":"gym","a":"805 Hwy 98 Bypass","p":"(601) 345-3344","w":"own","t":1,"ch":false,"s":95,"y":"existing relationship - spec site already built; has a site - lead with local search/Google profile"},{"r":2,"b":"Donovan McComb Attorney At Law","c":"Columbia","co":"Marion","cat":"law","a":"718 Broad St","p":"(601) 444-0000","w":"none","t":1,"ch":true,"s":93,"y":"no website of its own found; high-ticket service, one job pays for the site; chamber-listed"},{"r":3,"b":"Columbia Animal Hospital","c":"Columbia","co":"Marion","cat":"veterinary","a":"1409 Hwy 98 E","p":"(601) 736-3041","w":"dated","t":1,"ch":true,"s":87,"y":"has a site, but on legacy tech - redesign angle; high-ticket service, one job pays for the site; chamber-listed"},{"r":4,"b":"Berry Law Firm, PLLC","c":"Columbia","co":"Marion","cat":"law","a":"329 Church St","p":"(601) 736-3004","w":"none","t":1,"ch":false,"s":85,"y":"no website of its own found; high-ticket service, one job pays for the site"},{"r":5,"b":"Columbia Family Dental","c":"Columbia","co":"Marion","cat":"dental","a":"430 Broad St","p":"(601) 736-7125","w":"none","t":1,"ch":false,"s":85,"y":"no website of its own found; high-ticket service, one job pays for the site"},{"r":6,"b":"Foxworth, Shepard & Bruhl P.A.","c":"Columbia","co":"Marion","cat":"law","a":"702 Main St","p":"(601) 736-1122","w":"none","t":1,"ch":false,"s":85,"y":"no website of its own found; high-ticket service, one job pays for the site"},{"r":7,"b":"Hammond Plumbing","c":"Columbia","co":"Marion","cat":"plumbing","a":"907 Park Ave","p":"(601) 736-2999","w":"none","t":1,"ch":false,"s":85,"y":"no website of its own found; high-ticket service, one job pays for the site"},{"r":8,"b":"Pierre's Air Conditioning & Heat","c":"Columbia","co":"Marion","cat":"hvac","a":"518 S High School Ave","p":"","w":"none","t":1,"ch":false,"s":85,"y":"no website of its own found; high-ticket service, one job pays for the site"},{"r":9,"b":"Barbara's","c":"Columbia","co":"Marion","cat":"salon","a":"","p":"","w":"none","t":1,"ch":true,"s":81,"y":"no website of its own found; chamber-listed"},{"r":10,"b":"Cuttin' Up","c":"Columbia","co":"Marion","cat":"salon","a":"1145 Hwy 98 Ste 3","p":"(601) 736-8686","w":"none","t":1,"ch":true,"s":81,"y":"no website of its own found; chamber-listed"},{"r":11,"b":"Entrigue Salon and Day Spa","c":"Columbia","co":"Marion","cat":"spa","a":"622 Main St","p":"","w":"none","t":1,"ch":true,"s":81,"y":"no website of its own found; chamber-listed"},{"r":12,"b":"Hair Designers","c":"Columbia","co":"Marion","cat":"salon","a":"274 S High School Ave","p":"","w":"none","t":1,"ch":true,"s":81,"y":"no website of its own found; chamber-listed"},{"r":13,"b":"Southern Collective Upscale Market","c":"Columbia","co":"Marion","cat":"retail","a":"615 Main St","p":"","w":"none","t":1,"ch":true,"s":81,"y":"no website of its own found; chamber-listed"},{"r":14,"b":"Swank Salon","c":"Columbia","co":"Marion","cat":"salon","a":"723 Main St","p":"(601) 444-9700","w":"none","t":1,"ch":true,"s":81,"y":"no website of its own found; chamber-listed"},{"r":15,"b":"Fink Chiropractic Clinic","c":"Columbia","co":"Marion","cat":"chiropractic","a":"230 S High School Ave","p":"(601) 736-5031","w":"none","t":1,"ch":false,"s":78,"y":"no website of its own found"},{"r":16,"b":"Griffith's Discount Tires","c":"Columbia","co":"Marion","cat":"tire","a":"1110 Hwy 13 N","p":"(601) 736-5369","w":"none","t":1,"ch":false,"s":78,"y":"no website of its own found"},{"r":17,"b":"Hunt Insurance","c":"Columbia","co":"Marion","cat":"insurance","a":"601 Broad St","p":"(601) 736-8991","w":"none","t":1,"ch":false,"s":78,"y":"no website of its own found"},{"r":18,"b":"Kimble Clinic - Chiropractic","c":"Columbia","co":"Marion","cat":"chiropractic","a":"262 S High School Ave","p":"(601) 736-2331","w":"none","t":1,"ch":false,"s":78,"y":"no website of its own found"},{"r":19,"b":"Pope Tire Service","c":"Columbia","co":"Marion","cat":"tire","a":"139 S High School Ave","p":"(601) 736-2613","w":"none","t":1,"ch":false,"s":78,"y":"no website of its own found"},{"r":20,"b":"SouthGroup / James Bowman Agency, Inc.","c":"Columbia","co":"Marion","cat":"insurance","a":"500 Broad St","p":"(601) 736-4537","w":"none","t":1,"ch":false,"s":78,"y":"no website of its own found"},{"r":21,"b":"Berry Patch LLC (florist & gifts)","c":"Columbia","co":"Marion","cat":"florist","a":"220 Second St","p":"(601) 522-2946","w":"dated","t":1,"ch":true,"s":75,"y":"has a site, but on legacy tech - redesign angle; chamber-listed"},{"r":22,"b":"Nails 2000","c":"Columbia","co":"Marion","cat":"nails","a":"312 Second St","p":"","w":"none","t":1,"ch":false,"s":73,"y":"no website of its own found"},{"r":23,"b":"Nails Spa","c":"Columbia","co":"Marion","cat":"nails","a":"1207 US-98","p":"","w":"none","t":1,"ch":false,"s":73,"y":"no website of its own found"},{"r":24,"b":"V I P Nails","c":"Columbia","co":"Marion","cat":"nails","a":"105 S Highway 98 E","p":"","w":"none","t":1,"ch":false,"s":73,"y":"no website of its own found"},{"r":25,"b":"The Flower Shop on Church Street","c":"Columbia","co":"Marion","cat":"florist","a":"323 Church St","p":"","w":"fb","t":1,"ch":false,"s":71,"y":"Facebook page only, no website"},{"r":26,"b":"Opulent Aesthetics","c":"Hattiesburg","co":"Forrest","cat":"medspa","a":"","p":"(601) 476-1602","w":"fb","t":3,"ch":false,"s":71,"y":"Facebook page only, no website; high-ticket service, one job pays for the site"},{"r":27,"b":"C&C Home Improvements","c":"Columbia","co":"Marion","cat":"contractor","a":"","p":"","w":"unknown","t":1,"ch":false,"s":67,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":28,"b":"Elliot Bates Roofing","c":"Columbia","co":"Marion","cat":"roofing","a":"","p":"","w":"unknown","t":1,"ch":false,"s":67,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":29,"b":"Gulf States Roofing & Construction","c":"Columbia","co":"Marion","cat":"roofing","a":"","p":"","w":"unknown","t":1,"ch":false,"s":67,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":30,"b":"Hooker Roofing","c":"Columbia","co":"Marion","cat":"roofing","a":"","p":"","w":"unknown","t":1,"ch":false,"s":67,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":31,"b":"Animal Health Center of Brookhaven","c":"Brookhaven","co":"Lincoln","cat":"veterinary","a":"1697 Highway 84 E","p":"(601) 833-7788","w":"dated","t":3,"ch":false,"s":67,"y":"has a site, but on legacy tech - redesign angle; high-ticket service, one job pays for the site"},{"r":32,"b":"Marion Pet Care","c":"Columbia","co":"Marion","cat":"veterinary","a":"2132 Hwy 13 N","p":"(601) 731-1232","w":"own","t":1,"ch":true,"s":65,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site; chamber-listed"},{"r":33,"b":"Blackwell's AC & Heat","c":"Tylertown","co":"Walthall","cat":"hvac","a":"","p":"","w":"unknown","t":2,"ch":false,"s":61,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":34,"b":"Jefferson AC & Electrical","c":"Tylertown","co":"Walthall","cat":"hvac","a":"","p":"","w":"unknown","t":2,"ch":false,"s":61,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":35,"b":"Johnson's Funeral Home, Inc.","c":"Prentiss","co":"Jefferson Davis","cat":"funeral","a":"1112 Fred St","p":"","w":"unknown","t":2,"ch":false,"s":61,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":36,"b":"Laird Mortuary","c":"Prentiss","co":"Jefferson Davis","cat":"funeral","a":"919 2nd St","p":"","w":"unknown","t":2,"ch":false,"s":61,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":37,"b":"Longleaf Heating & Air","c":"Prentiss","co":"Jefferson Davis","cat":"hvac","a":"","p":"","w":"unknown","t":2,"ch":false,"s":61,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":38,"b":"Salem Opry House","c":"Collins area","co":"Covington","cat":"venue","a":"","p":"","w":"unknown","t":2,"ch":false,"s":61,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":39,"b":"Community Rehab Physical Therapy","c":"Columbia","co":"Marion","cat":"physicaltherapy","a":"","p":"","w":"unknown","t":1,"ch":false,"s":60,"y":"web presence not established - check before calling"},{"r":40,"b":"Encore Rehabilitation of Columbia","c":"Columbia","co":"Marion","cat":"physicaltherapy","a":"","p":"","w":"unknown","t":1,"ch":false,"s":60,"y":"web presence not established - check before calling"},{"r":41,"b":"First Place Physical Therapy","c":"Columbia","co":"Marion","cat":"physicaltherapy","a":"","p":"","w":"unknown","t":1,"ch":false,"s":60,"y":"web presence not established - check before calling"},{"r":42,"b":"Southern Bone & Joint Specialists PA","c":"Columbia","co":"Marion","cat":"physicaltherapy","a":"","p":"","w":"unknown","t":1,"ch":false,"s":60,"y":"web presence not established - check before calling"},{"r":43,"b":"BUMPERs Tires & Accessories","c":"Columbia","co":"Marion","cat":"tire","a":"1310 Highway 98 E","p":"(601) 731-5834","w":"own","t":1,"ch":true,"s":58,"y":"has a site - lead with local search/Google profile; chamber-listed"},{"r":44,"b":"Air Maintenance Inc.","c":"Columbia","co":"Marion","cat":"hvac","a":"","p":"(601) 270-2233","w":"own","t":1,"ch":false,"s":57,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":45,"b":"Hathorn Funeral Home","c":"Columbia","co":"Marion","cat":"funeral","a":"167 Old Highway 98 E","p":"(601) 731-2000","w":"own","t":1,"ch":false,"s":57,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":46,"b":"L.K. Berry Law","c":"Columbia","co":"Marion","cat":"law","a":"","p":"","w":"own","t":1,"ch":false,"s":57,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":47,"b":"Leggett Orthodontics - Columbia","c":"Columbia","co":"Marion","cat":"orthodontic","a":"620 Broad St","p":"(601) 833-4912","w":"own","t":1,"ch":false,"s":57,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":48,"b":"Smith Funeral Home","c":"Columbia","co":"Marion","cat":"funeral","a":"","p":"(601) 736-2257","w":"own","t":1,"ch":false,"s":57,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":49,"b":"Watts Electric & AC","c":"Columbia","co":"Marion","cat":"hvac","a":"","p":"(601) 736-7362","w":"own","t":1,"ch":false,"s":57,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":50,"b":"BAC Mechanical Services","c":"Brookhaven","co":"Lincoln","cat":"hvac","a":"","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":51,"b":"Hartman-Harrigill Funeral Home","c":"Brookhaven","co":"Lincoln","cat":"funeral","a":"101 W Chickasaw St","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":52,"b":"Marshall Funeral Home","c":"Brookhaven","co":"Lincoln","cat":"funeral","a":"412 N Second St","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":53,"b":"Ole Brook Heating & Cooling","c":"Brookhaven","co":"Lincoln","cat":"hvac","a":"","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":54,"b":"Peoples Undertaking Co., Inc.","c":"McComb","co":"Pike","cat":"funeral","a":"607 Elmwood St","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":55,"b":"The Old Koke Plant","c":"Brookhaven","co":"Lincoln","cat":"venue","a":"","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":56,"b":"The Red Barn","c":"South Mississippi","co":"","cat":"venue","a":"","p":"","w":"unknown","t":3,"ch":false,"s":55,"y":"web presence not established - check before calling; high-ticket service, one job pays for the site"},{"r":57,"b":"Broad Street Restaurant","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":58,"b":"Celina's Diner","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":59,"b":"Magnolia Grille","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":60,"b":"Milano's Pizza and Pasta","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":61,"b":"Rajun Cajun's","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":62,"b":"Raquel's Family Restaurant","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":63,"b":"Smoke Shack Barbecue","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":64,"b":"The Back Door","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":65,"b":"Uptown Soulfood Diner","c":"Columbia","co":"Marion","cat":"restaurant","a":"","p":"","w":"unknown","t":1,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":66,"b":"43 General Store","c":"Monticello","co":"Lawrence","cat":"retail","a":"","p":"","w":"unknown","t":2,"ch":false,"s":49,"y":"web presence not established - check before calling"},{"r":67,"b":"Anatomies","c":"Hattiesburg","co":"Forrest","cat":"gym","a":"","p":"","w":"unknown","t":3,"ch":false,"s":48,"y":"web presence not established - check before calling"},{"r":68,"b":"Pure Performance Gym","c":"Hattiesburg","co":"Forrest","cat":"gym","a":"","p":"","w":"unknown","t":3,"ch":false,"s":48,"y":"web presence not established - check before calling"},{"r":69,"b":"Revolution Fitness","c":"Hattiesburg","co":"Forrest","cat":"gym","a":"","p":"","w":"unknown","t":3,"ch":false,"s":48,"y":"web presence not established - check before calling"},{"r":70,"b":"Moree's Florist & More","c":"Columbia","co":"Marion","cat":"florist","a":"402 Lumberton Rd","p":"","w":"own","t":1,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile"},{"r":71,"b":"Animal Medical Center","c":"Brookhaven","co":"Lincoln","cat":"veterinary","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":72,"b":"Belk Ditcharo Dental","c":"Brookhaven","co":"Lincoln","cat":"dental","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":73,"b":"Bridlewood Event Venue","c":"Hattiesburg","co":"Forrest","cat":"venue","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":74,"b":"Brookhaven Animal Hospital","c":"Brookhaven","co":"Lincoln","cat":"veterinary","a":"1210 US-51","p":"(601) 833-1223","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":75,"b":"Brookhaven Dental Center","c":"Brookhaven","co":"Lincoln","cat":"dental","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":76,"b":"Brookhaven Funeral Home","c":"Brookhaven","co":"Lincoln","cat":"funeral","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":77,"b":"Brookside Barn","c":"Ellisville","co":"Jones","cat":"venue","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":78,"b":"Brookway Dental","c":"Brookhaven","co":"Lincoln","cat":"dental","a":"706 Brookway Blvd","p":"(601) 823-3200","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":79,"b":"Comfort Zone Heating & Cooling LLC","c":"Brookhaven","co":"Lincoln","cat":"hvac","a":"2218 New Sight Rd","p":"(601) 833-3131","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":80,"b":"Dr. Mac L. Baker Dentistry","c":"Brookhaven","co":"Lincoln","cat":"dental","a":"","p":"(601) 833-7241","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":81,"b":"Plastic Surgery Center of Hattiesburg","c":"Hattiesburg","co":"Forrest","cat":"medspa","a":"","p":"(601) 293-3405","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":82,"b":"Radiant Reflections Medspa","c":"Hattiesburg","co":"Forrest","cat":"medspa","a":"","p":"(601) 268-7777","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":83,"b":"The White Barn","c":"South Mississippi","co":"","cat":"venue","a":"","p":"","w":"own","t":3,"ch":false,"s":45,"y":"has a site - lead with local search/Google profile; high-ticket service, one job pays for the site"},{"r":84,"b":"Annie B's","c":"Collins","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":85,"b":"Best Wok","c":"Prentiss","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":86,"b":"Binke's Restaurant","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":87,"b":"Catfish One","c":"Monticello","co":"Lawrence","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":88,"b":"China Wok","c":"Monticello","co":"Lawrence","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":89,"b":"Chuck's SouthSide","c":"Purvis area","co":"Lamar","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":90,"b":"Collard Greens & Tortillas","c":"Monticello","co":"Lawrence","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":91,"b":"Country Hix Boudin and Cracklins","c":"Collins","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":92,"b":"Cowboy Jim's Riverside Restaurant","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":93,"b":"Deli Diner","c":"Collins","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":94,"b":"Dinner On Main","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":95,"b":"Donut Time","c":"Monticello area","co":"Lawrence","cat":"bakery","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":96,"b":"Downtown Burger","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":97,"b":"Eastside Soul Food Restaurant","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":98,"b":"Finch & Fox Coffee Shop","c":"Monticello area","co":"Lawrence","cat":"cafe","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":99,"b":"Frosty Mug","c":"Purvis area","co":"Lamar","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":100,"b":"Graham's Fish Camp","c":"Collins area","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":101,"b":"GrateFull Soul","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":102,"b":"Habanero Mexican Grill","c":"Collins","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":103,"b":"Hamburger House","c":"Prentiss","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":104,"b":"Hog Heaven BBQ","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":105,"b":"Katie's Restaurant & Bar","c":"Purvis area","co":"Lamar","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":106,"b":"Kuntry Fisherman Bar & Grill","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":107,"b":"L.T.'s Food","c":"Purvis area","co":"Lamar","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":108,"b":"Los Parrilleros","c":"Monticello","co":"Lawrence","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":109,"b":"Main Street Cafe","c":"Collins","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":110,"b":"Miss K's of Monticello","c":"Monticello","co":"Lawrence","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":111,"b":"Mom & Dad's Country Cooking Buffet","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":112,"b":"Mom & Pop's Soul Food Kitchen & Barbecue","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":113,"b":"Nanny's Diner","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":114,"b":"Pearl's Diner","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":115,"b":"Petunia's BBQ","c":"Purvis area","co":"Lamar","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":116,"b":"R and K Kickin Lickin BBQ","c":"Purvis area","co":"Lamar","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":117,"b":"Red's","c":"Collins","co":"Covington","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":118,"b":"Rustic Barrel","c":"Monticello","co":"Lawrence","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":119,"b":"Shivers Creek Fish House","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":120,"b":"Sumrall Donuts & Breakfast","c":"Sumrall","co":"Lamar","cat":"bakery","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":121,"b":"The Shack On 184","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":122,"b":"Vezlicious Daiquiris and Wings","c":"Prentiss area","co":"Jefferson Davis","cat":"restaurant","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":123,"b":"Whistle Stop Cafe","c":"Purvis area","co":"Lamar","cat":"cafe","a":"","p":"","w":"unknown","t":2,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":124,"b":"601 Boutique","c":"Laurel","co":"Jones","cat":"boutique","a":"327 N Magnolia St","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":125,"b":"Bella Bella","c":"Laurel","co":"Jones","cat":"boutique","a":"","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":126,"b":"Bertha's Flower Shop","c":"Brookhaven","co":"Lincoln","cat":"florist","a":"103 W Chickasaw St","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":127,"b":"HAND+made","c":"Laurel","co":"Jones","cat":"retail","a":"","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":128,"b":"Le Nail Day Spa","c":"Brookhaven","co":"Lincoln","cat":"nails","a":"939 Brookway Blvd","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":129,"b":"Southern Antique & Gift Mall","c":"Laurel","co":"Jones","cat":"retail","a":"","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":130,"b":"The Cotton Boll","c":"Laurel","co":"Jones","cat":"boutique","a":"","p":"","w":"unknown","t":3,"ch":false,"s":43,"y":"web presence not established - check before calling"},{"r":131,"b":"Marion County Farm Bureau","c":"Columbia","co":"Marion","cat":"insurance","a":"434 Broad St","p":"(601) 736-3244","w":"corp","t":1,"ch":false,"s":40,"y":"franchise site - owner may not control it"},{"r":132,"b":"Paul S. Broom - Allstate Agency","c":"Columbia","co":"Marion","cat":"insurance","a":"262 S High School Ave","p":"(601) 731-1616","w":"corp","t":1,"ch":false,"s":40,"y":"franchise site - owner may not control it"},{"r":133,"b":"Strategic Insurance Professionals","c":"Columbia","co":"Marion","cat":"insurance","a":"418 Sumrall Rd Ste 2","p":"(769) 255-6332","w":"corp","t":1,"ch":false,"s":40,"y":"franchise site - owner may not control it"},{"r":134,"b":"FSFIT (Fourth Street CrossFit)","c":"Hattiesburg","co":"Forrest","cat":"gym","a":"120 98th Place Blvd","p":"(601) 602-3269","w":"own","t":3,"ch":false,"s":38,"y":"has a site - lead with local search/Google profile"},{"r":135,"b":"Al Dente","c":"McComb","co":"Pike","cat":"restaurant","a":"2101 Veterans Blvd","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":136,"b":"Berry's Seafood & Catfish House","c":"Magee","co":"Simpson","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":137,"b":"Betty's Eat Shop","c":"Brookhaven","co":"Lincoln","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":138,"b":"Bill's Catfish & Steaks","c":"Wiggins","co":"Stone","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":139,"b":"Buddy's","c":"McComb","co":"Pike","cat":"restaurant","a":"821 Delaware Ave","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":140,"b":"Chickn' Coop","c":"Brookhaven","co":"Lincoln","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":141,"b":"Chism's Diner","c":"Brookhaven","co":"Lincoln","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":142,"b":"Crawfish Connection","c":"Wiggins area","co":"Stone","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":143,"b":"Cuevas's Fish House","c":"Picayune","co":"Pearl River","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":144,"b":"Cypress Landing","c":"McComb","co":"Pike","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":145,"b":"Don's Seafood Restaurant","c":"Picayune","co":"Pearl River","cat":"restaurant","a":"800 Highway 11 S","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":146,"b":"Double E BBQ","c":"McComb","co":"Pike","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":147,"b":"Fatty's Seafood Restaurant","c":"Picayune","co":"Pearl River","cat":"restaurant","a":"3320 Highway 11 N","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":148,"b":"Friend's Kitchen","c":"Brookhaven","co":"Lincoln","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":149,"b":"Hibachi Express","c":"Wiggins","co":"Stone","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"},{"r":150,"b":"Joses Restaurant & Grill","c":"Magee","co":"Simpson","cat":"restaurant","a":"","p":"","w":"unknown","t":3,"ch":false,"s":37,"y":"web presence not established - check before calling"}];
+const SIGLABEL = {none:"No site",fb:"FB only",dated:"Dated site",own:"Has site",corp:"Franchise",unknown:"Unchecked"};
+const TIERLABEL = {1:"≤20 min",2:"20–50 min",3:"50–90 min"};
+const STATUSES = [["","To call"],["called","Called"],["working","In play"],["won","Won"],["dead","Dead"]];
+const state = {q:"",tier:"all",web:"all",st:"all"};
+let marks = {};                     // rank -> {status, notes}
+let db = null, open = null;
+const listEl = document.getElementById("list");
+const esc = s => String(s??"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- local fallback so the page works with no viewer ---------- */
+function localLoad(){ try{ return JSON.parse(localStorage.getItem("cs601")||"{}"); }catch(e){ return {}; } }
+function localSave(){ try{ localStorage.setItem("cs601", JSON.stringify(marks)); }catch(e){} }
+
+function mark(r){ return marks[r] || {status:"",notes:""}; }
+function setMark(r, patch){
+  marks[r] = Object.assign({status:"",notes:""}, marks[r], patch);
+  localSave();
+  if (db) db.doc("prospects/p"+r).set(marks[r]).catch(()=>{});
+}
+
+/* ---------- filtering ---------- */
+function visible(){
+  const q = state.q.trim().toLowerCase();
+  return DATA.filter(d => {
+    if (state.tier !== "all" && String(d.t) !== state.tier) return false;
+    if (state.web !== "all"){
+      const w = d.w;
+      if (state.web === "hot"  && !(w==="none"||w==="fb")) return false;
+      if (state.web === "dated"   && w !== "dated") return false;
+      if (state.web === "unknown" && w !== "unknown") return false;
+      if (state.web === "own" && !(w==="own"||w==="corp")) return false;
+    }
+    if (state.st !== "all"){
+      const s = mark(d.r).status;
+      if (state.st === "new" && s !== "") return false;
+      if (state.st === "open" && !(s==="called"||s==="working")) return false;
+      if (state.st === "won" && s !== "won") return false;
+    }
+    if (q && !(d.b+" "+d.c+" "+d.co+" "+d.cat).toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+/* ---------- render ---------- */
+function stripe(w){
+  if (w==="none"||w==="fb") return "var(--hot)";
+  if (w==="dated") return "var(--accent)";
+  if (w==="unknown") return "var(--rule)";
+  return "var(--rule-2)";
+}
+function renderStats(){
+  const won = DATA.filter(d=>mark(d.r).status==="won").length;
+  const open_ = DATA.filter(d=>["called","working"].includes(mark(d.r).status)).length;
+  const hot = DATA.filter(d=>d.w==="none"||d.w==="fb").length;
+  const t1 = DATA.filter(d=>d.t===1).length;
+  document.getElementById("stats").innerHTML = [
+    ["Prospects", DATA.length, ""],
+    ["No site found", hot, "best leads"],
+    ["Inside 20 min", t1, "Marion Co."],
+    ["In play", open_, ""],
+    ["Won", won, ""],
+  ].map(([k,v,n]) => `<div class="stat"><dt>${esc(k)}</dt><dd>${v}${n?`<small>${esc(n)}</small>`:""}</dd></div>`).join("");
+}
+function rowHTML(d){
+  const m = mark(d.r), isOpen = open === d.r;
+  const done = m.status==="won"||m.status==="dead";
+  const loc = [d.c, d.co && d.co+" Co."].filter(Boolean).join(" · ");
+  return `<li class="row${isOpen?" is-open":""}${done?" is-done":""}" style="--stripe:${stripe(d.w)}">
+    <button class="rowbtn" type="button" data-r="${d.r}" aria-expanded="${isOpen}">
+      <span class="rank">${d.r}</span>
+      <span class="who">
+        <span class="name">${esc(d.b)}</span>
+        <span class="meta"><b>${esc(loc)}</b> &middot; ${esc(d.cat)}${d.ch?" &middot; chamber":""}</span>
+      </span>
+      <span class="right">
+        <span class="sdot ${esc(m.status)}" title="${esc((STATUSES.find(s=>s[0]===m.status)||STATUSES[0])[1])}"></span>
+        <span class="pill sig-${esc(d.w)}">${esc(SIGLABEL[d.w]||d.w)}</span>
+        <span class="pill">${esc(TIERLABEL[d.t])}</span>
+        <span class="score">${d.s}</span>
+      </span>
+    </button>
+    ${isOpen ? detailHTML(d, m) : ""}
+  </li>`;
+}
+function detailHTML(d, m){
+  const tel = d.p ? `<a href="tel:${esc(d.p.replace(/[^\d+]/g,""))}">${esc(d.p)}</a>` : `<span class="gap">not sourced &mdash; look it up in Maps</span>`;
+  const addr = d.a ? esc(d.a) : `<span class="gap">not sourced &mdash; look it up in Maps</span>`;
+  return `<div class="detail">
+    <dl class="facts">
+      <div class="fact"><dt>Phone</dt><dd>${tel}</dd></div>
+      <div class="fact"><dt>Address</dt><dd>${addr}</dd></div>
+      <div class="fact"><dt>Why</dt><dd>${esc(d.y)}</dd></div>
+      <div class="fact"><dt>Score</dt><dd>${d.s} &mdash; site signal + budget fit + proximity</dd></div>
+    </dl>
+    <div class="statusbar" role="group" aria-label="Call status for ${esc(d.b)}">
+      ${STATUSES.map(([v,l]) => `<button class="chip" type="button" data-st="${v}" data-r="${d.r}" aria-pressed="${m.status===v}">${esc(l)}</button>`).join("")}
+    </div>
+    <div>
+      <textarea id="n${d.r}" data-note="${d.r}" placeholder="Who you spoke to, what they said, when to call back&hellip;" aria-label="Notes">${esc(m.notes)}</textarea>
+      <p class="saveline" id="sv${d.r}"></p>
+    </div>
+  </div>`;
+}
+function render(){
+  const v = visible();
+  listEl.innerHTML = v.length ? v.map(rowHTML).join("")
+    : `<li class="empty">No prospects match those filters.</li>`;
+  document.getElementById("count").textContent =
+    `${v.length} of ${DATA.length} shown` + (v.length ? ` · top score ${v[0].s}` : "");
+  renderStats();
+}
+
+/* ---------- events ---------- */
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; render(); });
+document.querySelectorAll(".chip[data-f]").forEach(btn => btn.addEventListener("click", () => {
+  const f = btn.dataset.f;
+  state[f] = btn.dataset.v;
+  document.querySelectorAll(`.chip[data-f="${f}"]`).forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.v === state[f])));
+  render();
+}));
+listEl.addEventListener("click", e => {
+  const st = e.target.closest("[data-st]");
+  if (st){ setMark(+st.dataset.r, {status: st.dataset.st}); render(); return; }
+  const row = e.target.closest(".rowbtn");
+  if (row){ const r = +row.dataset.r; open = (open === r ? null : r); render(); }
+});
+let timer;
+listEl.addEventListener("input", e => {
+  const ta = e.target.closest("[data-note]");
+  if (!ta) return;
+  const r = +ta.dataset.note;
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    setMark(r, {notes: ta.value});
+    const sv = document.getElementById("sv"+r);
+    if (sv){ sv.textContent = "Saved"; setTimeout(()=>{ if(sv) sv.textContent=""; }, 1600); }
+  }, 600);
+});
+
+/* ---------- export ---------- */
+document.getElementById("export").addEventListener("click", async () => {
+  const q = s => `"${String(s??"").replace(/"/g,'""')}"`;
+  const head = ["rank","business","city","county","category","address","phone","web_signal","tier","score","status","notes"];
+  const body = visible().map(d => {
+    const m = mark(d.r);
+    return [d.r,d.b,d.c,d.co,d.cat,d.a,d.p,d.w,d.t,d.s,m.status,m.notes].map(q).join(",");
+  });
+  const csv = head.join(",") + "\n" + body.join("\n");
+  const dl = await window.claude?.use?.("downloads");
+  const btn = document.getElementById("export");
+  if (!dl){ btn.textContent = "Export unavailable"; setTimeout(()=>btn.textContent="Export CSV",2200); return; }
+  try{
+    await dl.save({filename:"call-sheet-601.csv", data:csv});
+    btn.textContent = "Exported"; setTimeout(()=>btn.textContent="Export CSV",1800);
+  }catch(err){
+    btn.textContent = err?.code === "declined" ? "Cancelled" : "Export failed";
+    setTimeout(()=>btn.textContent="Export CSV",2200);
+  }
+});
+
+/* ---------- boot ---------- */
+marks = localLoad();
+render();
+
+window.claude?.use?.("db").then(handle => {
+  if (!handle) return;
+  db = handle;
+  db.collection("prospects").onSnapshot(snap => {
+    const next = {};
+    snap.docs.forEach(doc => {
+      const r = parseInt(String(doc.id).replace(/^p/,""), 10);
+      const v = doc.data() || {};
+      if (!Number.isNaN(r)) next[r] = {status: v.status || "", notes: v.notes || ""};
+    });
+    marks = Object.assign({}, marks, next);
+    localSave();
+    render();
+  }, () => {});
+  document.getElementById("sync").textContent = "Status and notes sync across your devices.";
+}).catch(()=>{});
+</script>
