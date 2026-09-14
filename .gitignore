@@ -1,0 +1,5 @@
+# Prospect data — business contact details, working notes, outreach state.
+# This repo is public. The ledger stays local.
+leads/*.csv
+leads/do-not-contact.txt
+outreach.csv
