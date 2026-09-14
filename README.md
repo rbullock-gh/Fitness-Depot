@@ -21,6 +21,17 @@ Rebuild it after any change:
 python3 tools/build-demo.py
 ```
 
+## Validate before you ship
+
+```bash
+python3 tools/check.py --browser
+```
+
+Structured data, FAQ schema parity, missing assets, tag balance, alt text, heading order,
+broken anchors, leftover placeholder text — plus horizontal overflow at 390/820/1440px and
+content visibility with JavaScript off. Exits non-zero on failure, so it drops straight into
+CI or a pre-commit hook.
+
 ## Run it locally
 
 ```bash
@@ -58,12 +69,15 @@ assets/
   favicon/              Favicon + apple touch icon (placeholders)
 demo/                   Self-contained single-file preview for sharing
 tools/
+  check.py              Validates the whole site; --browser adds a render pass
   set-domain.sh         Points every absolute URL at the live domain
   install-logo.py       Regenerates the logo, icons and share card from a source file
   make-placeholders.sh  Regenerates the placeholder images
   apply-photos.sh       Swaps placeholders for real photos in one command
   build-demo.py         Rebuilds the single-file preview
-docs/                   Launch checklist, photo checklist, brand notes, source record
+docs/                   Launch checklist, photo checklist, brand notes, source record,
+                        and PLAYBOOK.md — the gotchas worth reading before the next build
+.claude/skills/         local-business-site — the reusable pipeline as a skill
 ```
 
 ## Page sections
