@@ -75,7 +75,34 @@ on a call: ask them to open their own site on their phone.
 | `email_known` | +3 | |
 | `agency_built` | −10 | Someone else has the account |
 | `chain` | −15 | A franchisee cannot buy its own site |
-| `closed_maybe` | −40 | Effectively disqualifying |
+| `closed_maybe` | −40 | Effectively disqualifying — **requires a closure signal**, see below |
+
+#### `closed_maybe` means "I found evidence it stopped", not "I found no evidence it's running"
+
+At −40 this flag removes a lead from the sheet, so it needs an actual closure signal: a
+listing marked permanently closed, an owner announcement, a BBB "no longer in business"
+note, a dead number, or a successor business at the same address.
+
+**Absence of recent activity is not a closure signal.** When `WebFetch` is blocked you
+cannot see a dated Facebook post or a Google review date, so "no activity in six months"
+usually means *you could not look*, not that nothing happened. Flagging on that buries
+trading businesses and makes the tiering meaningless — two sweeps of the same metro once
+applied it at opposite thresholds and produced two halves of a ledger that could not be
+compared.
+
+So:
+
+- **Closure signal found** → flag `closed_maybe`. Better still, reject the lead outright
+  and never record it — a confirmed closure is not a lead at all.
+- **No closure signal, but nothing dated inside ~12 months, or no trading evidence of any
+  kind** → flag it. A business with no findable pulse is genuinely weak.
+- **No closure signal, and a dated artifact inside ~12 months, or a live present-tense
+  record** (published hours, an active USDOT or state licence, a current dealer/facility
+  listing) → **do not flag it.** Record the freshest artifact and its date in `notes`, and
+  say that trading status needs confirming in the first thirty seconds of the call.
+
+Write the reason into `notes` either way, so the next pass can re-judge it without
+redoing the research.
 
 ### Tiers
 
