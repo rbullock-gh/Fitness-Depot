@@ -1,0 +1,10 @@
+# Lead data: this repo is public, and a prospect list is not for publication.
+# See leads/README.md — point $ESON_DB at a private location to persist it.
+leads/*.json
+leads/*.csv
+!leads/leads.example.json
+
+# Scratch
+*.pyc
+__pycache__/
+.DS_Store
